@@ -22,9 +22,9 @@
     font-size: 20px;
   }
   .button-header {
-    color: var(--main-bg-color-inset);
+    color: var(--light-green);
     background-color: transparent;
-    border: 1px solid var(--main-bg-color-inset);
+    border: 1px solid var(--light-green);
     border-radius: 4px;
     padding: 1.25rem 1.75rem;
     line-height: 1;
@@ -42,6 +42,10 @@
 
 .big-heading {
   font-size: clamp(40px, 8vw, 70px);
+}
+
+.light-green-color {
+  color: var(--light-green)
 }
 
 h2 {
