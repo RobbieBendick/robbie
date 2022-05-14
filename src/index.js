@@ -7,6 +7,7 @@ import SideSocials from './components/SideSocials/SideSocials';
 import Footer from './components/Footer/Footer';
 import reportWebVitals from './reportWebVitals';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

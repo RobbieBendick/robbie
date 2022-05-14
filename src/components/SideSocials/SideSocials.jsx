@@ -1,7 +1,12 @@
 import "./SideSocials.scss";
+import useWindowSize from "../../hooks/useWindowSize";
+
 function SideSocials() {
+    const windowSize = useWindowSize();
 
     return (
+        <>
+        {windowSize.width > 800 ? 
         <>
         <div className="side-socials" orientation="left">
             <ul>
@@ -16,10 +21,12 @@ function SideSocials() {
                 </li>
             </ul>
         </div>
-        
-        <div className="side-email" orientation="right">
-            <a className="rotate">robbiebendick@gmail.com</a>
-        </div>
+    
+    <div className="side-email" orientation="right">
+        <a className="rotate">robbiebendick@gmail.com</a>
+    </div>
+    </> : null
+    }
     </>
     )
 }
