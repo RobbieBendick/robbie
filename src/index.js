@@ -6,6 +6,7 @@ import Nav from './components/Nav/Nav';
 import SideSocials from './components/SideSocials/SideSocials';
 import Footer from './components/Footer/Footer';
 import AboutMe from './components/AboutMe/AboutMe';
+import ProjectSection from './components/ProjectSection/ProjectSection';
 import reportWebVitals from './reportWebVitals';
 
 
@@ -15,6 +16,7 @@ root.render(
     <Nav />
     <Home />
     <AboutMe />
+    <ProjectSection />
     <SideSocials />
     <Footer />
   </React.StrictMode>

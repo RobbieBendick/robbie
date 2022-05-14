@@ -8,7 +8,7 @@ function Home() {
     <div className='pad'>
         <section className='home'>
             <div>
-                <h1 className="light-green-color" style={{"fontSize": 'clamp(14px,5vw,16px)'}}>Hi, my name is</h1>
+                <h1 className="hi" style={{"fontSize": 'clamp(14px,5vw,16px)'}}>Hi, my name is</h1>
             </div>
             <div>
                 <h1 className='big-heading light-slate-color'>Robert Bendick.</h1>

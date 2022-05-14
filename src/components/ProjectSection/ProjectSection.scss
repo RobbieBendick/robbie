@@ -1,0 +1,85 @@
+
+.project-section {
+    width: 80%;
+    margin-top: 50px;
+    margin-inline: auto;
+    
+    .numbered-heading-projects {
+        position: relative;
+        left: 10%;
+        color: var(--lightest-slate);
+        font-size: clamp(26px, 5vw, 32px);
+    }
+
+    .numbered-heading-projects::before {
+        content: '02.';
+        width: 0;
+        height: 100%;
+        position: relative;
+        top: 0;
+        left: -4px;
+        color: var(--light-green);
+        font-size: clamp(7px, 3.2vw, 18px);
+        font-weight: 400;
+        font-family: 'mono';
+        
+    }
+
+    .numbered-heading-projects::after {
+        content: '';
+        display: block;
+        position: relative;
+        bottom: 34px;
+        left: 135px;    
+        height: 1px;
+        width: 15rem;
+        background: var(--slate);
+        margin: 1rem 0 0.8rem 1rem;
+        opacity: 0.3;
+    }
+
+    .project-container {
+        box-shadow: 0 10px 30px -15px var(--navy-shadow);
+        display: flex;
+        flex-direction: row;
+        -webkit-box-align: center;
+        align-items: center;
+        position: relative;
+        height: 100%;
+        padding: 2rem 1.75rem;
+        margin-inline: auto;
+        gap: 20px;
+    }
+
+    .projects-grid {
+        list-style: none;
+        padding: 0px;
+        margin: 50px 0px 0px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 15px;
+        width: 80%;
+        margin-inline: auto;
+        position: relative;
+    }
+    .card {
+        background-color: var(--light-navy);
+        width: 20rem;
+        height: 15rem;
+    }
+
+    .project-inner {
+        box-shadow: 0 10px 30px -15px var(--navy-shadow);
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        align-items: flex-start;
+        position: relative;
+        height: 100%;
+        padding: 2rem 1.75rem;
+        background-color: var(--light-navy);
+    }
+}
+   
+

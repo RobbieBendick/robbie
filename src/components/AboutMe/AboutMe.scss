@@ -1,3 +1,4 @@
+
 .about-me-section {
     max-width: 900px;
     display: flex;
@@ -10,41 +11,42 @@
     p:not(:last-child) { 
         margin-bottom: 10px;
     }
-}
-
-.numbered-heading {
-    display: flex;
-    left: 8%;
-    -webkit-box-align: center;
-    align-items: center;
-    position: relative;
-    margin: 10px 0px 40px;
-    margin-right: 20px;
-    width: 100%;
-    font-size: clamp(26px,5vw,32px);
-    white-space: nowrap;
-    color: var(--lightest-slate);
-}
-.numbered-heading::before {
-    content: '01.';
-    width: 0;
-    height: 100%;
-    position: absolute;
-    top: 18%;
-    left: -8%;
-    color:var(--light-green);
-    font-size: 24px;
-    font-weight: 400;
-}
-
-.numbered-heading::after {
-    content: '';
-    display: block;
-    height: 1px;
-    width: 300px;
-    background: var(--slate);
-    margin: 1rem 0 0.8rem 1rem;
-    opacity: 0.3;
+    
+    .numbered-heading {
+        display: flex;
+        left: -35%;
+        -webkit-box-align: center;
+        align-items: center;
+        position: relative;
+        margin: 10px 0px 40px;
+        margin-right: 20px;
+        width: 100%;
+        font-size: clamp(26px,5vw,32px);
+        white-space: nowrap;
+        color: var(--lightest-slate);
+    }
+    .numbered-heading::before {
+        content: '01.';
+        width: 0;
+        height: 100%;
+        position: absolute;
+        top: 0.65rem;
+        left: -40px;
+        color: var(--light-green);
+        font-size: clamp(7px, 3.2vw, 18px);
+        font-weight: 400;
+        font-family: 'mono';
+    }
+    
+    .numbered-heading::after {
+        content: '';
+        display: block;
+        height: 1px;
+        width: 15rem;
+        background: var(--slate);
+        margin: 1rem 0 0.8rem 1rem;
+        opacity: 0.3;
+    }
 }
 
 ul.skills-list {
@@ -63,4 +65,12 @@ ul.skills-list li::before {
     left: 0;
     width: 1rem;
     line-height: 12px;
+}
+
+//  800px and down
+@media only screen and (max-width: 800px) {
+    .about-me-section {
+        margin-inline: auto;
+    }
+
 }
