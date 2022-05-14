@@ -22,12 +22,13 @@ function SideSocials() {
             </ul>
         </div>
     
-    <div className="side-email" orientation="right">
-        <a className="rotate">robbiebendick@gmail.com</a>
-    </div>
-    </> : null
-    }
-    </>
+        <div className="side-email" orientation="right">
+            <a className="rotate">robbiebendick@gmail.com</a>
+        </div>
+        </>
+        : null
+        }
+        </>
     )
 }
 
