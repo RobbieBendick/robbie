@@ -31,5 +31,4 @@ function SideSocials() {
         </>
     )
 }
-
 export default SideSocials;
