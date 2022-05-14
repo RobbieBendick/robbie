@@ -4,7 +4,7 @@ import {motion} from "framer-motion";
 function Footer() {
     return (
         <footer className="footer">
-            Made by Robert Bendick
+            <p>Made by Robert Bendick</p>
             <div className="footer-socials">
                 <div>
                     <motion.button whileHover={{color: "#64ffda"}} style={{color: "#a8b2d1"}} href="https://github.com/RobbieBendick"><i class="fa-brands fa-github"></i></motion.button>

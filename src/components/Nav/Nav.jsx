@@ -2,6 +2,7 @@ import "./Nav.scss"
 import React, {useState, useRef, useEffect} from 'react';
 import useWindowSize from "../../hooks/useWindowSize";
 import $ from "jquery";
+import {motion} from "framer-motion";
 
 
 function Nav() {
@@ -71,7 +72,7 @@ function Nav() {
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <button className="resume-button">Resume</button>
+                                <motion.button whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button">Resume</motion.button>
                             </li>   
                         </ul>
                         }

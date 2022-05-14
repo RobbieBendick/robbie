@@ -12,6 +12,9 @@
     color: var(--light-slate);
     font-size: 12px;
     line-height: 1;
+    p {
+        margin: 0;
+    }
 }
 
 .footer-socials {
@@ -23,4 +26,5 @@
         background-color: transparent;
         border: none;
     }
+
 }
