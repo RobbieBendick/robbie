@@ -5,14 +5,15 @@ import Home from './components/Home/Home';
 import Nav from './components/Nav/Nav';
 import SideSocials from './components/SideSocials/SideSocials';
 import Footer from './components/Footer/Footer';
+import AboutMe from './components/AboutMe/AboutMe';
 import reportWebVitals from './reportWebVitals';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Nav />
     <Home />
+    <AboutMe />
     <SideSocials />
     <Footer />
   </React.StrictMode>

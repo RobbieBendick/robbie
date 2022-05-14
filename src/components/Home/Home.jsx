@@ -4,6 +4,7 @@ import {motion} from "framer-motion";
 function Home() {
 
   return (
+      
     <div className='pad'>
         <section className='home'>
             <div>

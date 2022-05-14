@@ -4,6 +4,13 @@
   --light-slate: #a8b2d1;
   --lightest-slate: #ccd6f6;
   --light-navy: #112240;
+  --lightest-navy: rgb(35, 53, 84);
+}
+
+
+.pad {
+  padding: 0 7%;
+  margin-inline: 8%;
 }
 
 ul, li{
