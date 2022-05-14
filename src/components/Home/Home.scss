@@ -10,7 +10,7 @@
   color: var(--slate);
 
   h1 {
-    margin: 0px 0px 15px 4px;
+    margin-bottom: 15px;
   }
   h3 {
     margin: 10px 0 2rem 0;
@@ -33,7 +33,12 @@
     margin-top: 50px;
     font-size: 14px;
   }
+  .button-header:hover {
+    background-color: rgba(7, 83, 83, 0.2) !important;
+  }
+
 }
+
 
 .pad {
   padding: 0 7%;
