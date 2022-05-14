@@ -8,13 +8,13 @@
     z-index: 10;
     color: var(--light-slate);
     
-    a {
+    button {
+        background-color: transparent;
+        border: none;
         padding: 10px;
         color: var(--light-slate);
-        transition: transform 300ms ease;
     }
-    a:hover {
-        transform: translateX(10px);
+    button:hover {
     }
 
     li:last-of-type::after {
