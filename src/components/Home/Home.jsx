@@ -5,7 +5,7 @@ function Home() {
 
   return (
       
-    <div className='pad'>
+    <div>
         <section className='home'>
             <div>
                 <h1 className="hi" style={{"fontSize": 'clamp(14px,5vw,16px)'}}>Hi, my name is</h1>

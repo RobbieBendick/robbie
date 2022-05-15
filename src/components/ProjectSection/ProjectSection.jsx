@@ -47,19 +47,19 @@ function ProjectSection() {
     })
     
     return (
-        <section className="project-section">
-            <div >
-                <p className="numbered-heading-projects">Projects</p>
-            </div>
-            <ul className="projects-grid">
-                <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
-                <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
-                <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
-                <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
-                <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
-                <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
-            </ul>
-        </section>
+            <section className="project-section">
+                <div className="projects">
+                    <p className="numbered-heading-projects">Projects</p>
+                </div>
+                <ul className="projects-grid">
+                    <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
+                    <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
+                    <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
+                    <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
+                    <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
+                    <ProjectCard title="projectName" description="this is a small sample description that needs to be decently long so i can see how it fits" tech1="React" tech2="Node" tech3="Express"/>
+                </ul>
+            </section>
     );
   }
   

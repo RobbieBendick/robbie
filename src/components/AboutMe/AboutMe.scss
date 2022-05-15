@@ -14,7 +14,6 @@
     
     .numbered-heading {
         display: flex;
-        left: -35%;
         -webkit-box-align: center;
         align-items: center;
         position: relative;
@@ -29,8 +28,8 @@
             width: 0;
             height: 100%;
             position: absolute;
-            top: 0.65rem;
-            left: -40px;
+            top: 11px;
+            left: -36px;
             color: var(--light-green);
             font-size: clamp(7px, 3.2vw, 18px);
             font-weight: 400;
@@ -40,13 +39,14 @@
             content: '';
             display: block;
             height: 1px;
-            width: 15rem;
+            width: 240px;
             background: var(--slate);
             margin: 1rem 0 0.8rem 1rem;
             opacity: 0.3;
         }
     }
 }
+
 
 ul.skills-list {
     display: grid;
@@ -65,11 +65,20 @@ ul.skills-list {
         line-height: 12px;
     }
 }
+//   800px and up
+@media only screen and (min-width: 800px) {
+    .rob {
+        max-width: 400px;
+    }
+}
+
 
 //  800px and down
 @media only screen and (max-width: 800px) {
     .about-me-section {
         margin-inline: auto;
     }
-
+    .rob {
+        max-width: 250px;
+    }
 }

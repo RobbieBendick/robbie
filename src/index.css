@@ -14,8 +14,15 @@
   src: url('./fonts/BPmono.ttf') format('truetype');
 }
 
+.main {
+  margin: 0px auto;
+  width: 100%;
+  max-width: 1600px;
+  min-height: 100vh;
+  padding: 80px 150px
+}
 .pad {
-  padding: 0 7%;
+  padding: 0 0%;
   margin-inline: 8%;
 }
 
@@ -43,4 +50,19 @@ body {
 
 .light-slate-color {
   color: var(--lightest-slate);
+}
+
+/* 801px and down up */
+@media only screen and (max-width: 1080px) {
+    .about-me-section {
+        margin-inline: auto;
+    }
+}
+
+/* 800px and down */
+@media only screen and (max-width: 800px) {
+    .main {
+      padding: 0px 50px;
+    }
+
 }
