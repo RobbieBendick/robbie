@@ -29,24 +29,26 @@ function Nav() {
         }
     }
 
+    function closeNav() {
+        setNavIsOpen(false);
+        nav.style.width = "0";
+    }
+
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
 
     // "click-out" of dropdown
     useEffect(() => {
         document.addEventListener('mousedown', event => {
-            console.log(event.target);
             if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
-                setNavIsOpen(false);
-                nav.style.width = "0";
+                closeNav();
             }
-            console.log($("#mySidenav a"));
         })
     });
 
     function AnchorItem({txt, href}) {
         return (
-            <a href={href}>{txt}</a>
+            <a onClick={closeNav} href={href}>{txt}</a>
         )
     }
 
@@ -57,7 +59,7 @@ function Nav() {
                 <AnchorItem txt="About" href="#about"/>
                 <AnchorItem txt="Projects" href="#projects"/>
                 <AnchorItem txt="Contact" href="#contact"/>
-                <AnchorItem txt="Resume" href="/resume"/>
+                <a href="/resume" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
          
             <nav class="navbar navbar-light">
@@ -78,7 +80,7 @@ function Nav() {
                                 <a class="nav-link" href="#contact">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <motion.a href="/resume" style={{"display": "block"}} whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button">Resume</motion.a>
+                                <motion.a href="/resume" style={{"display": "block"}} whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                             </li>   
                         </ul>
                         }

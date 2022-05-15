@@ -127,8 +127,9 @@ nav {
     transition: margin-right .5s;
   }
   
-  /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+  /* 1084px and up */
+  @media only screen and (min-width: 800px) {
+      .sidenav {
+        width: 0 !important;
+      }
   }
