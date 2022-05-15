@@ -2,7 +2,7 @@ import "./AboutMe.scss";
 function AboutMe() {
     return (
 
-        <section className="about-me-section">
+        <section id="about" className="about-me-section">
             <div className="rob">
                 <h2 className="numbered-heading">About Me</h2>
             </div>
@@ -17,19 +17,19 @@ function AboutMe() {
                     JavaScript (ES6+)
                 </li>
                 <li>
-                    JavaScript (ES6+)
+                    Python
                 </li>
                 <li>
-                    JavaScript (ES6+)
+                    React
                 </li>
                 <li>
-                    JavaScript (ES6+)
+                    Lua
                 </li>
                 <li>
-                    JavaScript (ES6+)
+                    Node
                 </li>
                 <li>
-                    JavaScript (ES6+)
+                    Express
                 </li>
             </ul>
         </section>

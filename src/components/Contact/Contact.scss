@@ -1,0 +1,53 @@
+#contact {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 200px auto 100px;
+    text-align: center;
+}
+
+.whats-next {
+    display: block;
+    margin-bottom: 20px;
+    color: var(--light-green);
+    font-family: "mono";
+    font-size: 16px;
+    font-weight: 400;
+    &::before {
+        content: '03.';
+        width: 0;
+        height: 100%;
+        left: -5px;
+        position: relative;
+        color: var(--light-green);
+        font-size: clamp(7px, 3.2vw, 15px);
+        font-weight: 400;
+        font-family: 'mono';
+    }
+}
+.get-in-touch {
+    font-size: clamp(40px, 5vw, 60px);
+    margin: 0px 0px 10px;
+    font-weight: 600;
+    color: var(--lightest-slate);
+    line-height: 1.1;
+}
+.contact-description {
+    font-size: 18px;
+}
+
+.contact-button {
+    margin-inline:  auto;
+    background-color: transparent;
+    color: var(--light-green) !important;
+    border-color: var(--light-green);
+    border: 1px solid var(--light-green);
+    border-radius: 4px;
+    padding: 0.7rem 1.6rem;
+    max-width: 50%;
+    font-family: "mono";
+    font-size: 14px;
+    margin-top: 1rem;
+}
+
+

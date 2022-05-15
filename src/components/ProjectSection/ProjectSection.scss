@@ -1,6 +1,6 @@
 
 .project-section {
-    margin-top: 50px;
+    margin-top: 140px;
     
     .card-body {
         border: none;
@@ -9,7 +9,6 @@
     .card-title {
         color: var(--lightest-slate);
     }
-
 
     .numbered-heading-projects {
         display: flex;
@@ -140,16 +139,8 @@
 .project-inner:hover .card-title  { 
     color: var(--light-green); 
 }
-   
 
-.projects-grid {
-    a, a:hover, a:focus, a:active {
-        text-decoration: none;
-        color: inherit;
-   }
-}
-
-//  978px and down
+//  1084px and down
 @media only screen and (max-width: 1084px) {
     .project-inner {
         margin-inline: auto;
@@ -163,6 +154,13 @@
     .projects-grid {
         justify-content: center;
     }
+    
+   ul.projects-grid {
+    a {
+        width: fit-content;
+        margin-inline: auto;
+    }
+}
 }
 
 //   800px and up

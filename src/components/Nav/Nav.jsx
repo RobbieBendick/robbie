@@ -6,8 +6,6 @@ import {motion} from "framer-motion";
 
 
 function Nav() {
-
-
     const windowSize = useWindowSize();
     const [navIsOpen, setNavIsOpen] = useState(false);
     const sidebarWidth = "250px";
@@ -63,13 +61,13 @@ function Nav() {
                         :
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#">About <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="#about">About <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Projects</a>
+                                <a class="nav-link" href="#projects">Projects</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="#contact">Contact</a>
                             </li>
                             <li class="nav-item">
                                 <motion.button whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button">Resume</motion.button>

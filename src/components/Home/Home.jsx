@@ -20,7 +20,7 @@ function Home() {
                 <p className='about-me-header'>I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible, human-centered products</p>
             </div>
             <div>
-                <motion.button whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className='button-header'>Check out my work! <i class="fa-solid fa-arrow-down" style={{"paddingLeft": "7px"}}></i></motion.button>
+                <motion.a href="#projects" whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className='button-header'>Check out my work! <i class="fa-solid fa-arrow-down" style={{"paddingLeft": "7px", "paddingTop": "50px"}}></i></motion.a>
             </div>
         </section>
     </div>

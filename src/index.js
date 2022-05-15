@@ -7,7 +7,10 @@ import SideSocials from './components/SideSocials/SideSocials';
 import Footer from './components/Footer/Footer';
 import AboutMe from './components/AboutMe/AboutMe';
 import ProjectSection from './components/ProjectSection/ProjectSection';
+import Contact from './components/Contact/Contact';
+
 import reportWebVitals from './reportWebVitals';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,10 +18,11 @@ root.render(
   <React.StrictMode>
     <Nav />
     <div class="main">
-    <Home />
-    <AboutMe />
-    <ProjectSection />
-    <SideSocials />
+      <Home />
+      <AboutMe />
+      <ProjectSection />
+      <Contact />
+      <SideSocials />
     </div>
     <Footer />
   </React.StrictMode>

@@ -9,9 +9,18 @@
   --navy-shadow: rgba(2,12,27,0.7);
 }
 
+body {
+  scroll-behavior: smooth;
+}
+
 @font-face {
   font-family: 'mono';
   src: url('./fonts/BPmono.ttf') format('truetype');
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 .main {
