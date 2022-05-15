@@ -21,6 +21,20 @@ body {
   font-family: 'mono';
   src: url('./fonts/BPmono.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'Sans';
+  src: url('./fonts/DMSans-Regular.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'SansBold';
+  src: url('./fonts/DMSans-Bold.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'SansBoldItalic';
+  src: url('./fonts/DMSans-BoldItalic.ttf') format('ttf');
+}
 
 a, a:hover, a:focus, a:active {
   text-decoration: none;
@@ -29,10 +43,10 @@ a, a:hover, a:focus, a:active {
 
 .main {
   margin: 0px auto;
+  padding: 0px 150px 80px;
   width: 100%;
   max-width: 1600px;
   min-height: 100vh;
-  padding: 80px 150px
 }
 .pad {
   padding: 0 0%;
@@ -51,7 +65,7 @@ body {
   -webkit-font-smoothing: antialiased;
   background-color: var(--navy);
   color: var(--slate);
-  font-family: var(--font-sans);
+  font-family: 'Sans';
   font-size: 20px;
   line-height: 1.3;
   background-color: #0a192f;

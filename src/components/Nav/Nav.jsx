@@ -1,9 +1,9 @@
 import "./Nav.scss"
 import React, {useState, useRef, useEffect} from 'react';
+import { Link } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowSize";
 import $ from "jquery";
 import {motion} from "framer-motion";
-
 
 function Nav() {
     const windowSize = useWindowSize();
@@ -35,24 +35,31 @@ function Nav() {
     // "click-out" of dropdown
     useEffect(() => {
         document.addEventListener('mousedown', event => {
+            console.log(event.target);
             if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
                 setNavIsOpen(false);
                 nav.style.width = "0";
-                $(".nav-btn")
             }
+            console.log($("#mySidenav a"));
         })
     });
+
+    function AnchorItem({txt, href}) {
+        return (
+            <a href={href}>{txt}</a>
+        )
+    }
+
     return (
         <>
-        <div ref={menuRef} id="mySidenav" class="sidenav">
-            <a href="#" class="closebtn"></a>
-            <a href="#">About</a>
-            <a href="#">Projects</a>
-            <a href="#">Contact</a>
-            <a href="#">Resume</a>
-        </div>
+            <div ref={menuRef} id="mySidenav" class="sidenav">
+                <a href="#" class="closebtn"></a>
+                <AnchorItem txt="About" href="#about"/>
+                <AnchorItem txt="Projects" href="#projects"/>
+                <AnchorItem txt="Contact" href="#contact"/>
+                <AnchorItem txt="Resume" href="/resume"/>
+            </div>
          
-        <>
             <nav class="navbar navbar-light">
                 <a class="navbar-brand" href="#">R</a>
                 <div class="" id="navbarNav">
@@ -61,7 +68,8 @@ function Nav() {
                         :
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#about">About <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="#projects">About</a>
+
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#projects">Projects</a>
@@ -70,15 +78,12 @@ function Nav() {
                                 <a class="nav-link" href="#contact">Contact</a>
                             </li>
                             <li class="nav-item">
-                                <motion.button whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button">Resume</motion.button>
+                                <motion.a href="/resume" style={{"display": "block"}} whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button">Resume</motion.a>
                             </li>   
                         </ul>
                         }
                 </div>
             </nav>
-        </>
-        
-        <div id="main"></div>
         </>
     )
 }

@@ -7,10 +7,10 @@ function Footer() {
             <p>Made by Robert Bendick</p>
             <div className="footer-socials">
                 <div>
-                    <motion.button whileHover={{color: "#64ffda"}} style={{color: "#a8b2d1"}} href="https://github.com/RobbieBendick"><i class="fa-brands fa-github"></i></motion.button>
+                    <motion.a whileHover={{color: "#64ffda"}} style={{color: "#a8b2d1"}} href="https://github.com/RobbieBendick" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></motion.a>
                 </div>
                 <div>
-                    <motion.button whileHover={{color: "#64ffda"}} style={{color: "#a8b2d1"}} href="https://www.linkedin.com/in/robert-bendick-b71a851b2/"><i class="fa-brands fa-linkedin"></i></motion.button>
+                    <motion.a whileHover={{color: "#64ffda"}} style={{color: "#a8b2d1"}} href="https://www.linkedin.com/in/robert-bendick-b71a851b2/" target="_blank" rel="noopener noreferrer"    ><i class="fa-brands fa-linkedin"></i></motion.a>
                 </div>
             </div>
         </footer>

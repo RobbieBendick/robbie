@@ -8,6 +8,8 @@
     }
     .card-title {
         color: var(--lightest-slate);
+        font-weight: 600;
+        font-family: Sans !important;
     }
 
     .numbered-heading-projects {
@@ -101,8 +103,8 @@
         padding: 0px;
         list-style: none;
         flex-direction: row;
-        padding-top: 10px;
         font-size: 14px;
+        gap: 1.3rem;
     }
 
     .project-top {
