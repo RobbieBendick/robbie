@@ -33,7 +33,7 @@
     align-items: center;
     padding: 0px;
     right: 0%;
-    bottom: 22%;
+    bottom: 24%;
     cursor: pointer;
     a {
         text-decoration: none;
@@ -44,19 +44,18 @@
         transform: rotate(90deg) translateX(-2px);
         color: var(--light-green);
     }
-    
+    &::after {
+        content: '';    
+        width: 0;
+        height: 105px;
+        position: absolute;
+        border: 0.5px solid var(--light-slate);
+        bottom: -15px;
+        left: 48%;
+        transform: translateY(214px);
+    }
 }
 
-.side-email::after {
-    content: '';    
-    width: 0;
-    height: 98px;
-    position: absolute;
-    border: 0.5px solid var(--light-slate);
-    bottom: 0;
-    left: 48%;
-    transform: translateY(214px);
-}
 
 .rotate {
     transform: rotate(90deg);
@@ -69,7 +68,4 @@ ul {
     align-items: center;
     padding: 0px;
     gap: 15px;
-}
-
-ul li, a:hover {
 }
