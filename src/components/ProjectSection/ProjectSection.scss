@@ -148,19 +148,18 @@
     .projects p{
         text-align: left;
     }
-    .numbered-heading-projects {
-        max-width: 250px;
-    }
+
     .projects-grid {
         justify-content: center;
     }
     
    ul.projects-grid {
-    a {
-        width: fit-content;
-        margin-inline: auto;
+        a {
+            width: fit-content;
+            margin-inline: auto;
+        }
     }
-}
+
 }
 
 //   800px and up

@@ -19,16 +19,16 @@ function AboutMe() {
                     React
                 </li>
                 <li>
-                    Express
-                </li>
-                <li>
-                    Lua
-                </li>
-                <li>
                     Node
                 </li>
                 <li>
                     Python
+                </li>
+                <li>
+                    Express
+                </li>
+                <li>
+                    Django
                 </li>
             </ul>
         </section>
