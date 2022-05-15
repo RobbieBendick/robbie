@@ -9,6 +9,10 @@
   --navy-shadow: rgba(2,12,27,0.7);
 }
 
+#myPDF {
+  width: 85%;
+}
+
 body {
   scroll-behavior: smooth;
 }
