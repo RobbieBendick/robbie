@@ -115,6 +115,7 @@ nav {
   .navbar-brand {
     color: var(--light-green) !important;
     margin-bottom: 20px;
+    cursor: pointer;
   }
   .resume-button {
     color: var(--light-green);
@@ -179,5 +180,11 @@ nav {
   @media only screen and (min-width: 800px) {
       .sidenav {
         width: 0 !important;
+      }
+      #root > *:not(aside) {
+        filter: none !important;
+      }
+      body {
+        overflow: inherit !important;
       }
   }

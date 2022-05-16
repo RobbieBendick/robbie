@@ -1,12 +1,12 @@
 import "./Nav.scss"
 import React, {useState, useRef, useEffect} from 'react';
 import { Link } from "react-router-dom";
-import useWindowSize from "../../hooks/useWindowSize";
 import $ from "jquery";
 import {motion} from "framer-motion";
+import mobile from "../../hooks/useCheckMobileScreen";
 
 function Nav() {
-    const windowSize = useWindowSize();
+    const isMobile = mobile();
     const [navIsOpen, setNavIsOpen] = useState(false);
     const sidebarWidth = "250px";
     let nav = document.getElementById("mySidenav");
@@ -85,6 +85,8 @@ function Nav() {
     })
 })
 
+
+
 useEffect(() => {
     if (navIsOpen) {
         document.body.style.overflow = "hidden";
@@ -95,14 +97,30 @@ useEffect(() => {
     }
 }, [navIsOpen])
 
+useEffect(() => {
+    if (isMobile) {
+        // collapse sidebar if previously opened
+        if (document.body.style.overflow === "hidden") {
+            document.body.style.overflow = "inherit";
+        }
+        $("#root > *:not(aside)").css({"filter": "none"});
+        $(".sidenav").width(0);        
+    }
+}, [isMobile])
+
+useEffect(() => {
+    if ($(window).scrollTop() === 0) showNav();
+})
 
     return (
         <>
             <aside ref={menuRef} id="mySidenav" class="sidenav">
                 <a className="closebtn" onClick={() => {
                     closeSidebar();
-                    showNav();
-                }}>&times;</a>
+                    showNav();}}
+                    >
+                    &times;
+                </a>
                 <AnchorItem txt="About" href="#about"/>
                 <AnchorItem txt="Projects" href="#projects"/>
                 <AnchorItem txt="Contact" href="#contact"/>
@@ -110,9 +128,9 @@ useEffect(() => {
             </aside>
          
             <nav id="navbar" class="navbar navbar-light sticky">
-                <a class="navbar-brand" href="/">R</a>
+                <a class="navbar-brand" onClick={() => window.scrollTo(0,0)}>R</a>
                 <div class="" id="navbarNav">
-                        {windowSize.width < 800 ?
+                        {isMobile ?
                         <button class='nav-btn' ref={menuToggleButtonRef} onClick={() => {
                             toggleSidebar();
                             hideNav();
@@ -120,7 +138,7 @@ useEffect(() => {
                         :
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link" href="#projects">About</a>
+                                <a class="nav-link" href="#about">About</a>
 
                             </li>
                             <li class="nav-item">
