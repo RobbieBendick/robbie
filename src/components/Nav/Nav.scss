@@ -5,7 +5,7 @@ $navbarHeight: 100px;
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 44; /* Stay on top */
+    z-index: 61; /* Stay on top */
     top: 0; /* Stay at the top */
     right: 0;
     background-color: var(--light-navy); /* Black*/
@@ -16,6 +16,16 @@ $navbarHeight: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    .closebtn {
+      opacity: 1;
+      position: absolute;
+      z-index: 200;
+      top: 8px;
+      left: 61px;
+      font-size: 36px;
+      margin-left: 50px;
+      cursor: pointer;
+    }
     a {
       padding: 8px;
       text-decoration: none;
@@ -26,6 +36,13 @@ $navbarHeight: 100px;
       transition-duration: 20ms;
       flex-direction: column-reverse;
       text-align: center;
+      width: 100%;
+      width: -moz-available;          /* WebKit-based browsers will ignore this. */
+      width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
+      width: fill-available;
+      &:hover {
+        color: var(--light-green)
+      }
     }
 
     li {
@@ -56,6 +73,10 @@ $navbarHeight: 100px;
 
 
 nav {
+  box-shadow: 0 10px 30px -10px var(--navy-shadow);
+  z-index: 60;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
   position: sticky !important;
   display: flex;
   -webkit-box-pack: justify;
@@ -71,11 +92,11 @@ nav {
   user-select: auto !important;
   &.is-hidden {
     transform: translate(0, -$navbarHeight - 10);
-    transition: transform 1s;
+    transition: transform 200ms ease;
   }
   &.is-visible {
     transform: translate(0, 0);
-    transition: transform 1s;
+    transition: transform 200ms ease;
   }
   .navbar-nav {
     flex-direction: row;
@@ -106,6 +127,9 @@ nav {
     margin-right: 50px;
     font-size: 13px;
   }
+  .navbar-nav {
+    align-items: end;
+  }
   @for $i from 1 through 3 {
     .navbar-nav li:nth-child(#{$i}) {
         display: flex;
@@ -127,24 +151,8 @@ nav {
       }
     } 
   }   
-
-  .navbar-nav {
-    align-items: end;
-  }
-
-  /* When you mouse over the navigation links, change their color */
-  .sidenav a:hover {
-    color: var(--light-green)
-  }
   
   /* Position and style the close button (top right corner) */
-  .sidenav .closebtn {
-    position: absolute;
-    top: 10px;
-    right: 23px;
-    font-size: 36px;
-    margin-left: 50px;
-  }
 
   .nav-btn {
     z-index: 54 !important;

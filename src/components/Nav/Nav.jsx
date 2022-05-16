@@ -19,7 +19,7 @@ function Nav() {
       }
 
     /* Set the width of the side navigation to 250px or 0px */
-    function toggleNav() {
+    function toggleSidebar() {
         if (navIsOpen) {
             setNavIsOpen(false);
             nav.style.width = "0";
@@ -32,7 +32,6 @@ function Nav() {
     function closeSidebar() {
         setNavIsOpen(false);
         nav.style.width = "0";
-        debugger
     }
 
     let menuRef = useRef();
@@ -43,6 +42,7 @@ function Nav() {
         document.addEventListener('mousedown', event => {
             if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
                 closeSidebar();
+                showNav();
             }
         })
     });
@@ -53,6 +53,13 @@ function Nav() {
                 <a onClick={closeSidebar} href={href}>{txt}</a>
             </li>
         )
+    }
+    function hideNav() {
+        $("#navbar").removeClass("is-visible").addClass("is-hidden");
+    }
+    
+      function showNav() {
+        $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
     }
 
     useEffect(() => {
@@ -68,12 +75,12 @@ function Nav() {
               if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()) {
                 // If the current scroll is greater than the previous scroll (i.e we're scrolling down the page), hide the nav.
                 if (currentScroll > previousScroll) {
-                  window.setTimeout(hideNav, 150);
+                  window.setTimeout(hideNav, 50);
                   console.log("HIDING NAV");
           
                   // Else we are scrolling up (i.e the previous scroll is greater than the current scroll), so show the nav.
                 } else {
-                    window.setTimeout(showNav, 150);
+                    window.setTimeout(showNav, 50);
                     console.log("SHOWING NAV");
 
                 }
@@ -84,21 +91,16 @@ function Nav() {
           
             });
           
-            function hideNav() {
-              $("#navbar").removeClass("is-visible").addClass("is-hidden");
-            }
-          
-            function showNav() {
-              $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
-            }
-          
     })
 })
 
     return (
         <>
             <div ref={menuRef} id="mySidenav" class="sidenav">
-                <a className="closebtn" onClick={closeSidebar}>&times;</a>
+                <a className="closebtn" onClick={() => {
+                    closeSidebar();
+                    showNav();
+                }}>&times;</a>
                 <AnchorItem txt="About" href="#about"/>
                 <AnchorItem txt="Projects" href="#projects"/>
                 <AnchorItem txt="Contact" href="#contact"/>
@@ -109,7 +111,11 @@ function Nav() {
                 <a class="navbar-brand" href="/">R</a>
                 <div class="" id="navbarNav">
                         {windowSize.width < 800 ?
-                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={toggleNav}><i class="fa-solid fa-bars"></i></button>
+                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={() => {
+                            toggleSidebar();
+                            hideNav();
+
+                        }}><i class="fa-solid fa-bars"></i></button>
                         :
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
