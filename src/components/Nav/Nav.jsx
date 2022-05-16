@@ -29,9 +29,10 @@ function Nav() {
         }
     }
 
-    function closeNav() {
+    function closeSidebar() {
         setNavIsOpen(false);
         nav.style.width = "0";
+        debugger
     }
 
     let menuRef = useRef();
@@ -41,7 +42,7 @@ function Nav() {
     useEffect(() => {
         document.addEventListener('mousedown', event => {
             if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
-                closeNav();
+                closeSidebar();
             }
         })
     });
@@ -49,26 +50,66 @@ function Nav() {
     function AnchorItem({txt, href}) {
         return (
             <li>
-                <a onClick={closeNav} href={href}>{txt}</a>
+                <a onClick={closeSidebar} href={href}>{txt}</a>
             </li>
         )
     }
 
+    useEffect(() => {
+        $(document).ready(function() {
+
+            var previousScroll = 0;
+          
+            $(window).scroll(function() {
+          
+              var currentScroll = $(this).scrollTop();
+          
+              // If the current scroll position is greater than 0 (the top) AND the current scroll position is less than the document height minus the window height (the bottom) run the navigation if/else statement.
+              if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()) {
+                // If the current scroll is greater than the previous scroll (i.e we're scrolling down the page), hide the nav.
+                if (currentScroll > previousScroll) {
+                  window.setTimeout(hideNav, 150);
+                  console.log("HIDING NAV");
+          
+                  // Else we are scrolling up (i.e the previous scroll is greater than the current scroll), so show the nav.
+                } else {
+                    window.setTimeout(showNav, 150);
+                    console.log("SHOWING NAV");
+
+                }
+          
+                // Set the previous scroll value equal to the current scroll.
+                previousScroll = currentScroll;
+              }
+          
+            });
+          
+            function hideNav() {
+              $("#navbar").removeClass("is-visible").addClass("is-hidden");
+            }
+          
+            function showNav() {
+              $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
+            }
+          
+    })
+})
+
     return (
         <>
             <div ref={menuRef} id="mySidenav" class="sidenav">
-                <a href="#" class="closebtn"></a>
+                <a className="closebtn" onClick={closeSidebar}>&times;</a>
                 <AnchorItem txt="About" href="#about"/>
                 <AnchorItem txt="Projects" href="#projects"/>
                 <AnchorItem txt="Contact" href="#contact"/>
                 <a href="/resume" target="_blank" rel="noopener noreferrer">Resume</a>
             </div>
          
-            <nav class="navbar navbar-light">
-                <a class="navbar-brand" href="#">R</a>
+            <nav id="navbar" class="navbar navbar-light sticky">
+                <a class="navbar-brand" href="/">R</a>
                 <div class="" id="navbarNav">
                         {windowSize.width < 800 ?
-                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={toggleNav}>{buttons}</button>
+                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={toggleNav}><i class="fa-solid fa-bars"></i></button>
                         :
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
