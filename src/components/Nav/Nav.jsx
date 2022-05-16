@@ -11,12 +11,6 @@ function Nav() {
     const sidebarWidth = "250px";
     let nav = document.getElementById("mySidenav");
 
-    let buttons = [];
-    if (navIsOpen) {
-        buttons.push(<i className="fas fa-minus"></i>);
-      } else {
-        buttons.push(<i className="fas fa-plus"></i>);
-      }
 
     /* Set the width of the side navigation to 250px or 0px */
     function toggleSidebar() {
@@ -58,7 +52,7 @@ function Nav() {
         $("#navbar").removeClass("is-visible").addClass("is-hidden");
     }
     
-      function showNav() {
+    function showNav() {
         $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
     }
 
@@ -76,13 +70,10 @@ function Nav() {
                 // If the current scroll is greater than the previous scroll (i.e we're scrolling down the page), hide the nav.
                 if (currentScroll > previousScroll) {
                   window.setTimeout(hideNav, 50);
-                  console.log("HIDING NAV");
-          
+
                   // Else we are scrolling up (i.e the previous scroll is greater than the current scroll), so show the nav.
                 } else {
                     window.setTimeout(showNav, 50);
-                    console.log("SHOWING NAV");
-
                 }
           
                 // Set the previous scroll value equal to the current scroll.
@@ -94,9 +85,20 @@ function Nav() {
     })
 })
 
+useEffect(() => {
+    if (navIsOpen) {
+        document.body.style.overflow = "hidden";
+        $("#root > *:not(aside)").css({"filter": "blur(4px)"});
+    } else {
+        document.body.style.overflow = "inherit";
+        $("#root > *:not(aside)").css({"filter": "none"});
+    }
+}, [navIsOpen])
+
+
     return (
         <>
-            <div ref={menuRef} id="mySidenav" class="sidenav">
+            <aside ref={menuRef} id="mySidenav" class="sidenav">
                 <a className="closebtn" onClick={() => {
                     closeSidebar();
                     showNav();
@@ -105,7 +107,7 @@ function Nav() {
                 <AnchorItem txt="Projects" href="#projects"/>
                 <AnchorItem txt="Contact" href="#contact"/>
                 <a href="/resume" target="_blank" rel="noopener noreferrer">Resume</a>
-            </div>
+            </aside>
          
             <nav id="navbar" class="navbar navbar-light sticky">
                 <a class="navbar-brand" href="/">R</a>
@@ -114,7 +116,6 @@ function Nav() {
                         <button class='nav-btn' ref={menuToggleButtonRef} onClick={() => {
                             toggleSidebar();
                             hideNav();
-
                         }}><i class="fa-solid fa-bars"></i></button>
                         :
                         <ul class="navbar-nav ml-auto">
