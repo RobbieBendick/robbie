@@ -3,7 +3,7 @@
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
-    z-index: 9; /* Stay on top */
+    z-index: 44; /* Stay on top */
     top: 0; /* Stay at the top */
     right: 0;
     background-color: var(--light-navy); /* Black*/
@@ -11,17 +11,47 @@
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
     backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 22px;
+      color: var(--slate);
+      display: flex;
+      align-self: center;
+      transition-duration: 20ms;
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+
+    li {
+      display:flex;
+      flex-direction: column-reverse;
+      @for $i from 2 through 4 {
+        $j: $i - 1;
+        &:nth-child(#{$i}) > a::after {
+          content: '0#{$j}.';
+          width: 0;
+          height: 100%;
+          left: -12px;
+          margin-bottom: 5px;
+          position: relative;
+          color: var(--light-green);
+          font-size: clamp(7px, 3.2vw, 15px);
+          font-weight: 400;
+          font-family: 'mono';
+          font-size: 17px;
+          align-self: center;
+          display: flex !important;
+        }
+      }
+    }
+
+
   }
-  
-  /* The navigation menu links */
-  .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: var(--slate);
-    display: block;
-    transition: 0.3s;
-  }
+
 
 nav {
   display: flex;
@@ -108,7 +138,7 @@ nav {
   }
 
   .nav-btn {
-    z-index: 10;
+    z-index: 54 !important;
     position: absolute;
     right: 25px;
     top: 28px;

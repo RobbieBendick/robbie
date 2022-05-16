@@ -48,7 +48,9 @@ function Nav() {
 
     function AnchorItem({txt, href}) {
         return (
-            <a onClick={closeNav} href={href}>{txt}</a>
+            <li>
+                <a onClick={closeNav} href={href}>{txt}</a>
+            </li>
         )
     }
 
@@ -66,7 +68,7 @@ function Nav() {
                 <a class="navbar-brand" href="#">R</a>
                 <div class="" id="navbarNav">
                         {windowSize.width < 800 ?
-                        <button class='nav-btn' style={{"zIndex": 33}} ref={menuToggleButtonRef} onClick={toggleNav}>{buttons}</button>
+                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={toggleNav}>{buttons}</button>
                         :
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item active">
