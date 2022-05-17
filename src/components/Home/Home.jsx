@@ -42,12 +42,10 @@ function Home() {
         <FadeInDiv>
             <AboutMe />
         </FadeInDiv>
-
         <ProjectSection />
         <FadeInDiv>
             <Contact />
         </FadeInDiv>
-
         <SideSocials />
     </div>
     <Footer/>

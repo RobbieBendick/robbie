@@ -10,7 +10,7 @@ import SignatureTwo from "../../Assets/SignatureTwo";
 function Nav() {
     const isMobile = mobile();
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
-    const sidebarWidth = "360px";
+    const sidebarWidth = "min(75vw, 400px)";
     let nav = document.getElementById("mySidenav");
 
     let menuRef = useRef();
@@ -107,12 +107,21 @@ useEffect(() => {
 })
 
 
-function AnchorItem({txt, href}) {
+function SidebarAnchorItem({txt, href}) {
     return (
         <li>
             <a onClick={closeSidebar} href={href}>{txt}</a>
         </li>
     )
+}
+
+function NavAnchorItem({txt, delay}) {
+    let href = txt.toLowerCase();
+    return (
+        <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y:0, x:0, opacity:1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
+            <a class="nav-link" href={`#${href}`}>{txt}</a>
+        </motion.li>
+        )
 }
     return (
         <>
@@ -123,9 +132,9 @@ function AnchorItem({txt, href}) {
                 }}>
                     &times;
                 </a>
-                <AnchorItem txt="About" href="#about"/>
-                <AnchorItem txt="Projects" href="#projects"/>
-                <AnchorItem txt="Contact" href="#contact"/>
+                <SidebarAnchorItem txt="About" href="#about"/>
+                <SidebarAnchorItem txt="Projects" href="#projects"/>
+                <SidebarAnchorItem txt="Contact" href="#contact"/>
                 <motion.a href="/resume" target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
             </aside>
          
@@ -141,18 +150,12 @@ function AnchorItem({txt, href}) {
                         }}><i class="fa-solid fa-bars"></i></button>
                         :
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active fade-in-1">
-                                <a class="nav-link" href="#about">About</a>
-                            </li>
-                            <li class="nav-item fade-in-2">
-                                <a class="nav-link" href="#projects">Projects</a>
-                            </li>
-                            <li class="nav-item fade-in-3">
-                                <a class="nav-link" href="#contact">Contact</a>
-                            </li>
-                            <li class="nav-item fade-in-4">
+                            <NavAnchorItem txt="About" delay={0.1} />
+                            <NavAnchorItem txt="Projects" delay={0.2} />
+                            <NavAnchorItem txt="Contact" delay={0.3} />
+                            <motion.li className="nav-item" initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration:0.4 }} >
                                 <motion.a href="/resume" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
-                            </li>   
+                            </motion.li>   
                         </ul>
                         }
                 </div>

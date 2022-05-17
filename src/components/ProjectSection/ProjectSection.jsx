@@ -81,7 +81,7 @@ function ProjectSection() {
     
     return (
             <section id="projects" className="project-section">
-                <FadeInDiv fadeInClass={3}>
+                <FadeInDiv fadeInClass={2}>
                     <div className="projects">
                         <p className="numbered-heading-projects">Projects</p>
                     </div>

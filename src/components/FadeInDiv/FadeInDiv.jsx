@@ -10,7 +10,8 @@ const FadeInDiv = ({
     const [isVisible, setVisible] = useState(false);
   
     const options = {
-      threshold: 0.4
+      root: null,
+      threshold: 0.35,
     }
 
     useEffect(() => {
@@ -31,7 +32,7 @@ const FadeInDiv = ({
       return () => observer.unobserve(domRef.current);
     }, []);
   
-    return (<div ref={ domRef } className={ isVisible ? ` fade-in-${fadeInClass || '3'}` : 'hide' }>{ children }</div>);
+    return (<div ref={ domRef } className={ isVisible ? ` fade-in-${fadeInClass || '1'}` : 'hide' }>{ children }</div>);
   };
 
 export default FadeInDiv;
