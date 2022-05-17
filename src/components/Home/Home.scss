@@ -44,7 +44,6 @@
   }
 }
 
-
 .big-heading {
   font-size: clamp(40px, 8vw, 70px);
   font-family: SansBold;
@@ -59,3 +58,7 @@ h2 {
   margin: 0;
 }
 
+// nav hrefs go to correct spots
+section:not(.home) > div:first-of-type {
+  padding-top: 7rem;
+}
