@@ -1,4 +1,5 @@
 import './Home.scss';
+import { useEffect, useState, useRef } from 'react';
 import {motion} from "framer-motion";
 import AboutMe from '../AboutMe/AboutMe';
 import ProjectSection from '../ProjectSection/ProjectSection';
@@ -6,6 +7,8 @@ import Contact from '../Contact/Contact';
 import SideSocials from '../SideSocials/SideSocials';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
+import FadeInDiv from '../FadeInDiv/FadeInDiv';
+
 
 function Home() {
 
@@ -36,9 +39,15 @@ function Home() {
                 </div>
             </section>
         </div>
-        <AboutMe />
+        <FadeInDiv>
+            <AboutMe />
+        </FadeInDiv>
+
         <ProjectSection />
-        <Contact />
+        <FadeInDiv>
+            <Contact />
+        </FadeInDiv>
+
         <SideSocials />
     </div>
     <Footer/>

@@ -5,6 +5,7 @@ import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
 import Signature from "../Signature/Signature";
+import SignatureTwo from "../../Assets/SignatureTwo";
 
 function Nav() {
     const isMobile = mobile();

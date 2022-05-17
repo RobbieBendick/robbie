@@ -1,6 +1,7 @@
 import "./ProjectSection.scss";
 import {React, useEffect} from "react";
 import {motion} from "framer-motion";
+import FadeInDiv from '../FadeInDiv/FadeInDiv';
 
 
 // track to see if element is in view
@@ -80,19 +81,39 @@ function ProjectSection() {
     
     return (
             <section id="projects" className="project-section">
-                <div className="projects">
-                    <p className="numbered-heading-projects">Projects</p>
-                </div>
+                <FadeInDiv fadeInClass={3}>
+                    <div className="projects">
+                        <p className="numbered-heading-projects">Projects</p>
+                    </div>
+                </FadeInDiv>
                 <ul className="projects-grid">
-                    <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious tasks during specific game events. (14k+ downloads)" githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
-                    <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" />
-                    <ProjectCard title="MobileGrub" description="Full stack web app that is used to easily locate food vendors." tech1="Python" tech2="Django" tech3="CSS" tech4="JWT" externalSrc="https://mobilegrub-backend.herokuapp.com/"/>
-                    <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
-                    <ProjectCard title="Space Shooter" description="Space-Shooter mini game with Python." tech1="Python" githubSrc="https://github.com/RobbieBendick/pygame-shooter"/>
-                    <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" githubSrc="https://github.com/RobbieBendick/blog"/>
-                    <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI/Addon written in Lua." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
-                    <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" />
-                    <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" />
+                    <FadeInDiv fadeInClass={3}>
+                        <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious tasks during specific game events. (14k+ downloads)" githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={4}>
+                        <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" />
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={5}>
+                        <ProjectCard title="MobileGrub" description="Full stack web app that is used to easily locate food vendors." tech1="Python" tech2="Django" tech3="CSS" tech4="JWT" externalSrc="https://mobilegrub-backend.herokuapp.com/"/>
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={3}>
+                        <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={4}>
+                        <ProjectCard title="Space Shooter" description="Space-Shooter mini game with Python." tech1="Python" githubSrc="https://github.com/RobbieBendick/pygame-shooter"/>
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={5}>
+                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" githubSrc="https://github.com/RobbieBendick/blog"/>
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={3}>
+                        <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI/Addon written in Lua." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={4}>
+                        <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" />
+                    </FadeInDiv>
+                    <FadeInDiv fadeInClass={5}>
+                        <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" />
+                    </FadeInDiv>
                 </ul>
             </section>
     );
