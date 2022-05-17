@@ -80,6 +80,7 @@ function Nav() {
 
 useEffect(() => {
     if (sidebarIsOpen) {
+        if (!document.body.style.overflow !== "hidden") return
         document.body.style.overflow = "hidden";
         $("#root > *:not(aside)").css({"filter": "blur(4px)"});
     } else {
