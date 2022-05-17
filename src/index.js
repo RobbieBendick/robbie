@@ -5,7 +5,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import './index.css';
+import './index.scss';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
 

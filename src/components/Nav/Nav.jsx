@@ -7,26 +7,9 @@ import mobile from "../../hooks/useCheckMobileScreen";
 
 function Nav() {
     const isMobile = mobile();
-    const [navIsOpen, setNavIsOpen] = useState(false);
+    const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
     const sidebarWidth = "250px";
     let nav = document.getElementById("mySidenav");
-
-
-    /* Set the width of the side navigation to 250px or 0px */
-    function toggleSidebar() {
-        if (navIsOpen) {
-            setNavIsOpen(false);
-            nav.style.width = "0";
-        } else {
-            setNavIsOpen(true);
-            nav.style.width = sidebarWidth;
-        }
-    }
-
-    function closeSidebar() {
-        setNavIsOpen(false);
-        nav.style.width = "0";
-    }
 
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
@@ -41,13 +24,21 @@ function Nav() {
         })
     });
 
-    function AnchorItem({txt, href}) {
-        return (
-            <li>
-                <a onClick={closeSidebar} href={href}>{txt}</a>
-            </li>
-        )
+    function closeSidebar() {
+        setSidebarIsOpen(false);
+        nav.style.width = "0";
     }
+
+    function toggleSidebar() {
+        if (sidebarIsOpen) {
+            setSidebarIsOpen(false);
+            nav.style.width = "0";
+        } else {
+            setSidebarIsOpen(true);
+            nav.style.width = sidebarWidth;
+        }
+    }
+
     function hideNav() {
         $("#navbar").removeClass("is-visible").addClass("is-hidden");
     }
@@ -88,14 +79,14 @@ function Nav() {
 
 
 useEffect(() => {
-    if (navIsOpen) {
+    if (sidebarIsOpen) {
         document.body.style.overflow = "hidden";
         $("#root > *:not(aside)").css({"filter": "blur(4px)"});
     } else {
         document.body.style.overflow = "inherit";
         $("#root > *:not(aside)").css({"filter": "none"});
     }
-}, [navIsOpen])
+}, [sidebarIsOpen])
 
 useEffect(() => {
     if (isMobile) {
@@ -112,13 +103,21 @@ useEffect(() => {
     if ($(window).scrollTop() === 0) showNav();
 })
 
+
+function AnchorItem({txt, href}) {
+    return (
+        <li>
+            <a onClick={closeSidebar} href={href}>{txt}</a>
+        </li>
+    )
+}
     return (
         <>
             <aside ref={menuRef} id="mySidenav" class="sidenav">
                 <a className="closebtn" onClick={() => {
                     closeSidebar();
-                    showNav();}}
-                    >
+                    showNav();
+                }}>
                     &times;
                 </a>
                 <AnchorItem txt="About" href="#about"/>
@@ -128,7 +127,7 @@ useEffect(() => {
             </aside>
          
             <nav id="navbar" class="navbar navbar-light sticky">
-                <a class="navbar-brand" onClick={() => window.scrollTo(0,0)}>R</a>
+                <motion.a initial={{opacity: 0}} animate={{opacity: 1}} class="navbar-brand" onClick={() => window.scrollTo(0,0)}>R</motion.a>
                 <div class="" id="navbarNav">
                         {isMobile ?
                         <button class='nav-btn' ref={menuToggleButtonRef} onClick={() => {
@@ -137,18 +136,17 @@ useEffect(() => {
                         }}><i class="fa-solid fa-bars"></i></button>
                         :
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item active">
+                            <motion.li class="nav-item active fade-in-1">
                                 <a class="nav-link" href="#about">About</a>
-
-                            </li>
-                            <li class="nav-item">
+                            </motion.li>
+                            <li class="nav-item fade-in-2">
                                 <a class="nav-link" href="#projects">Projects</a>
                             </li>
-                            <li class="nav-item">
+                            <li class="nav-item fade-in-3">
                                 <a class="nav-link" href="#contact">Contact</a>
                             </li>
-                            <li class="nav-item">
-                                <motion.a href="/resume" style={{"display": "block"}} whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                            <li class="nav-item fade-in-4">
+                                <motion.a href="/resume" whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                             </li>   
                         </ul>
                         }

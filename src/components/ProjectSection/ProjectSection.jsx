@@ -2,6 +2,31 @@ import "./ProjectSection.scss";
 import {React, useEffect} from "react";
 import {motion} from "framer-motion";
 
+
+// track to see if element is in view
+// activate fade-in on all of the elements
+// adjust transition-duration on specific elements
+
+
+const options = {
+    root: null, // it is the viewport
+    threshold: 0.6,
+    rootMargin: "-55px"
+  }
+  const fadeIns = document.querySelectorAll(".fade-in")
+  const observer = new IntersectionObserver(function (entries, observer) {
+    entries.forEach(entry => {
+      if(!entry.isIntersecting) return
+      observer.unobserve(entry.target);
+      entry.target.style.color = "red";
+    });
+  }, options);
+
+  fadeIns.forEach(fadeIn => {
+    observer.observe(fadeIn);
+  })
+
+
 function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc, externalSrc}) {
         return (
         <a href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
@@ -65,7 +90,7 @@ function ProjectSection() {
                     <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
                     <ProjectCard title="Space Shooter" description="Space-Shooter mini game with Python." tech1="Python" githubSrc="https://github.com/RobbieBendick/pygame-shooter"/>
                     <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" githubSrc="https://github.com/RobbieBendick/blog"/>
-                    <ProjectCard title="Dark Theme" description="Provides a Dark Theme UI mode in a video game." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
+                    <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI/Addon written in Lua" tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
                     <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" />
                     <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" />
                 </ul>
