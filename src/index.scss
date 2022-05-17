@@ -89,13 +89,20 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(	136, 146, 176, 0.5);
+  background: hsla(225, 20%, 61%, 0.5);
   border-radius: 100vw;
-
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(	136, 146, 176, 0.8);
+  background: hsla(225, 20%, 61%, 0.8);
 }
+
+@supports (scrollbar-color: slate navy) {
+  * {
+    scrollbar-color: hsla(225, 20%, 61%, 0.5) var(--navy);
+    scrollbar-width: thin;
+  }
+}
+
 @for $i from 1 through 12 {
     $j: $i - 1;
     $k: $j * 2;
