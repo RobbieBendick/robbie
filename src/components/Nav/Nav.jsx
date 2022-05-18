@@ -138,7 +138,7 @@ function NavAnchorItem({txt, delay}) {
                 <SidebarAnchorItem txt="About" href="#about"/>
                 <SidebarAnchorItem txt="Projects" href="#projects"/>
                 <SidebarAnchorItem txt="Contact" href="#contact"/>
-                <motion.a href="/resume" target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
+                <motion.a href={`${env}resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
             </aside>
          
             <nav id="navbar" class="navbar navbar-light sticky">
