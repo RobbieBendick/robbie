@@ -16,7 +16,7 @@ root.render(
       <Router basename={env}>
         <Routes>
           <Route path="/" exact render={props => <Home {...props} />}/>
-          <Route path="/resume" render={props => <Resume {...props} />} />
+          <Route path={`/resume`} render={props => <Resume {...props} />} />
         </Routes>
       </Router>
     </React.StrictMode>
