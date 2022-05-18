@@ -13,14 +13,14 @@ import reportWebVitals from './reportWebVitals';
 
 
 var env = process.env.NODE_ENV === 'development';
-console.log(process.env.PUBLIC_URL);
+console.log(env);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <HashRouter basename={env ? "/" : process.env.PUBLIC_URL}>
+      <HashRouter basename={process.env.PUBLIC_URL}>
         <Routes>
-          <Route path="" element={<Home />}/>
+          <Route path="/" element={<Home />}/>
           <Route path="/resume" element={<Resume />} />
         </Routes>
       </HashRouter>
