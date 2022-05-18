@@ -13,6 +13,7 @@ import reportWebVitals from './reportWebVitals';
 
 
 var env = process.env.NODE_ENV === 'development';
+console.log(process.env.PUBLIC_URL);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
