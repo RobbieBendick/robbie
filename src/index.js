@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch as Routes } from "react-router-d
 import './index.scss';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
-
 import reportWebVitals from './reportWebVitals';
 
 
@@ -15,8 +14,8 @@ root.render(
     <React.StrictMode>
       <Router>
         <Routes>
-          <Route path={"/robbie/"} exact render={props => <Home {...props} />}/>
-          <Route path={"/robbie/resume"} exact render={props => <Resume {...props} />} />
+          <Route path={"/robbie"} render={props => <Home {...props} />}/>
+          <Route path={"/robbie/resume"} render={props => <Resume {...props} />} />
         </Routes>
       </Router>
     </React.StrictMode>
