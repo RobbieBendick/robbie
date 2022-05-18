@@ -20,6 +20,14 @@ root.render(
       <Routes>
         <Route path="/robbie" element={<Home />}/>
         <Route path="/robbie/resume" element={<Resume />} />
+        <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
