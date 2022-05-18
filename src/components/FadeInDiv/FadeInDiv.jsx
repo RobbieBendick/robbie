@@ -32,7 +32,11 @@ const FadeInDiv = ({
       return () => observer.unobserve(domRef.current);
     }, []);
   
-    return (<div ref={ domRef } className={ isVisible ? ` fade-in-${fadeInClass || '1'}` : 'hide' }>{ children }</div>);
+    return (
+        <div ref={ domRef } className={ isVisible ? ` fade-in-${fadeInClass || '1'}` : 'hide' }>
+          { children }
+        </div>
+    );
   };
 
 export default FadeInDiv;

@@ -90,7 +90,7 @@
 }
 
 nav {
-  $navbarHeight: 70px;
+  $navbarHeight: 80px;
   box-shadow: 0 10px 30px -10px var(--navy-shadow);
   z-index: 60;
   -webkit-backdrop-filter: blur(8px);
@@ -136,6 +136,7 @@ nav {
     color: var(--light-green) !important;
   }
   .navbar-brand {
+    padding-top: 0.9125rem;
     color: var(--light-green) !important;
     cursor: pointer;
   }
@@ -180,8 +181,8 @@ nav {
   }
 
 #signature {
-  stroke-dasharray: 1268;
-  stroke-dashoffset: 1268;
+  stroke-dasharray: 2902;
+  stroke-dashoffset: 2902;
   animation: sign 4s ease;
   animation-fill-mode: forwards;
 }

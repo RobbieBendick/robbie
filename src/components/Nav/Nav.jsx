@@ -140,7 +140,7 @@ function NavAnchorItem({txt, delay}) {
          
             <nav id="navbar" class="navbar navbar-light sticky">
                 <a class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
-                    <Signature />
+                    <SignatureTwo />
                 </a>
                 <div class="" id="navbarNav">
                         {isMobile ?
