@@ -16,7 +16,7 @@ root.render(
       <Router basename={env ? "/" : process.env.PUBLIC_URL}>
         <Routes>
           <Route path={"/"} exact render={props => <Home {...props} />}/>
-          <Route path={env ? `/resume` : `${process.env.PUBLIC_URL}/resume`} render={props => <Resume {...props} />} />
+          <Route path={'/resume'} exact render={props => <Resume {...props} />} />
         </Routes>
       </Router>
     </React.StrictMode>

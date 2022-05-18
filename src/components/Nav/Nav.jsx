@@ -13,8 +13,7 @@ function Nav() {
     const sidebarWidth = "min(75vw, 400px)";
     let nav = document.getElementById("mySidenav");
 
-    var env = process.env.NODE_ENV === 'development' ? "/" : process.env.PUBLIC_URL;
-
+    let env = process.env.NODE_ENV === 'development';
 
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
@@ -138,7 +137,7 @@ function NavAnchorItem({txt, delay}) {
                 <SidebarAnchorItem txt="About" href="#about"/>
                 <SidebarAnchorItem txt="Projects" href="#projects"/>
                 <SidebarAnchorItem txt="Contact" href="#contact"/>
-                <motion.a href={`${env}resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
+                <motion.a href={``} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
             </aside>
          
             <nav id="navbar" class="navbar navbar-light sticky">
@@ -157,7 +156,7 @@ function NavAnchorItem({txt, delay}) {
                             <NavAnchorItem txt="Projects" delay={0.2} />
                             <NavAnchorItem txt="Contact" delay={0.3} />
                             <motion.li className="nav-item" initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration:0.4 }} >
-                                <motion.a href={`${env}resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                                <motion.a href={env ? "/resume" : "/robbie/resume"} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                             </motion.li>   
                         </ul>
                         }
