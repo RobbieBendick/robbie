@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter as Router, Route, Switch as Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Switch as Routes } from "react-router-dom";
 import './index.scss';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
@@ -16,7 +16,7 @@ root.render(
       <Router basename={env ? "/" : process.env.PUBLIC_URL}>
         <Routes>
           <Route path={"/"} exact render={props => <Home {...props} />}/>
-          <Route path={'/resume'} exact render={props => <Resume {...props} />} />
+          <Route path={env ? "/resume" : "/robbie/resume"} render={props => <Resume {...props} />} />
         </Routes>
       </Router>
     </React.StrictMode>
