@@ -9,15 +9,14 @@ import reportWebVitals from './reportWebVitals';
 
 
 var env = process.env.NODE_ENV === 'development';
-console.log(process.env.PUBLIC_URL);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <Router basename={process.env.PUBLIC_URL}>
+      <Router>
         <Routes>
-          <Route path={"/"} exact render={props => <Home {...props} />}/>
-          <Route path={"/resume"} exact render={props => <Resume {...props} />} />
+          <Route path={"/robbie/"} exact render={props => <Home {...props} />}/>
+          <Route path={"/robbie/resume"} exact render={props => <Resume {...props} />} />
         </Routes>
       </Router>
     </React.StrictMode>
