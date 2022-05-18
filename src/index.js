@@ -17,7 +17,7 @@ var env = process.env.NODE_ENV === 'development';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <HashRouter basename={env ? "/" : "/robbie"}>
+      <HashRouter basename={env ? "/" : process.env.PUBLIC_URL}>
         <Routes>
           <Route path="/" element={<Home />}/>
           <Route path="/resume" element={<Resume />} />
