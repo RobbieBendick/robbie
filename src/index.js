@@ -8,15 +8,15 @@ import Resume from './components/Resume/Resume';
 import reportWebVitals from './reportWebVitals';
 
 
-var env = process.env.NODE_ENV === 'development' ? "/" : process.env.PUBLIC_URL;
+var env = process.env.NODE_ENV === 'development';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-      <Router basename={env}>
+      <Router basename={env ? "/" : process.env.PUBLIC_URL}>
         <Routes>
-          <Route path="/" exact render={props => <Home {...props} />}/>
-          <Route path={`/resume`} render={props => <Resume {...props} />} />
+          <Route path={"/"} exact render={props => <Home {...props} />}/>
+          <Route path={env ? `/resume` : `${process.env.PUBLIC_URL}/resume`} render={props => <Resume {...props} />} />
         </Routes>
       </Router>
     </React.StrictMode>
