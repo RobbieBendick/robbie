@@ -20,7 +20,7 @@ root.render(
     <React.StrictMode>
       <HashRouter basename={env ? "/" : process.env.PUBLIC_URL}>
         <Routes>
-          <Route path="/" element={<Home />}/>
+          <Route path="" element={<Home />}/>
           <Route path="/resume" element={<Resume />} />
         </Routes>
       </HashRouter>
