@@ -110,18 +110,33 @@ useEffect(() => {
 
 
 function SidebarAnchorItem({txt, href}) {
+    function smoothScroll() {
+        document.querySelector(href).scrollIntoView({
+          behavior: "smooth",
+        });
+    }
     return (
         <li>
-            <a onClick={closeSidebar} href={href}>{txt}</a>
+            <a onClick={() => {
+                smoothScroll()
+                closeSidebar();
+            }
+                }>{txt}</a>
         </li>
     )
 }
 
 function NavAnchorItem({txt, delay}) {
-    let href = txt.toLowerCase();
+    let href = `#${txt.toLowerCase()}`;
+
+    function smoothScroll() {
+        document.querySelector(href).scrollIntoView({
+          behavior: "smooth",
+        });
+    }
     return (
         <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y:0, x:0, opacity:1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
-            <a class="nav-link" href={`#${href}`}>{txt}</a>
+            <a class="nav-link" onClick={smoothScroll}>{txt}</a>
         </motion.li>
         )
 }

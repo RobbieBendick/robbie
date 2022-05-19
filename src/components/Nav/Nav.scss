@@ -40,7 +40,8 @@
       width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
       width: fill-available;
       &:hover {
-        color: var(--light-green)
+        color: var(--light-green) !important;
+        cursor: pointer;
       }
     }
     .sidebar-resume-button {
