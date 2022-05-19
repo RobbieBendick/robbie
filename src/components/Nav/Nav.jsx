@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
-import Signature from "../Signature/Signature";
 import SignatureTwo from "../../Assets/SignatureTwo";
+// import  XTouchSwipe  from '../SwipeListener/SwipeListener';
 
 function Nav() {
     const isMobile = mobile();
@@ -31,6 +31,11 @@ function Nav() {
     function closeSidebar() {
         setSidebarIsOpen(false);
         nav.style.width = "0";
+    }
+
+    function openSidebar() {
+        setSidebarIsOpen(true);
+        nav.style.width = sidebarWidth;
     }
 
     function toggleSidebar() {
@@ -107,6 +112,22 @@ useEffect(() => {
 useEffect(() => {
     if ($(window).scrollTop() === 0) showNav();
 })
+
+
+
+// new XTouchSwipe(document.body);
+// var savedUrl = window.location.href;
+// document.body.addEventListener('x-swipe', event => {
+//     const direction = event.detail;
+//     direction === 'right' ? openSidebar() : closeSidebar()
+// });
+
+
+
+
+
+
+
 
 
 function SidebarAnchorItem({txt, href}) {

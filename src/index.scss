@@ -10,14 +10,6 @@
   --navy-shadow: rgba(2,12,27,0.7);
 }
 
-#myPDF {
-  width: 85%;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 @font-face {
   font-family: 'mono';
   src: url('./fonts/BPmono.ttf') format('truetype');
@@ -35,6 +27,11 @@ html {
 @font-face {
   font-family: 'SansBoldItalic';
   src: url('./fonts/DMSans-BoldItalic.ttf') format('ttf');
+}
+
+
+html {
+  scroll-behavior: smooth;
 }
 
 a, a:hover, a:focus, a:active {
@@ -115,8 +112,7 @@ body {
         animation-delay: #{$k}00ms;
       } @else if $i > 10{
         animation-delay: #{$l}00ms;
-      }
-      @else {
+      } @else {
         animation-delay: #{$j}00ms;
       }
     }
@@ -152,12 +148,5 @@ body {
 @media only screen and (max-width: 1080px) {
     .about-me-section {
         margin-inline: auto;
-    }
-}
-
-/* 800px and down */
-@media only screen and (max-width: 800px) {
-    .main {
-      padding: 0px 50px;
     }
 }

@@ -194,15 +194,22 @@ nav {
   }
 }
 
-  /* 1084px and up */
-  @media only screen and (min-width: 800px) {
-      .sidenav {
-        width: 0 !important;
-      }
-      #root > *:not(aside) {
-        filter: none !important;
-      }
-      body {
-        overflow: inherit !important;
-      }
+/* 801 and up */
+@media only screen and (min-width: 801px) {
+    .sidenav {
+      width: 0 !important;
+    }
+    #root > *:not(aside) {
+      filter: none !important;
+    }
+    body {
+      overflow: inherit !important;
+    }
+}
+
+/* 800 and down */
+@media only screen and (max-width: 800px) {
+  .navbar {
+    padding: 0px 50px 0 0 !important;
   }
+}
