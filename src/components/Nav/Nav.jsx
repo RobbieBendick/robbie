@@ -156,7 +156,7 @@ function NavAnchorItem({txt, delay}) {
                             <NavAnchorItem txt="Projects" delay={0.2} />
                             <NavAnchorItem txt="Contact" delay={0.3} />
                             <motion.li className="nav-item" initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration:0.4 }} >
-                                <motion.a href={env ? "/resume" : "/robbie/resume"} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                             </motion.li>   
                         </ul>
                         }
