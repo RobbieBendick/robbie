@@ -113,23 +113,6 @@ useEffect(() => {
     if ($(window).scrollTop() === 0) showNav();
 })
 
-
-
-// new XTouchSwipe(document.body);
-// var savedUrl = window.location.href;
-// document.body.addEventListener('x-swipe', event => {
-//     const direction = event.detail;
-//     direction === 'right' ? openSidebar() : closeSidebar()
-// });
-
-
-
-
-
-
-
-
-
 function SidebarAnchorItem({txt, href}) {
     function smoothScroll() {
         document.querySelector(href).scrollIntoView({
@@ -138,11 +121,11 @@ function SidebarAnchorItem({txt, href}) {
     }
     return (
         <li>
-            <a onClick={() => {
+            <button onClick={() => {
                 smoothScroll()
                 closeSidebar();
             }
-                }>{txt}</a>
+                }>{txt}</button>
         </li>
     )
 }
@@ -157,19 +140,19 @@ function NavAnchorItem({txt, delay}) {
     }
     return (
         <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y:0, x:0, opacity:1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
-            <a class="nav-link" onClick={smoothScroll}>{txt}</a>
+            <button class="nav-link" onClick={smoothScroll}>{txt}</button>
         </motion.li>
         )
 }
     return (
         <>
             <aside ref={menuRef} id="mySidenav" class="sidenav">
-                <a className="closebtn" onClick={() => {
+                <button className="closebtn" onClick={() => {
                     closeSidebar();
                     showNav();
                 }}>
                     &times;
-                </a>
+                </button>
                 <SidebarAnchorItem txt="About" href="#about"/>
                 <SidebarAnchorItem txt="Projects" href="#projects"/>
                 <SidebarAnchorItem txt="Contact" href="#contact"/>
@@ -177,9 +160,9 @@ function NavAnchorItem({txt, delay}) {
             </aside>
          
             <nav id="navbar" class="navbar navbar-light sticky">
-                <a class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
+                <button class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
                     <SignatureTwo />
-                </a>
+                </button>
                 <div class="" id="navbarNav">
                         {isMobile ?
                         <button class='nav-btn' ref={menuToggleButtonRef} onClick={() => {
