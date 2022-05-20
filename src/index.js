@@ -11,8 +11,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(  
   <Router>
     <Routes>
-      <Route path='/' exact element={<Home />}/>
-      <Route path='/resume' exact element={<Resume />} />
+      <Route path='/' element={<Home />}/>
+      <Route path='/resume' element={<Resume />} />
     </Routes>
   </Router>
 );

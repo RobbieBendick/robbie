@@ -24,16 +24,19 @@
       cursor: pointer;
       color: var(--light-green);
     }
-    a {
+    button {
       margin: 20px;
       padding: 5px;
       text-decoration: none;
       font-size: 22px;
       color: var(--slate);
+      background-color: transparent;
+      border: none;
       display: flex;
       align-self: center;
       transition-duration: 20ms;
       flex-direction: column-reverse;
+      align-items: stretch;
       text-align: center;
       width: 100%;
       width: -moz-available;          /* WebKit-based browsers will ignore this. */
@@ -55,17 +58,18 @@
       cursor: pointer;
       font-size: 16px;
       font-weight: 500;
+      text-align: center;
       display: block;
       width: 40%;
       margin: 30px auto 0 auto;
-      &:hover {
-        background-color: hsl(166, 100%, 70% / 0.1);
-      }
     }
-
+    & > li:first-of-type {
+      padding-top: 2rem;
+    }
     li {
       display:flex;
       flex-direction: column-reverse;
+
       @for $i from 2 through 4 {
         &:nth-child(#{$i}) > a::after {
           content: '0#{$i - 1}.';
@@ -86,10 +90,6 @@
     }
   }
 
-.navbar {
-  padding-block: 0;
-}
-
 nav {
   $navbarHeight: 80px;
   box-shadow: 0 10px 30px -10px var(--navy-shadow);
@@ -109,6 +109,9 @@ nav {
   filter: none !important;
   pointer-events: auto !important;
   user-select: auto !important;
+  &.navbar {
+    padding-block: 0;
+  }
   &.is-hidden {
     transform: translate(0, -$navbarHeight - 10);
     transition: transform 200ms ease;

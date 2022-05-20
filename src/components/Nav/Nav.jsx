@@ -5,7 +5,6 @@ import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
 import SignatureTwo from "../../Assets/SignatureTwo";
-// import  XTouchSwipe  from '../SwipeListener/SwipeListener';
 
 function Nav() {
     const isMobile = mobile();
@@ -31,11 +30,6 @@ function Nav() {
     function closeSidebar() {
         setSidebarIsOpen(false);
         nav.style.width = "0";
-    }
-
-    function openSidebar() {
-        setSidebarIsOpen(true);
-        nav.style.width = sidebarWidth;
     }
 
     function toggleSidebar() {
@@ -86,7 +80,7 @@ function Nav() {
 })
 
 
-
+// blurs everything besides sidebar when sidebar is open
 useEffect(() => {
     if (sidebarIsOpen) {
         if (!document.body.style.overflow !== "hidden") return
@@ -98,6 +92,7 @@ useEffect(() => {
     }
 }, [sidebarIsOpen])
 
+// closes sidebar if screen was mobile size then switched to desktop
 useEffect(() => {
     if (isMobile) {
         // collapse sidebar if previously opened

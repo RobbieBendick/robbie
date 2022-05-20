@@ -7,11 +7,10 @@
     align-items: center;
     p {
         max-width: 500px;
+        &:not(p:last-child) { 
+            margin-bottom: 10px;
+        }
     }
-    p:not(:last-child) { 
-        margin-bottom: 10px;
-    }
-    
     .numbered-heading {
         display: flex;
         -webkit-box-align: center;
