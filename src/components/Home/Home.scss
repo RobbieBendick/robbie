@@ -69,3 +69,8 @@ section:not(.home) > div:first-of-type {
     padding: 0px 50px;
   }
 }
+
+.about {
+  display:flex;
+  justify-content: center;
+}

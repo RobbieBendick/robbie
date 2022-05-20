@@ -148,9 +148,11 @@ function NavAnchorItem({txt, delay}) {
                 }}>
                     &times;
                 </button>
-                <SidebarAnchorItem txt="About" href="#about"/>
-                <SidebarAnchorItem txt="Projects" href="#projects"/>
-                <SidebarAnchorItem txt="Contact" href="#contact"/>
+                <ol>
+                    <SidebarAnchorItem txt="About" href="#about"/>
+                    <SidebarAnchorItem txt="Projects" href="#projects"/>
+                    <SidebarAnchorItem txt="Contact" href="#contact"/>
+                </ol>
                 <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
             </aside>
          
@@ -165,14 +167,12 @@ function NavAnchorItem({txt, delay}) {
                             hideNav();
                         }}><i class="fa-solid fa-bars"></i></button>
                         :
-                        <ul class="navbar-nav ml-auto">
+                        <ol class="navbar-nav ml-auto">
                             <NavAnchorItem txt="About" delay={0.1} />
                             <NavAnchorItem txt="Projects" delay={0.2} />
                             <NavAnchorItem txt="Contact" delay={0.3} />
-                            <motion.li className="nav-item" initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration:0.4 }} >
-                                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
-                            </motion.li>   
-                        </ul>
+                            <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration:0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                        </ol>
                         }
                 </div>
             </nav>

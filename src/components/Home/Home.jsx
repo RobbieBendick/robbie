@@ -15,9 +15,11 @@ function Home() {
     <Nav />
     <div className="main">
         <LandingPage />
-        <FadeInDiv>
-            <AboutMe />
-        </FadeInDiv>
+        <div className="about">
+          <FadeInDiv>
+              <AboutMe />
+          </FadeInDiv>
+        </div>
         <ProjectSection />
         <FadeInDiv>
             <Contact />

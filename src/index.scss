@@ -29,6 +29,10 @@
   src: url('./fonts/DMSans-BoldItalic.ttf') format('ttf');
 }
 
+dl, ol, ul {
+  margin: 0;
+  padding: 0;
+}
 
 html {
   scroll-behavior: smooth;
