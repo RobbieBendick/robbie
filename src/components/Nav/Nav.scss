@@ -97,6 +97,8 @@ nav {
   backdrop-filter: blur(8px);
   position: sticky !important;
   display: flex;
+  font-family: Sans;
+  letter-spacing: 0.8px;
   -webkit-box-pack: justify;
   justify-content: space-between;
   -webkit-box-align: center;
@@ -131,7 +133,7 @@ nav {
   .nav-link {
     color: var(--lightest-slate) !important;
     padding: 10px !important;
-    font-size: 14px;
+    font-size: 13px;
     letter-spacing: 1.2px;
     cursor: pointer;
     background-color: transparent;
@@ -176,10 +178,9 @@ nav {
           left: -5px;
           position: relative;
           color: var(--light-green);
-          font-size: clamp(7px, 3.2vw, 15px);
+          font-size: clamp(6px, 3.2vw, 12px);
           font-weight: 400;
           font-family: 'mono';
-          font-size: 13px;
           align-self: center;
           display: flex !important;
         }

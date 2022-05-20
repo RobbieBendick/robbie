@@ -1,7 +1,6 @@
 
 .project-section {
-    margin-top: 140px;
-    
+    margin-top: 15rem;
     .card-body {
         border: none;
         padding: 0;
@@ -18,6 +17,7 @@
         position: relative;
         justify-content: center;
         color: var(--lightest-slate);
+        font-family: SansBold;
         font-size: clamp(26px, 5vw, 32px);
         &::before {
             content: '02.';
