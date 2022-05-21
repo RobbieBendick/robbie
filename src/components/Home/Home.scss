@@ -58,15 +58,15 @@ h2 {
   margin: 0;
 }
 
-section:not(.home) > div:first-of-type {
-  padding-top: 7rem;
-}
 
 
 /* 800px and down */
 @media only screen and (max-width: 800px) {
   .main {
     padding: 0px 50px;
+  }
+  section:not(.home) > div:first-of-type {
+      align-self: flex-start;
   }
 }
 

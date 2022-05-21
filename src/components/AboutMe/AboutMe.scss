@@ -1,10 +1,10 @@
 
 .about-me-section {
-    display: flex;
     flex-direction: column;
     text-align: center;
-    align-items: center;
     max-width: 900px;
+    align-items: center;
+    margin-inline: auto;
     p {
         max-width: 500px;
         &:not(p:last-child) { 
@@ -19,7 +19,8 @@
         margin: 10px 0px 40px;
         margin-right: 20px;
         font-family: SansBold;
-        width: 100%;
+        max-width: 900px;
+        align-content: center;
         font-size: clamp(26px,5vw,32px);
         white-space: nowrap;
         color: var(--lightest-slate);
@@ -27,8 +28,8 @@
             content: '01.';
             width: 0;
             height: 100%;
-            position: absolute;
-            top: 11px;
+            position: relative;
+            top: 5px;
             left: -36px;
             color: var(--light-green);
             font-size: clamp(7px, 3.2vw, 18px);
@@ -39,7 +40,7 @@
             content: '';
             display: block;
             height: 1px;
-            width: 240px;
+            width: 250px;
             background: var(--slate);
             margin: 1rem 0 0.8rem 1rem;
             opacity: 0.3;
@@ -68,9 +69,7 @@ ul.skills-list {
 }
 //   800px and up
 @media only screen and (min-width: 800px) {
-    .rob {
-        max-width: 400px;
-    }
+
 }
 
 
@@ -89,7 +88,14 @@ ul.skills-list {
     border-radius: 3px;
 }
 
-
+.about-me-section .numbered-heading::after {
+    content: "";
+    display: block;
+    height: 1px;
+    background: var(--slate);
+    margin: 1rem 0 0.8rem 1rem;
+    opacity: 0.3;
+}
 img {
     height: -webkit-fill-available;
     width: -webkit-fill-available;
@@ -126,6 +132,7 @@ img {
     margin-inline: auto;
 }
 
+
 @media only screen and (max-width: 950px) {
     .inner {
       display: block !important;
@@ -133,4 +140,12 @@ img {
     .wrapper {
         margin-top: 70px;
     }
+    .numbered-heading {
+        justify-content: center;
+        
+    }
+
+    .about-me-section {
+    }
+
   }

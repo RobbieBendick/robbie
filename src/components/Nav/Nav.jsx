@@ -17,16 +17,6 @@ function Nav() {
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
 
-    // "click-out" of dropdown
-    useEffect(() => {
-        document.addEventListener('mousedown', event => {
-            if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
-                closeSidebar();
-                showNav();
-            }
-        })
-    });
-
     function closeSidebar() {
         setSidebarIsOpen(false);
         nav.style.width = "0";
@@ -50,6 +40,17 @@ function Nav() {
         $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
     }
 
+    // "click-out" of sidebar
+    useEffect(() => {
+        document.addEventListener('mousedown', event => {
+            if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
+                closeSidebar();
+                showNav();
+            }
+        })
+    });
+
+    // shows nav on scroll-up and hide nav on scroll-down
     useEffect(() => {
         $(document).ready(function() {
 
@@ -104,6 +105,7 @@ useEffect(() => {
     }
 }, [isMobile])
 
+// shows nav if scrolled up all the way
 useEffect(() => {
     if ($(window).scrollTop() === 0) showNav();
 })
@@ -111,9 +113,9 @@ useEffect(() => {
 function SidebarAnchorItem({txt, href}) {
     function smoothScroll() {
         document.querySelector(href).scrollIntoView({
-          behavior: "smooth",
-        });
-    }
+            behavior: "smooth",
+    });
+}
     return (
         <li>
             <button onClick={() => {

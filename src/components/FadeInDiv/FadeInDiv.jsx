@@ -33,7 +33,7 @@ const FadeInDiv = ({
     }, []);
   
     return (
-        <div ref={ domRef } className={ isVisible ? ` fade-in-${fadeInClass || '1'}` : 'hide' }>
+        <div ref={ domRef } className={ isVisible ? `fade-in-${fadeInClass || '1'}` : 'hide' }>
           { children }
         </div>
     );
