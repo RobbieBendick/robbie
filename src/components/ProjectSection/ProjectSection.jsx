@@ -83,7 +83,7 @@ function showMoreProjects() {
                 <ProjectCard title="To Do List" description="Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="Node" tech2="Express" tech3="MongoDB/Mongoose"/>
             </div>
             <div className="fade-in-5">
-                <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="JS" tech2="Express" tech3="Node" tech4="CSS"/>
+                <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/news-letter" tech1="JS" tech2="Express" tech3="Node" tech4="CSS"/>
             </div>
         </>
     )
@@ -124,7 +124,7 @@ function ProjectSection() {
                         <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" />
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={3}>
-                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" githubSrc="https://github.com/RobbieBendick/blog"/>
+                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express" tech4="MongoDB" githubSrc="https://github.com/RobbieBendick/blog"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={4}>
                         <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
