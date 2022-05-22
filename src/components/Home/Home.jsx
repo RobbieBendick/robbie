@@ -13,6 +13,7 @@ function Home() {
   return (
     <>
     <Nav />
+    <SideSocials />
     <div className="main">
         <LandingPage />
         <FadeInDiv>
@@ -22,7 +23,6 @@ function Home() {
         <FadeInDiv>
             <Contact />
         </FadeInDiv>
-        <SideSocials />
     </div>
     <Footer />
     </>

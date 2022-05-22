@@ -19,7 +19,7 @@ function LandingPage() {
                     <p className='about-me-header fade-in-9'>I'm a software engineer specializing in building (and occasionally designing) exceptional digital experiences. Currently, I’m focused on building accessible products which solve real world problems.</p>
                 </div>
                 <div>
-                    <motion.a onClick={() => document.querySelector("#projects").scrollIntoView({ behavior: "smooth" })} whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className='button-header fade-in-10'>Check out my work! <i class="fa-solid fa-arrow-down" style={{"paddingLeft": "7px", "paddingTop": "50px"}}></i></motion.a>
+                    <motion.button onClick={() => document.querySelector("#projects").scrollIntoView({ behavior: "smooth" })} whileHover={{backgroundColor: "rgb(100, 255, 218, 0.1)"}} className='button-header fade-in-10'>Check out my work! <i class="fa-solid fa-arrow-down"></i></motion.button>
                 </div>
             </section>
         </div>

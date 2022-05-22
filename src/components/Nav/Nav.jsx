@@ -1,10 +1,9 @@
 import "./Nav.scss"
 import React, {useState, useRef, useEffect} from 'react';
-import { Link } from "react-router-dom";
 import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
-import SignatureTwo from "../../Assets/SignatureTwo";
+import Signature from "../../Assets/Signature";
 
 function Nav() {
     const isMobile = mobile();
@@ -160,7 +159,7 @@ function NavAnchorItem({txt, delay}) {
          
             <nav id="navbar" class="navbar navbar-light sticky">
                 <button class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
-                    <SignatureTwo />
+                    <Signature />
                 </button>
                 <div class="" id="navbarNav">
                         {isMobile ?
