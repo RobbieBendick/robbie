@@ -1,5 +1,5 @@
 import "./ProjectSection.scss";
-import {React, useEffect} from "react";
+import {React, useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 
@@ -73,7 +73,25 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
 
 
 
+function showMoreProjects() {
+    return (
+        <>
+            <div className="fade-in-3">
+                <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" />
+            </div>
+            <div className="fade-in-4">
+                <ProjectCard title="To Do List" description="Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="Node" tech2="Express" tech3="MongoDB/Mongoose"/>
+            </div>
+            <div className="fade-in-5">
+                <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="JS" tech2="Express" tech3="Node" tech4="CSS"/>
+            </div>
+        </>
+    )
+}
+
+
 function ProjectSection() {
+    const [showMore, setShowMore] = useState(false);
     
     useEffect(() => {
         
@@ -91,30 +109,34 @@ function ProjectSection() {
                         <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious tasks during specific game events. (14k+ downloads)" githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={4}>
-                        <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" />
+                        <ProjectCard title="A* Pathfinding Algorithm" description="Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades." tech1="Python" githubSrc="https://github.com/RobbieBendick/a-star-pathfinding" />
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={5}>
                         <ProjectCard title="MobileGrub" description="Full stack web app that is used to easily locate food vendors." tech1="Python" tech2="Django" tech3="CSS" tech4="JWT" externalSrc="https://mobilegrub-backend.herokuapp.com/"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={3}>
-                        <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
+                        <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={4}>
                         <ProjectCard title="Space Shooter" description="Space-Shooter mini game with Python." tech1="Python" githubSrc="https://github.com/RobbieBendick/pygame-shooter"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={5}>
-                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" githubSrc="https://github.com/RobbieBendick/blog"/>
+                        <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" />
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={3}>
-                        <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI/Addon written in Lua." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
+                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" githubSrc="https://github.com/RobbieBendick/blog"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={4}>
-                        <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" />
+                        <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={5}>
                         <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" />
                     </FadeInDiv>
+                    {showMore && showMoreProjects()}
                 </ul>
+                <motion.button whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="show-more-button" onClick={() => setShowMore(!showMore)}>
+                        {showMore ? "Show Less" : "Show More"}
+                </motion.button>
             </section>
     );
   }

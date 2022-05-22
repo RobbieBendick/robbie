@@ -11,6 +11,22 @@
         font-family: Sans !important;
     }
 
+    .show-more-button {
+        display: block;
+        color: var(--light-green);
+        background-color: transparent;
+        border: 1px solid var(--light-green);
+        border-radius: 4px;
+        font-size: 13px;
+        font-family: mono;
+        line-height: 1;
+        text-decoration: none;
+        cursor: pointer;
+        transition: var(--transition);
+        padding: 1.25rem 1.75rem;
+        margin: 80px auto 0px;
+    }
+
     .numbered-heading-projects {
         display: flex;
         flex-direction: row;

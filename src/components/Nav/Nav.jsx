@@ -115,8 +115,9 @@ function Nav() {
                 <button onClick={() => {
                     smoothScroll()
                     closeSidebar();
-                }
-                    }>{txt}</button>
+                }}>
+                    {txt}
+                </button>
             </li>
         )
     }
