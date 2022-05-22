@@ -1,3 +1,7 @@
+img {
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
+}
 
 .about-me-section {
     flex-direction: column;
@@ -68,18 +72,6 @@ ul.skills-list {
         line-height: 12px;
     }
 }
-//   800px and up
-@media only screen and (min-width: 800px) {
-
-}
-
-
-//  800px and down
-@media only screen and (max-width: 800px) {
-    .about-me-section {
-        margin-inline: auto;
-    }
-}
 .wrapper::before, .wrapper::after {
     content: "";
     display: block;
@@ -97,28 +89,6 @@ ul.skills-list {
     margin: 1rem 0 0.8rem 1rem;
     opacity: 0.3;
 }
-img {
-    height: -webkit-fill-available;
-    width: -webkit-fill-available;
-}
-
-.wrapper {
-    max-width: 500px;
-    display: block;
-}
-
-.wrapper::before {
-    top: 0px;
-    left: 0px;
-    background-color: var(--navy);
-    mix-blend-mode: screen;
-}
-.wrapper::after {
-    border: 2px solid var(--light-green);
-    top: 20px;
-    left: 20px;
-    z-index: -1;
-}
 
 .inner {
     display: grid;
@@ -131,22 +101,55 @@ img {
     max-width: 300px;
     max-height: 265px;
     margin-inline: auto;
+    .wrapper {
+        max-width: 500px;
+        display: block;
+        background-color: var(--light-green);
+
+        .img-container {
+            mix-blend-mode: multiply;
+            filter: grayscale(100%) contrast(1);
+            border-radius: 4px;
+            transition: all 0.5s ease;
+        }
+        &::before {
+            top: 0px;
+            left: 0px;
+        }
+        &::after {
+            border: 2px solid var(--light-green);
+            top: 20px;
+            left: 20px;
+            z-index: -1;
+        }
+        &:hover .img-container {
+            filter: none;
+            mix-blend-mode: unset;
+            transition: all 0.3s ease;
+        }
+    }
 }
 
 
+// gives about-me picture a lightgreen background to blend into
 @media only screen and (max-width: 950px) {
     .inner {
-      display: block !important;
+        display: block !important;
     }
     .wrapper {
         margin-top: 70px;
     }
     .numbered-heading {
         justify-content: center;
-        
     }
+}
+  //  800px and up
+@media only screen and (min-width: 800px) {
+}
 
+//  800px and down
+@media only screen and (max-width: 800px) {
     .about-me-section {
+        margin-inline: auto;
     }
-
-  }
+}

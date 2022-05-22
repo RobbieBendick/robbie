@@ -1,5 +1,8 @@
 import "./AboutMe.scss";
-import Dog from "../../Assets/dog.jpg"
+import Dog from "../../Assets/dog.jpg";
+import {motion} from "framer-motion";
+import $ from "jquery";
+
 function AboutMe() {
     return (
 

@@ -1,5 +1,6 @@
 import "./Nav.scss"
 import React, {useState, useRef, useEffect} from 'react';
+import { Link } from "react-router-dom";
 import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
