@@ -1,6 +1,5 @@
 import "./Nav.scss"
 import React, {useState, useRef, useEffect} from 'react';
-import { Link } from "react-router-dom";
 import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
@@ -11,9 +10,6 @@ function Nav() {
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
     const sidebarWidth = "min(75vw, 400px)";
     let nav = document.getElementById("mySidenav");
-
-    let env = process.env.NODE_ENV === 'development';
-
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
 
@@ -76,71 +72,69 @@ function Nav() {
               }
           
             });
-          
+        })
     })
-})
 
-
-// blurs everything besides sidebar when sidebar is open
-useEffect(() => {
-    if (sidebarIsOpen) {
-        if (!document.body.style.overflow !== "hidden") return
-        document.body.style.overflow = "hidden";
-        $("#root > *:not(aside)").css({"filter": "blur(4px)"});
-    } else {
-        document.body.style.overflow = "inherit";
-        $("#root > *:not(aside)").css({"filter": "none"});
-    }
-}, [sidebarIsOpen])
-
-// closes sidebar if screen was mobile size then switched to desktop
-useEffect(() => {
-    if (isMobile) {
-        // collapse sidebar if previously opened
-        if (document.body.style.overflow === "hidden") {
+    // blurs everything besides sidebar when sidebar is open
+    useEffect(() => {
+        if (sidebarIsOpen) {
+            if (!document.body.style.overflow !== "hidden") return
+            document.body.style.overflow = "hidden";
+            $("#root > *:not(aside)").css({"filter": "blur(4px)"});
+        } else {
             document.body.style.overflow = "inherit";
+            $("#root > *:not(aside)").css({"filter": "none"});
         }
-        $("#root > *:not(aside)").css({"filter": "none"});
-        $(".sidenav").width(0);        
-    }
-}, [isMobile])
+    }, [sidebarIsOpen])
 
-// shows nav if scrolled up all the way
-useEffect(() => {
-    if ($(window).scrollTop() === 0) showNav();
-})
-
-function SidebarAnchorItem({txt, href}) {
-    function smoothScroll() {
-        document.querySelector(href).scrollIntoView({
-            behavior: "smooth",
-    });
-}
-    return (
-        <li>
-            <button onClick={() => {
-                smoothScroll()
-                closeSidebar();
+    // closes sidebar if screen was mobile size then switched to desktop
+    useEffect(() => {
+        if (isMobile) {
+            // collapse sidebar if previously opened
+            if (document.body.style.overflow === "hidden") {
+                document.body.style.overflow = "inherit";
             }
-                }>{txt}</button>
-        </li>
-    )
-}
+            $("#root > *:not(aside)").css({"filter": "none"});
+            $(".sidenav").width(0);        
+        }
+    }, [isMobile])
 
-function NavAnchorItem({txt, delay}) {
-    let href = `#${txt.toLowerCase()}`;
+    // shows nav if scrolled up all the way
+    useEffect(() => {
+        if ($(window).scrollTop() === 0) showNav();
+    })
 
-    function smoothScroll() {
-        document.querySelector(href).scrollIntoView({
-          behavior: "smooth",
+    function SidebarAnchorItem({txt, href}) {
+        function smoothScroll() {
+            document.querySelector(href).scrollIntoView({
+                behavior: "smooth",
         });
     }
-    return (
-        <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y:0, x:0, opacity:1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
-            <button class="nav-link" onClick={smoothScroll}>{txt}</button>
-        </motion.li>
+        return (
+            <li>
+                <button onClick={() => {
+                    smoothScroll()
+                    closeSidebar();
+                }
+                    }>{txt}</button>
+            </li>
         )
-}
+    }
+
+    function NavAnchorItem({txt, delay}) {
+        let href = `#${txt.toLowerCase()}`;
+
+        function smoothScroll() {
+            document.querySelector(href).scrollIntoView({
+                behavior: "smooth",
+            });
+        }
+        return (
+            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y:0, x:0, opacity:1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
+                <button class="nav-link" onClick={smoothScroll}>{txt}</button>
+            </motion.li>
+            )
+    }
     return (
         <>
             <aside ref={menuRef} id="mySidenav" class="sidenav">

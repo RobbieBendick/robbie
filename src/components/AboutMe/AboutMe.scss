@@ -16,6 +16,29 @@ img {
             margin-bottom: 10px;
         }
     }
+    .inner {
+        display: grid;
+        grid-template-columns: 3fr 2fr;
+        gap: 50px;
+    }
+    ul.skills-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(140px, 200px));
+        gap: 0px 10px;
+        padding: 0px;
+        margin: 20px 0px 0px;
+        overflow: hidden;
+        list-style: none;
+        justify-content: center;
+        li::before {
+            content: "▹";
+            color: var(--light-green);
+            position: relative;
+            left: 0;
+            width: 1rem;
+            line-height: 12px;
+        }
+    }
     .numbered-heading {
         display: flex;
         -webkit-box-align: center;
@@ -54,31 +77,9 @@ img {
 }
 
 
-ul.skills-list {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(140px, 200px));
-    gap: 0px 10px;
-    padding: 0px;
-    margin: 20px 0px 0px;
-    overflow: hidden;
-    list-style: none;
-    justify-content: center;
-    li::before {
-        content: "▹";
-        color: var(--light-green);
-        position: relative;
-        left: 0;
-        width: 1rem;
-        line-height: 12px;
-    }
-}
-.wrapper::before, .wrapper::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 3px;
+// round edges on pic + pic::after
+.about-right .wrapper .img-container img {
+    border-radius: 4px;
 }
 
 .about-me-section .numbered-heading::after {
@@ -90,42 +91,41 @@ ul.skills-list {
     opacity: 0.3;
 }
 
-.inner {
-    display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 50px;
-}
-
 .about-right {
     position: relative;
     max-width: 300px;
     max-height: 265px;
     margin-inline: auto;
     .wrapper {
-        max-width: 500px;
         display: block;
+        border-radius: 4px;
+        max-width: 500px;
         background-color: var(--light-green);
-
-        .img-container {
-            mix-blend-mode: multiply;
-            filter: grayscale(100%) contrast(1);
-            border-radius: 4px;
-            transition: all 0.5s ease;
-        }
-        &::before {
-            top: 0px;
-            left: 0px;
+        &::before, &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 3px;
         }
         &::after {
             border: 2px solid var(--light-green);
             top: 20px;
             left: 20px;
             z-index: -1;
+            border-radius: 4px;
         }
         &:hover .img-container {
             filter: none;
             mix-blend-mode: unset;
             transition: all 0.3s ease;
+        }
+        .img-container {
+            mix-blend-mode: multiply;
+            filter: grayscale(100%) contrast(1);
+            border-radius: 4px;
+            transition: all 0.5s ease;
         }
     }
 }

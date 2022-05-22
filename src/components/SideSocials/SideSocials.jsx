@@ -7,7 +7,7 @@ function SideSocials() {
 
     return (
         <>
-        {windowSize.width > 800 ? 
+        {windowSize.width > 1200 ? 
         <>
         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 2.6}} className="side-socials"  orientation="left">
             <ul>
