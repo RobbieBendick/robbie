@@ -16,6 +16,9 @@ function Nav() {
     function closeSidebar() {
         setSidebarIsOpen(false);
         nav.style.width = "0";
+        document.body.style.overflow = "inherit";
+        $("#root > *:not(aside)").css({"filter": "none"});
+        $(".nav-btn").removeClass("changed");
     }
 
     // blur everything besides sidebar and stop scrolling
@@ -47,7 +50,7 @@ function Nav() {
     useEffect(() => {
         document.addEventListener('mousedown', event => {
             if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
-                toggleSidebar()
+                closeSidebar();
             }
         })
     });
@@ -86,7 +89,7 @@ function Nav() {
     // closes sidebar if screen was mobile size then switched to desktop
     useEffect(() => {
         if (isMobile) {
-            // collapse sidebar and allow scrolling if previously opened
+            // collapse sidebar if previously opened and
             document.body.style.overflow = "inherit";
             $("#root > *:not(aside)").css({"filter": "none"});
             $(".sidenav").width(0);        
