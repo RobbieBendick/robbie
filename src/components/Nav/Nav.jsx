@@ -23,13 +23,13 @@ function Nav() {
         if (sidebarIsOpen) {
             setSidebarIsOpen(false);
             nav.style.width = "0";
-            $(".nav-btn").removeClass("changed");
-            document.body.style.overflow = "hidden";
+            document.body.style.overflow = "inherit";
             $("#root > *:not(aside)").css({"filter": "none"});
+            $(".nav-btn").removeClass("changed");
         } else {
             setSidebarIsOpen(true);
             nav.style.width = sidebarWidth;
-            document.body.style.overflow = "none";
+            document.body.style.overflow = "hidden";
             $("#root > *:not(aside)").css({"filter": "blur(4px)"});
             $(".nav-btn").addClass("changed");
         }
@@ -86,10 +86,8 @@ function Nav() {
     // closes sidebar if screen was mobile size then switched to desktop
     useEffect(() => {
         if (isMobile) {
-            // collapse sidebar if previously opened
-            if (document.body.style.overflow === "hidden") {
-                document.body.style.overflow = "none";
-            }
+            // collapse sidebar and allow scrolling if previously opened
+            document.body.style.overflow = "inherit";
             $("#root > *:not(aside)").css({"filter": "none"});
             $(".sidenav").width(0);        
         }
