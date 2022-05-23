@@ -1,6 +1,11 @@
 img {
+    // Chrome, Firefox
     height: -webkit-fill-available;
     width: -webkit-fill-available;
+    width: -moz-available;
+    height: -moz-available;
+    height: fill-available;
+    width: fill-available;
 }
 
 .about-me-section {
@@ -106,23 +111,23 @@ img {
             left: 20px;
             z-index: -1;
             border-radius: 4px;
-            transition: all 200ms ease;
+            transition: all 250ms ease;
         }
         &:hover .img-container {
             filter: none;
             mix-blend-mode: unset;
-            transition: all 200ms ease;
+            transition: all 250ms ease;
         }
         // about me pic ::after animation
         &:hover::after {
-            transition: all 200ms ease;
-            transform: translate(-5px,-5px)
+            transition: all 250ms ease;
+            transform: translate(-5px,-5px);
         }
         .img-container {
             mix-blend-mode: multiply;
             filter: grayscale(100%) contrast(1);
             border-radius: 4px;
-            transition: all 200ms ease;
+            transition: all 250ms ease;
         }
     }
 }

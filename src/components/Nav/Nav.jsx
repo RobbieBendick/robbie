@@ -22,9 +22,11 @@ function Nav() {
         if (sidebarIsOpen) {
             setSidebarIsOpen(false);
             nav.style.width = "0";
+            $(".nav-btn").removeClass("changed");
         } else {
             setSidebarIsOpen(true);
             nav.style.width = sidebarWidth;
+            $(".nav-btn").addClass("changed");
         }
     }
 
@@ -113,7 +115,7 @@ function Nav() {
         return (
             <li>
                 <button onClick={() => {
-                    smoothScroll()
+                    smoothScroll();
                     closeSidebar();
                 }}>
                     {txt}
@@ -138,31 +140,22 @@ function Nav() {
     }
     return (
         <>
-            <aside ref={menuRef} id="mySidenav" class="sidenav">
-                <button className="closebtn" onClick={() => {
-                    closeSidebar();
-                    showNav();
-                }}>
-                    &times;
-                </button>
-                <ol>
-                    <SidebarAnchorItem txt="About" href="#about"/>
-                    <SidebarAnchorItem txt="Projects" href="#projects"/>
-                    <SidebarAnchorItem txt="Contact" href="#contact"/>
-                </ol>
-                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
-            </aside>
-         
             <nav id="navbar" class="navbar navbar-light sticky">
                 <button class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
                     <Signature />
                 </button>
                 <div class="" id="navbarNav">
                         {isMobile ?
-                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={() => {
+                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={(e) => {
                             toggleSidebar();
                             hideNav();
-                        }}><i class="fa-solid fa-bars"></i></button>
+                        }}>
+                            <div className="ham-box">
+                                <div className="ham-box-inner">
+                                </div>
+                            </div>
+                            
+                        </button>
                         :
                         <ol class="navbar-nav ml-auto">
                             <NavAnchorItem txt="About" delay={0.1} />
@@ -173,6 +166,21 @@ function Nav() {
                         }
                 </div>
             </nav>
+            <aside ref={menuRef} id="mySidenav" class="sidenav">
+                <button className="closebtn" onClick={() => {
+                    closeSidebar();
+                    showNav();                 
+                }}>
+                    &times;
+                </button>
+                <ol>
+                    <SidebarAnchorItem txt="About" href="#about"/>
+                    <SidebarAnchorItem txt="Projects" href="#projects"/>
+                    <SidebarAnchorItem txt="Contact" href="#contact"/>
+                </ol>
+                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
+            </aside>
+        
         </>
     )
 }
