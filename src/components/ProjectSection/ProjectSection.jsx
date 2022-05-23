@@ -3,12 +3,6 @@ import {React, useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 
-
-// track to see if element is in view
-// activate fade-in on all of the elements
-// adjust transition-duration on specific elements
-
-
 const options = {
     root: null, // it is the viewport
     threshold: 0.6,
