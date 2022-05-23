@@ -1,11 +1,11 @@
 img {
     // Chrome, Firefox
-    height: -webkit-fill-available;
     width: -webkit-fill-available;
+    height: -webkit-fill-available;
     width: -moz-available;
     height: -moz-available;
-    height: fill-available;
     width: fill-available;
+    height: fill-available;
 }
 
 .about-me-section {
