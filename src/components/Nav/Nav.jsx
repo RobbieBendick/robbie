@@ -128,7 +128,7 @@ function Nav() {
             });
         }
         return (
-            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y:0, x:0, opacity:1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
+            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
                 <button class="nav-link" onClick={smoothScroll}>{txt}</button>
             </motion.li>
             )
