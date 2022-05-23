@@ -18,14 +18,19 @@ function Nav() {
         nav.style.width = "0";
     }
 
+    // blur everything besides sidebar and stop scrolling
     function toggleSidebar() {
         if (sidebarIsOpen) {
             setSidebarIsOpen(false);
             nav.style.width = "0";
             $(".nav-btn").removeClass("changed");
+            document.body.style.overflow = "hidden";
+            $("#root > *:not(aside)").css({"filter": "none"});
         } else {
             setSidebarIsOpen(true);
             nav.style.width = sidebarWidth;
+            document.body.style.overflow = "none";
+            $("#root > *:not(aside)").css({"filter": "blur(4px)"});
             $(".nav-btn").addClass("changed");
         }
     }
@@ -42,8 +47,7 @@ function Nav() {
     useEffect(() => {
         document.addEventListener('mousedown', event => {
             if (!menuRef.current.contains(event.target) && !menuToggleButtonRef.current.contains(event.target)) {
-                closeSidebar();
-                showNav();
+                toggleSidebar()
             }
         })
     });
@@ -77,24 +81,14 @@ function Nav() {
         })
     })
 
-    // blurs everything besides sidebar when sidebar is open
-    useEffect(() => {
-        if (sidebarIsOpen) {
-            if (!document.body.style.overflow !== "hidden") return
-            document.body.style.overflow = "hidden";
-            $("#root > *:not(aside)").css({"filter": "blur(4px)"});
-        } else {
-            document.body.style.overflow = "inherit";
-            $("#root > *:not(aside)").css({"filter": "none"});
-        }
-    }, [sidebarIsOpen])
+
 
     // closes sidebar if screen was mobile size then switched to desktop
     useEffect(() => {
         if (isMobile) {
             // collapse sidebar if previously opened
             if (document.body.style.overflow === "hidden") {
-                document.body.style.overflow = "inherit";
+                document.body.style.overflow = "none";
             }
             $("#root > *:not(aside)").css({"filter": "none"});
             $(".sidenav").width(0);        
@@ -138,6 +132,7 @@ function Nav() {
             </motion.li>
             )
     }
+
     return (
         <>
             <nav id="navbar" class="navbar navbar-light sticky">
@@ -146,16 +141,24 @@ function Nav() {
                 </button>
                 <div class="" id="navbarNav">
                         {isMobile ?
-                        <button class='nav-btn' ref={menuToggleButtonRef} onClick={(e) => {
-                            toggleSidebar();
-                            hideNav();
-                        }}>
-                            <div className="ham-box">
-                                <div className="ham-box-inner">
+                        <div style={{"display": "block"}}> 
+                            <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={() => {
+                                toggleSidebar();
+                            }}>
+                                <div className="ham-box">
+                                    <div className="ham-box-inner">
+                                    </div>
                                 </div>
-                            </div>
-                            
-                        </button>
+                            </button>
+                            <aside ref={menuRef} id="mySidenav" class="sidenav">
+                                <ol>
+                                    <SidebarAnchorItem txt="About" href="#about"/>
+                                    <SidebarAnchorItem txt="Projects" href="#projects"/>
+                                    <SidebarAnchorItem txt="Contact" href="#contact"/>
+                                </ol>
+                                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
+                            </aside>
+                        </div>
                         :
                         <ol class="navbar-nav ml-auto">
                             <NavAnchorItem txt="About" delay={0.1} />
@@ -166,20 +169,7 @@ function Nav() {
                         }
                 </div>
             </nav>
-            <aside ref={menuRef} id="mySidenav" class="sidenav">
-                <button className="closebtn" onClick={() => {
-                    closeSidebar();
-                    showNav();                 
-                }}>
-                    &times;
-                </button>
-                <ol>
-                    <SidebarAnchorItem txt="About" href="#about"/>
-                    <SidebarAnchorItem txt="Projects" href="#projects"/>
-                    <SidebarAnchorItem txt="Contact" href="#contact"/>
-                </ol>
-                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
-            </aside>
+
         
         </>
     )

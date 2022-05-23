@@ -1,6 +1,6 @@
 /* The side navigation menu */
 .sidenav {
-    height: 100%; /* 100% Full-height */
+    height: 100vh; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
     z-index: 7; /* Stay on top */
@@ -8,14 +8,11 @@
     right: 0;
     background-color: var(--light-navy); /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 60px; /* Place content 60px from the top */
+    padding-top: 100px; /* Place content 60px from the top */
     transition: 0.15s; /* 0.15 second transition effect to slide in the sidenav */
     backdrop-filter: blur(10px);
     flex-direction: column;
     justify-content: space-evenly;
-    .closebtn {
-      display:none;
-    }
     button {
       margin: 20px;
       padding: 5px;
