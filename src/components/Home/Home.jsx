@@ -5,7 +5,6 @@ import Contact from '../Contact/Contact';
 import SideSocials from '../SideSocials/SideSocials';
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import LandingPage from '../LandingPage/LandingPage';
 
 
@@ -16,13 +15,9 @@ function Home() {
     <SideSocials />
     <div className="main">
         <LandingPage />
-        <FadeInDiv>
-            <AboutMe />
-        </FadeInDiv>
+        <AboutMe />
         <ProjectSection />
-        <FadeInDiv>
-            <Contact />
-        </FadeInDiv>
+        <Contact />
     </div>
     <Footer />
     </>

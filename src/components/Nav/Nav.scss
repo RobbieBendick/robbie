@@ -161,7 +161,13 @@ nav {
     margin-right: 50px;
     font-size: 13px;
     display: block;
+    transition: background-color 350ms ease;
   }
+  .resume-button:hover {
+    background-color: var(--light-green-low-alpha);
+    transition: background-color 350ms ease;
+  }
+
   .navbar-nav {
     align-items: end;
     flex-direction: row;
@@ -263,6 +269,7 @@ nav {
 .changed .ham-box-inner {
   transform: rotate(225deg);
 }
+
 
 /* 801 and up */
 @media only screen and (min-width: 801px) {
