@@ -119,19 +119,10 @@ function Nav() {
         )
     }
 
-    function NavAnchorItem({txt, delay}) {
-        let href = `#${txt.toLowerCase()}`;
-
-        function smoothScroll() {
-            document.querySelector(href).scrollIntoView({
-                behavior: "smooth",
-            });
-        }
-        return (
-            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: delay, duration: 0.4}}  className="nav-item">
-                <button class="nav-link" onClick={smoothScroll}>{txt}</button>
-            </motion.li>
-            )
+    function smoothScroll(href) {
+        document.querySelector(href).scrollIntoView({
+            behavior: "smooth",
+        });
     }
 
     return (
@@ -162,9 +153,15 @@ function Nav() {
                         </div>
                         :
                         <ol class="navbar-nav ml-auto">
-                            <NavAnchorItem txt="About" delay={0.1} />
-                            <NavAnchorItem txt="Projects" delay={0.2} />
-                            <NavAnchorItem txt="Contact" delay={0.3} />
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.1, duration: 0.4}}  className="nav-item">
+                                <button class="nav-link" onClick={() => smoothScroll("#about")}>About</button>
+                            </motion.li>
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.2, duration: 0.4}}  className="nav-item">
+                                <button class="nav-link" onClick={() => smoothScroll("#projects")}>Projects</button>
+                            </motion.li>
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.3, duration: 0.4}}  className="nav-item">
+                                <button class="nav-link" onClick={() => smoothScroll("#contact")}>Contact</button>
+                            </motion.li>
                             <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration:0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                         </ol>
                         }

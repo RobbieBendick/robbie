@@ -1,7 +1,11 @@
 import "./LandingPage.scss";
 import {motion} from "framer-motion";
+import { useEffect } from "react";
 
 function LandingPage() {
+    useEffect(() => {
+        document.title = "Robert Bendick"
+    });
 
     return (
         <div>
