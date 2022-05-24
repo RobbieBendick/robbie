@@ -51,7 +51,7 @@
         transition: all 200ms ease;
     }
     a:hover {
-        transform: rotate(90deg) translateX(-2px);
+        transform: translateX(-2px);
         color: var(--light-green);
     }
     &::after {
@@ -60,8 +60,9 @@
         height: 120px;
         position: absolute;
         border: 0.5px solid var(--light-slate);
-        left: 48%;
-        transform: translateY(175px);
+        transform: rotate(270deg) translateY(218px);
+        bottom: -192%;
+        left: 50%;
         cursor: default;
     }
 }

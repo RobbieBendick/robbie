@@ -23,8 +23,8 @@ function SideSocials() {
             </ul>
         </motion.div>
     
-        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 2.6}} className="side-email" orientation="right">
-            <a href="mailto:robbiebendick@gmail.com" className="rotate">robbiebendick@gmail.com</a>
+        <motion.div  initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 2.6}} className="side-email rotate" orientation="right">
+            <a href="mailto:robbiebendick@gmail.com" >robbiebendick@gmail.com</a>
         </motion.div>
         </>
         : null
