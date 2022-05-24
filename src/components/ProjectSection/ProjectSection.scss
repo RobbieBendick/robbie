@@ -22,7 +22,6 @@
         line-height: 1;
         text-decoration: none;
         cursor: pointer;
-        transition: var(--transition);
         padding: 1.25rem 1.75rem;
         margin: 80px auto 0px;
     }
@@ -34,7 +33,7 @@
         justify-content: center;
         color: var(--lightest-slate);
         font-family: SansBold;
-        font-size: clamp(26px, 5vw, 32px);
+        font-size: clamp(26px, 5vw, 30px);
         &::before {
             content: '02.';
             height: 100%;
