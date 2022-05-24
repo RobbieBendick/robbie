@@ -79,9 +79,10 @@
   }
 
 nav {
+  $navbarHeight: 80px;
+
   opacity: 1;
   transform: none;
-  $navbarHeight: 80px;
   box-shadow: 0 10px 30px -10px var(--navy-shadow);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
