@@ -1,13 +1,3 @@
-img {
-    // Chrome, Firefox
-    width: -webkit-fill-available;
-    height: -webkit-fill-available;
-    width: -moz-available;
-    height: -moz-available;
-    width: fill-available;
-    height: fill-available;
-}
-
 .about-me-section {
     flex-direction: column;
     text-align: center;
@@ -20,6 +10,15 @@ img {
         &:not(p:last-child) { 
             margin-bottom: 10px;
         }
+    }
+    img {
+        // Chrome, Firefox
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        width: -moz-available;
+        height: -moz-available;
+        width: fill-available;
+        height: fill-available;
     }
     .inner {
         display: grid;
@@ -148,7 +147,5 @@ img {
 
 //  800px and down
 @media only screen and (max-width: 800px) {
-    .about-me-section {
-        margin-inline: auto;
-    }
 }
+
