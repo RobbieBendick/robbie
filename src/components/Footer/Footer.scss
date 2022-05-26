@@ -14,17 +14,17 @@
     line-height: 1;
     p {
         margin: 20px 0 0 0;
+        font-size: 13px;
     }
-}
-
-.footer-socials {
-    display: flex;
-    flex-direction: row;
-    margin-top: 10px;
-    gap: 18px;
-    a {
-        display: inline-block;
-        background-color: transparent;
-        border: none;
+    .footer-socials {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        gap: 18px;
+        a {
+            display: inline-block;
+            background-color: transparent;
+            border: none;
+        }
     }
 }

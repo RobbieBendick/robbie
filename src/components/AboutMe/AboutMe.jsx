@@ -11,8 +11,8 @@ function AboutMe() {
                 <div className="inner">
                     <div className="about-left">
                         <div>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the</p>
-                            <p>e the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and mor</p>
+                            <p>Hello! My name is Robert. Back in 2015 I was a professional gamer, and ever since then I have fallen in love with learning. The following years I've been utilizing the unique tools that I'm equipped with to critically think about complex problems and quickly absorb information.</p>
+                            <p>Fast-forward to today, my main focus is building accessible, inclusive products and digital experiences.</p>
                             <p>Here are a few technologies I’ve been working with recently:</p>
                         </div>
                         <ul className="skills-list">

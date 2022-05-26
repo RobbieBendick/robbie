@@ -100,7 +100,7 @@ function ProjectSection() {
                 </FadeInDiv>
                 <ul className="projects-grid">
                     <FadeInDiv fadeInClass={3}>
-                        <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious tasks during specific game events. (14k+ downloads)" githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
+                        <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious UI tasks. 14k+ downloads and currently rank 31 in the world in popularity, among other addons in its respective category." githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={4}>
                         <ProjectCard title="A* Pathfinding Algorithm" description="Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades." tech1="Python" githubSrc="https://github.com/RobbieBendick/a-star-pathfinding" />
