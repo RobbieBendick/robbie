@@ -43,8 +43,9 @@
     align-items: center;
     padding: 0px;
     right: 0%;
-    bottom: 14.8rem;
+    bottom: 13.4rem;
     cursor: pointer;
+    font-size: 15px;
     a {
         text-decoration: none;
         color: var(--light-slate);
@@ -61,7 +62,7 @@
         position: absolute;
         border: 0.5px solid var(--light-slate);
         transform: rotate(270deg) translateY(218px);
-        bottom: -192%;
+        top: -252%;
         left: 50%;
         cursor: default;
     }

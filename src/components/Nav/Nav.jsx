@@ -89,7 +89,6 @@ function Nav() {
     // closes sidebar if screen was mobile size then switched to desktop
     useEffect(() => {
         if (isMobile) {
-            // collapse sidebar if previously opened and
             document.body.style.overflow = "inherit";
             $("#root > *:not(aside)").css({"filter": "none"});
             $(".sidenav").width(0);        
@@ -105,8 +104,8 @@ function Nav() {
         function smoothScroll() {
             document.querySelector(href).scrollIntoView({
                 behavior: "smooth",
-        });
-    }
+            });
+        }
         return (
             <li>
                 <button onClick={() => {
