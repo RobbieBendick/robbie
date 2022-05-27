@@ -176,6 +176,15 @@
     }
 }
 
+@media only screen and (max-width: 950px) {
+    .numbered-heading-projects {
+        width: 100% !important;
+        &::after {
+            width: 100% !important;
+        }
+    }
+}
+
 //   800px and up
 @media only screen and (min-width: 800px) {
 }

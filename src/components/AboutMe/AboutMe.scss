@@ -1,10 +1,9 @@
 .about-me-section {
     flex-direction: column;
-    text-align: center;
     max-width: 900px;
     align-items: center;
     margin-inline: auto;
-    p {
+    p ul {
         max-width: 500px;
         margin-inline: auto;
         &:not(p:last-child) { 
@@ -28,12 +27,12 @@
     ul.skills-list {
         display: grid;
         grid-template-columns: repeat(2, minmax(140px, 200px));
-        gap: 0px 10px;
-        padding: 0px;
+        gap: 8px 10px;
         margin: 20px 0px 0px;
         overflow: hidden;
         list-style: none;
-        justify-content: center;
+        font-size: 15px;
+        justify-content: start;
         li::before {
             content: "▹";
             color: var(--light-green);
@@ -41,6 +40,7 @@
             left: 0;
             width: 1rem;
             line-height: 12px;
+            padding-right: 7px;
         }
     }
     .numbered-heading {
@@ -129,7 +129,6 @@
     }
 }
 
-// gives about-me picture a lightgreen background to blend into
 @media only screen and (max-width: 950px) {
     .inner {
         display: block !important;
@@ -139,13 +138,10 @@
     }
     .numbered-heading {
         justify-content: center;
+        width: 100% !important;
+            &::after {
+                width: 100% !important;
+            }
     }
-}
-  //  800px and up
-@media only screen and (min-width: 800px) {
-}
-
-//  800px and down
-@media only screen and (max-width: 800px) {
 }
 
