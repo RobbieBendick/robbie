@@ -12,7 +12,7 @@ function Footer() {
                     <motion.a whileHover={{y: "-2px", color: "#64ffda"}} href="mailto:robbiebendick@gmail.com"><i class="fa-solid fa-xl fa-envelope"></i></motion.a>
                 </div>
                 <div>
-                    <motion.a whileHover={{y: "-2px", color: "#64ffda"}} href="https://www.linkedin.com/in/robert-bendick-b71a851b2/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-xl fa-linkedin"></i></motion.a>
+                    <motion.a whileHover={{y: "-2px", color: "#64ffda"}} href="https://www.linkedin.com/in/robert-bendick-7ad/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-xl fa-linkedin"></i></motion.a>
                 </div>
             </div>
             <p>Created by Robert Bendick</p>

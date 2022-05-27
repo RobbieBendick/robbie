@@ -15,7 +15,7 @@ function SideSocials() {
                     <motion.a whileHover={{y: "-2px",color: "#64ffda"}} href="https://github.com/RobbieBendick" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></motion.a>
                 </li>
                 <li>
-                    <motion.a whileHover={{y: "-2px", color: "#64ffda"}} href="https://www.linkedin.com/in/robert-bendick-b71a851b2/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></motion.a>
+                    <motion.a whileHover={{y: "-2px", color: "#64ffda"}} href="https://www.linkedin.com/in/robert-bendick-7ad/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></motion.a>
                 </li>
                 <li>
                     <motion.a whileHover={{y: "-2px", color: "#64ffda"}} href="mailto:robbiebendick@gmail.com"><i class="fa-solid fa-envelope"></i></motion.a>
