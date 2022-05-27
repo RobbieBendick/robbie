@@ -139,9 +139,9 @@
     .numbered-heading {
         justify-content: center;
         width: 100% !important;
-            &::after {
-                width: 100% !important;
-            }
+        &::after {
+            width: 100% !important;
+        }
     }
 }
 

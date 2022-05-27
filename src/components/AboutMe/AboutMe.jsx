@@ -39,7 +39,7 @@ function AboutMe() {
                     <div className="about-right">
                         <div className="wrapper">
                             <div className="img-container">
-                                <img height="500" width="500" sizes="(min-width: 500px) 500px, 100vw" src={Dog} alt="" />
+                                <img height="500" width="500" sizes="(min-width: 500px) 500px, 100vw" src={Dog} srcSet="" alt="Headshot" />
                             </div>
                         </div>
                     </div>

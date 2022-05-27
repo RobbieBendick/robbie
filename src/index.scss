@@ -116,7 +116,7 @@ body {
     $l: $j * 2 * 2;
     .fade-in-#{$i} {
       opacity: 0;
-      animation: fadeIn 1s;
+      animation: fadeIn 400ms;
       animation-fill-mode: forwards;
       @if $i >= 6 {
         animation-delay: #{$k}00ms;
