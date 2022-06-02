@@ -39,6 +39,10 @@ section {
   padding: 100px 0px;
 }
 
+h2 {
+  margin: 0;
+}
+
 ul, li{
   list-style: none;
 }
@@ -50,14 +54,6 @@ html {
 a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
-}
-
-.main {
-  margin: 0px auto;
-  padding: 0 150px;
-  width: 100%;
-  max-width: 1600px;
-  min-height: 100vh;
 }
 
 .pad {
