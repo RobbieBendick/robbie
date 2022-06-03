@@ -96,17 +96,9 @@ function Nav() {
     }, [isMobile])
 
     // shows nav if scrolled up all the way
-    // hides backdrop for skip-nav button
     useEffect(() => {
-        if ($(window).scrollTop() === 0) {
-            showNav();
-            $("#navbar").removeClass("backdrop");
-            $("#navbar").addClass("no-backdrop");
-        } else {
-            $("#navbar").removeClass("no-backdrop");
-            $("#navbar").addClass("backdrop");
-        }
-    }, [showNav]);
+        if ($(window).scrollTop() === 0) showNav();
+    });
 
     function SidebarAnchorItem({txt, href}) {
         function smoothScroll() {
@@ -141,7 +133,7 @@ function Nav() {
                 <button class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
                     <Signature />
                 </button>
-                <div id="navbarNav">
+                <div class="" id="navbarNav">
                         {isMobile ?
                         <div style={{"display": "block"}}> 
                             <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={() => {
@@ -178,7 +170,7 @@ function Nav() {
                         }
                 </div>
             </nav>
-            </>
+        </>
     )
 }
 

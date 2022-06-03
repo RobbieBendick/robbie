@@ -99,15 +99,6 @@
   }
 }
 
-.no-backdrop {
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-.backdrop {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
 nav {
   $navbarHeight: 80px;
 
