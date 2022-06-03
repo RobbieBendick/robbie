@@ -44,7 +44,6 @@ function AboutMe() {
                         </div>
                     </div>
                 </div>
-
             </section>
         </FadeInDiv>
     )

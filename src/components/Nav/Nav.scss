@@ -78,6 +78,36 @@
     }
   }
 
+
+.skip-nav-link {
+  position: absolute;
+  transform: translateY(-120%);
+  filter: none;
+  backdrop-filter: none;
+  padding: 1.25rem 1.75rem;
+  border-radius: 0 0 0.25em 0.25em;
+  border: 1px solid var(--light-green);
+  left: 0.5rem;
+  transition: transform 325ms ease-in;
+  line-height: 1;
+  font-size: 14px;
+  font-family: Sans;
+  z-index: 20;
+  background-color: var(--light-green);
+  &:focus {
+    transform: translateY(0);
+  }
+}
+
+.no-backdrop {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.backdrop {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
 nav {
   $navbarHeight: 80px;
 
