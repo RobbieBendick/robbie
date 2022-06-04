@@ -28,29 +28,27 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
             <li>
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
                     <div class="card">
-                        <header>
-                            <div class="card-body">
-                                <div className="project-top">
-                                    <div className="project-folder">
-                                        <a> <i class="fa-regular fa-folder fa-xl"></i> </a>
-                                    </div>
-                                    <div className="project-links">
-                                        {githubSrc &&
-                                        <motion.a href={githubSrc} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
-                                            <i class="fa-brands fa-github fa-sm"></i>
-                                        </motion.a>
-                                        }
-                                        {externalSrc &&
-                                        <motion.a href={externalSrc} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
-                                            <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
-                                        </motion.a>
-                                        }
-                                    </div>
+                        <div class="card-body">
+                            <div className="project-top">
+                                <div className="project-folder">
+                                    <a> <i class="fa-regular fa-folder fa-xl"></i> </a>
                                 </div>
-                                <h5 class="card-title">{title}</h5>
-                                <p class="card-text">{description}</p>
+                                <div className="project-links">
+                                    {githubSrc &&
+                                    <motion.a href={githubSrc} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
+                                        <i class="fa-brands fa-github fa-sm"></i>
+                                    </motion.a>
+                                    }
+                                    {externalSrc &&
+                                    <motion.a href={externalSrc} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
+                                        <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
+                                    </motion.a>
+                                    }
+                                </div>
                             </div>
-                        </header>
+                            <h5 class="card-title">{title}</h5>
+                            <p class="card-text">{description}</p>
+                        </div>
                         <footer>
                             <ul className="project-tech-list">
                                 {tech1 && <li>{tech1}</li>}
