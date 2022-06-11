@@ -56,11 +56,6 @@ a, a:hover, a:focus, a:active {
   color: inherit;
 }
 
-.pad {
-  padding: 0 0%;
-  margin-inline: 8%;
-}
-
 body {
   margin: 0px;
   width: 100%;
@@ -82,6 +77,16 @@ body {
   color: var(--lightest-slate);
 }
 
+.light-green-color {
+  color: var(--light-green);
+}
+
+.big-heading {
+  font-size: clamp(40px, 8vw, 70px);
+  font-family: SansBold;
+  font-weight: 900;
+}
+
 ::-webkit-scrollbar {
   width: .25em;
 }
@@ -99,7 +104,7 @@ body {
   background: hsla(225, 20%, 61%, 0.8);
 }
 
-@supports (scrollbar-color: slate navy) {
+@supports (scrollbar-color: var(--slate) var(--navy)) {
   * {
     scrollbar-color: hsla(225, 20%, 61%, 0.5) var(--navy);
     scrollbar-width: thin;

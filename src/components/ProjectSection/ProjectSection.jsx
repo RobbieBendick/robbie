@@ -11,9 +11,9 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
         <a href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
             <li>
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
-                    <div class="card">
+                    <div className="card">
                         <header>
-                            <div class="card-body">
+                            <div className="card-body">
                                 <div className="project-top">
                                     <div className="project-folder">
                                         <span> <i class="fa-regular fa-folder fa-xl"></i> </span>
@@ -31,8 +31,8 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
                                         }
                                     </div>
                                 </div>
-                                <h5 class="card-title">{title}</h5>
-                                <p class="card-text">{description}</p>
+                                <h5 className="card-title">{title}</h5>
+                                <p className="card-text">{description}</p>
                             </div>
                         </header>
                         <footer>
@@ -77,7 +77,7 @@ function ProjectSection() {
 
     return (
             <section id="projects" className="project-section">
-                <FadeInDiv fadeInClass={checkMobile(2)}>
+                <FadeInDiv fadeInClass={2}>
                     <div className="projects">
                         <p className="numbered-heading-projects">Projects</p>
                     </div>
