@@ -45,7 +45,6 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
             </li>
         </a>
     )
-
 }
 
 
@@ -73,7 +72,7 @@ function ProjectSection() {
 
     let mobile = windowSize.width < 1067;
 
-    let tablet = windowSize.width > 1067 && windowSize.width < 1467;
+    let tablet = windowSize.width >= 1067 && windowSize.width < 1467;
 
     let checkDeviceWidth = (desktopClass, tabletClass = desktopClass) => tablet ? tabletClass : mobile ? 2 : desktopClass;
 
@@ -86,7 +85,7 @@ function ProjectSection() {
                 </FadeInDiv>
                 <ul className="projects-grid">
                     {/* alternate fade-in-3 and 4 while on tablet */}
-                    {/* alternate fade-in-3 and 4 5 while on desktop */}
+                    {/* alternate fade-in-3 and 4 and 5 while on desktop */}
                     {/* fade-in-2 for all mobile */}
                     <FadeInDiv fadeInClass={checkDeviceWidth(3)}>
                         <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious UI tasks. 14k+ downloads and currently rank 31 in the world in popularity, among other addons in its respective category." githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
