@@ -2,6 +2,8 @@ import "./ProjectSection.scss";
 import {React, useEffect, useState} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
+import useWindowSize from "../../hooks/useWindowSize";
+
 
 const options = {
     root: null, // it is the viewport
@@ -23,7 +25,9 @@ const options = {
 
 
 function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc, externalSrc}) {
-        return (
+       
+    
+    return (
         <a href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
             <li>
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
@@ -87,39 +91,45 @@ function showMoreProjects() {
 function ProjectSection() {
     const [showMore, setShowMore] = useState(false);
     
+    const windowSize = useWindowSize();
+
+    let mobile = windowSize.width < 800;
+
+    let checkMobile = i => mobile ? 2 : i;
+
     return (
             <section id="projects" className="project-section">
-                <FadeInDiv fadeInClass={2}>
+                <FadeInDiv fadeInClass={checkMobile(2)}>
                     <div className="projects">
                         <p className="numbered-heading-projects">Projects</p>
                     </div>
                 </FadeInDiv>
                 <ul className="projects-grid">
-                    <FadeInDiv fadeInClass={3}>
+                    <FadeInDiv fadeInClass={checkMobile(3)}>
                         <ProjectCard title="ArenaMarker" description="Fully customizable addon that automates tedious UI tasks. 14k+ downloads and currently rank 31 in the world in popularity, among other addons in its respective category." githubSrc="https://github.com/RobbieBendick/ArenaMarker" tech1="Lua"/>
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={4}>
+                    <FadeInDiv fadeInClass={checkMobile(4)}>
                         <ProjectCard title="A* Pathfinding Algorithm" description="Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades." tech1="Python" githubSrc="https://github.com/RobbieBendick/a-star-pathfinding" />
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={5}>
+                    <FadeInDiv fadeInClass={checkMobile(5)}>
                         <ProjectCard title="MobileGrub" description="Full stack web app that is used to easily locate food vendors." tech1="Python" tech2="Django" tech3="CSS" tech4="JWT" externalSrc="https://mobilegrub-backend.herokuapp.com/"/>
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={3}>
+                    <FadeInDiv fadeInClass={checkMobile(3)}>
                         <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme"/>
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={4}>
+                    <FadeInDiv fadeInClass={checkMobile(4)}>
                         <ProjectCard title="Space Shooter" description="Space-Shooter mini game with Python." tech1="Python" githubSrc="https://github.com/RobbieBendick/pygame-shooter"/>
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={5}>
+                    <FadeInDiv fadeInClass={checkMobile(5)}>
                         <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" />
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={3}>
+                    <FadeInDiv fadeInClass={checkMobile(3)}>
                         <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express" tech4="MongoDB" githubSrc="https://github.com/RobbieBendick/blog"/>
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={4}>
+                    <FadeInDiv fadeInClass={checkMobile(4)}>
                         <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/"/>
                     </FadeInDiv>
-                    <FadeInDiv fadeInClass={5}>
+                    <FadeInDiv fadeInClass={checkMobile(5)}>
                         <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" />
                     </FadeInDiv>
                     {showMore && showMoreProjects()}

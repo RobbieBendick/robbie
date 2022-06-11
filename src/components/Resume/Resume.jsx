@@ -9,8 +9,8 @@ function Resume() {
 
     return (
             <div className="resume-container">
-                <div class="resume">
-                    <iframe title="resume" type="application/pdf" src={resume} frameborder="0"></iframe>
+                <div className="resume">
+                    <iframe name="resume" title="resume" type="application/pdf" src={resume} frameborder="0"></iframe>
                 </div>
             </div>
     )
