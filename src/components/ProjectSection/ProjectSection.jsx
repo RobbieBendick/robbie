@@ -1,32 +1,12 @@
 import "./ProjectSection.scss";
-import {React, useEffect, useState} from "react";
+import {React, useState} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import useWindowSize from "../../hooks/useWindowSize";
 
 
-const options = {
-    root: null, // it is the viewport
-    threshold: 0.6,
-    rootMargin: "-55px"
-  }
-  const sections = document.querySelectorAll("section")
-  const observer = new IntersectionObserver(function (entries, observer) {
-    entries.forEach(entry => {
-      if(!entry.isIntersecting) return
-      observer.unobserve(entry.target);
-      entry.target.style.opacity = 1;
-    });
-  }, options);
-
-  sections.forEach(section => {
-    observer.observe(section);
-  })
-
-
 function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc, externalSrc}) {
-       
-    
+    let tech = [tech1, tech2, tech3, tech4];
     return (
         <a href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
             <li>
@@ -57,10 +37,7 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
                         </header>
                         <footer>
                             <ul className="project-tech-list">
-                                {tech1 && <li>{tech1}</li>}
-                                {tech2 && <li>{tech2}</li>}
-                                {tech3 && <li>{tech3}</li>}
-                                {tech4 && <li>{tech4}</li>}
+                                {tech.map(tech => <li>{tech}</li>)}
                             </ul>
                         </footer>
                     </div>
@@ -70,7 +47,6 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
     )
 
 }
-
 
 
 function showMoreProjects() {
