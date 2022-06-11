@@ -4,8 +4,8 @@ import { useEffect } from "react";
 
 function LandingPage() {
     useEffect(() => {
-        document.title = "Robert Bendick"
-    });
+        document.title = "Robert Bendick";
+    }, []);
 
     return (
         <div>
