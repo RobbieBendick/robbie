@@ -14,10 +14,10 @@ function Home() {
     <Nav />
     <SideSocials />
     <div className="main">
-        <LandingPage />
-        <AboutMe />
-        <ProjectSection />
-        <Contact />
+      <LandingPage />
+      <AboutMe />
+      <ProjectSection />
+      <Contact />
     </div>
     <Footer />
     </>

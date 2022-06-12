@@ -5,46 +5,13 @@ import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
 import Signature from "../../Assets/Signature";
 
-function Nav() {
+function Nav() {    
     const isMobile = mobile();
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
     const sidebarWidth = "min(75vw, 400px)";
     let nav = document.getElementById("mySidenav");
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
-
-    function closeSidebar() {
-        setSidebarIsOpen(false);
-        nav.style.width = "0";
-        document.body.style.overflow = "inherit";
-        $("#root > *:not(aside)").css({"filter": "none"});
-        $(".nav-btn").removeClass("changed");
-    }
-
-    // blur everything besides sidebar and stop scrolling when sidebar is open
-    function toggleSidebar() {
-        if (sidebarIsOpen) {
-            setSidebarIsOpen(false);
-            nav.style.width = "0";
-            document.body.style.overflow = "inherit";
-            $("#root > *:not(aside)").css({"filter": "none"});
-            $(".nav-btn").removeClass("changed");
-        } else {
-            setSidebarIsOpen(true);
-            nav.style.width = sidebarWidth;
-            document.body.style.overflow = "hidden";
-            $("#root > *:not(aside)").css({"filter": "blur(4px)"});
-            $(".nav-btn").addClass("changed");
-        }
-    }
-
-    function hideNav() {
-        $("#navbar").removeClass("is-visible").addClass("is-hidden");
-    }
-    
-    function showNav() {
-        $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
-    }
 
     // "click-out" of sidebar
     useEffect(() => {
@@ -54,38 +21,36 @@ function Nav() {
             }
         })
     });
-
+    
     // shows nav on scroll-up and hide nav on scroll-down
     useEffect(() => {
         $(document).ready(function() {
 
             var previousScroll = 0;
-          
+            
             $(window).scroll(function() {
-          
-              var currentScroll = $(this).scrollTop();
-          
-              // If the current scroll position is greater than 0 (the top) AND the current scroll position is less than the document height minus the window height (the bottom) run the navigation if/else statement.
-              if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()) {
+            
+                var currentScroll = $(this).scrollTop();
+            
+                // If the current scroll position is greater than 0 (the top) AND the current scroll position is less than the document height minus the window height (the bottom) run the navigation if/else statement.
+                if (currentScroll > 0 && currentScroll < $(document).height() - $(window).height()) {
                 // If the current scroll is greater than the previous scroll (i.e we're scrolling down the page), hide the nav.
                 if (currentScroll > previousScroll) {
-                  window.setTimeout(hideNav, 50);
+                    window.setTimeout(hideNav, 50);
 
-                  // Else we are scrolling up (i.e the previous scroll is greater than the current scroll), so show the nav.
+                    // Else we are scrolling up (i.e the previous scroll is greater than the current scroll), so show the nav.
                 } else {
                     window.setTimeout(showNav, 50);
                 }
-          
+            
                 // Set the previous scroll value equal to the current scroll.
                 previousScroll = currentScroll;
-              }
-          
+                }
+            
             });
         })
     })
-
-
-
+    
     // closes sidebar if screen was mobile size then switched to desktop
     useEffect(() => {
         if (isMobile) {
@@ -100,8 +65,49 @@ function Nav() {
         if ($(window).scrollTop() === 0) showNav();
     });
 
-    function SidebarAnchorItem({txt, href}) {
-        function smoothScroll() {
+    let closeSidebar = () => {
+        // hide sidebar
+        setSidebarIsOpen(false);
+        nav.style.width = "0";
+        // allow scrolling
+        document.body.style.overflow = "inherit";
+        // unblur everything
+        $("#root > *:not(aside)").css({"filter": "none"});
+        $(".nav-btn").removeClass("changed");
+        //re-enable all buttons
+        $("#root button").removeAttr("disabled");
+        // re-enable all links
+        setTimeout(() => {
+            $('a:not(aside a)').unbind('click').click();
+        }, 200);
+    }
+
+    // blur everything besides sidebar and stop scrolling when sidebar is open
+    let toggleSidebar = () => {
+        if (sidebarIsOpen) {
+            closeSidebar();
+        } else {
+            // show sidebar
+            setSidebarIsOpen(true);
+            nav.style.width = sidebarWidth;
+            // prevent scrolling
+            document.body.style.overflow = "hidden";
+            // blur behind sidebar
+            $("#root > *:not(aside)").css({"filter": "blur(4px)"});
+            // disable all buttons
+            $("#root button").attr("disabled", "disabled");
+            // disable all links
+            $(() => $('a:not(aside a)').on("click", e => e.preventDefault()));    
+           
+            $(".nav-btn").addClass("changed");
+        }
+    }
+
+    let hideNav = () => $("#navbar").removeClass("is-visible").addClass("is-hidden");
+    let showNav = () => $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
+   
+    let SidebarAnchorItem = ({txt, href}) => {
+        let smoothScroll = () => {
             document.querySelector(href).scrollIntoView({
                 behavior: "smooth",
             });
@@ -118,7 +124,7 @@ function Nav() {
         )
     }
 
-    function smoothScroll(href) {
+    let smoothScroll = href => {
         document.querySelector(href).scrollIntoView({
             behavior: "smooth",
         });
@@ -133,7 +139,7 @@ function Nav() {
                 <button class="navbar-brand" onClick={() => window.scrollTo(0,0)}>
                     <Signature />
                 </button>
-                <div class="" id="navbarNav">
+                <div id="navbarNav">
                         {isMobile ?
                         <div style={{"display": "block"}}> 
                             <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={() => {
@@ -165,7 +171,7 @@ function Nav() {
                                 <button class="nav-link" onClick={() => smoothScroll("#contact")}>Contact</button>
                             </motion.li>
                             <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}                        
-                            transition={{ delay: 0.4, duration:0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                            transition={{ delay: 0.4, duration: 0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                         </ol>
                         }
                 </div>
