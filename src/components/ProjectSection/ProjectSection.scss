@@ -256,11 +256,9 @@
             padding: 1rem 0 1.8rem 0;
         }
     }
-
     button:hover {color: var(--light-green)}
+
   }
-
-
 
 //  1084px and down
 @media only screen and (max-width: 1084px) {
@@ -289,6 +287,19 @@
         &::after {
             width: 100% !important;
         }
+    }
+    .filter-button {
+        position: relative;
+        left: 71.2% !important;
+    }
+    .dropdown-content {
+        left: -50%;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .dropdown-content {
+        left: -65%;
     }
 }
 

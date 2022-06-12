@@ -80,6 +80,26 @@ body {
 .show-instant {
   display: flex !important;
   flex-direction: column;
+  animation: slide-down 200ms ease forwards;
+}
+
+
+@keyframes slide-down {
+  0% {
+    -webkit-transform: translateY(-10%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
+}
+
+@keyframes slide-in {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+  }
 }
 
 .light-blue-color {

@@ -55,11 +55,7 @@ function ProjectSection() {
         "Node": false,
         "Lua": false,
         "CSS": false,
-    })
-
-    function myFunction() {
-        document.getElementById("myDropdown").classList.toggle("show-instant");
-    }
+    });
 
     let stateHandler = language => {
         switch (language) {
@@ -128,22 +124,6 @@ function ProjectSection() {
         }
     }
 
-    useEffect(() => {
-        // Close the dropdown menu if the user clicks outside of it
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                let dropdowns = document.getElementsByClassName("dropdown-content");
-                let i;
-                for (i = 0; i < dropdowns.length; i++) {
-                    let openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show-instant')) {
-                        openDropdown.classList.remove('show-instant');
-                    }
-                }
-            }
-
-        }
-    })
 
     let filterHandler = language => {
         let anchors = $(".project-card");
@@ -223,7 +203,35 @@ function ProjectSection() {
         return str;
     }
 
+    useEffect(() => {
+        // Close the dropdown menu if the user clicks outside of it
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                let dropdowns = document.getElementsByClassName("dropdown-content");
+                let i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    let openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show-instant')) {
+                        openDropdown.classList.remove('show-instant');
+                    }
+                }
+            }
 
+        }
+    })
+
+
+    // when do i need dismissed active?
+    // when I click toggle, after I toggle I check to see if shown, if it is then we want to close it, add dismiss and remove show-filter
+    // if it isnt shown then we want to open it, so remove dismiss and add show filter
+    
+    // dropdown.classList.remove('dismissed');
+
+    function filterDropdownHandler() {
+        let dropdown = document.getElementById("filterDropdown");
+
+        dropdown.classList.toggle('show-instant');
+    }
 
     let filtersOptions = ["All", "JS", "Python", "Node", "Lua", "CSS"];
      return (
@@ -236,8 +244,8 @@ function ProjectSection() {
                 </FadeInDiv>
                 <div className="container">
                     <div className="dropdown filter-button">
-                        <button onClick={() => myFunction()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></button>
-                        <div id="myDropdown" className="dropdown-content">
+                        <button onClick={() => filterDropdownHandler()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></button>
+                        <div id="filterDropdown" className="dropdown-content">
                             {filtersOptions.map(language => <button name={language} onClick={() => {
                                 filterHandler(language);
                                 stateHandler(language);
