@@ -51,9 +51,9 @@ function ProjectSection() {
     const [filter, setFilter] = useState({
         "All": false,
         "JS": false,
-        "Lua": false,
         "Python": false,
         "Node": false,
+        "Lua": false,
         "CSS": false,
     })
 
@@ -61,25 +61,15 @@ function ProjectSection() {
         document.getElementById("myDropdown").classList.toggle("show-instant");
     }
 
-    let stateHandler = (language) => {
+    let stateHandler = language => {
         switch (language) {
             case "JS":
                 setFilter({
                     "All": false,
                     "JS": true,
+                    "Python": false,
+                    "Node": false,
                     "Lua": false,
-                    "Python": false,
-                    "Node": false,
-                    "CSS": false,
-                });
-                break;
-            case "Lua":
-                setFilter({
-                    "All": false,
-                    "JS": false,
-                    "Lua": true,
-                    "Python": false,
-                    "Node": false,
                     "CSS": false,
                 });
                 break;
@@ -87,9 +77,9 @@ function ProjectSection() {
                 setFilter({
                     "All": false,
                     "JS": false,
-                    "Lua": false,
                     "Python": true,
                     "Node": false,
+                    "Lua": false,
                     "CSS": false,
 
                 });
@@ -98,9 +88,20 @@ function ProjectSection() {
                 setFilter({
                     "All": false,
                     "JS": false,
-                    "Lua": false,
                     "Python": false,
                     "Node": true,
+                    "Lua": false,
+                    "CSS": false,
+                });
+                break;
+
+            case "Lua":
+                setFilter({
+                    "All": false,
+                    "JS": false,
+                    "Python": false,
+                    "Node": false,
+                    "Lua": true,
                     "CSS": false,
                 });
                 break;
@@ -108,9 +109,9 @@ function ProjectSection() {
                 setFilter({
                     "All": false,
                     "JS": false,
-                    "Lua": false,
                     "Python": false,
                     "Node": false,
+                    "Lua": false,
                     "CSS": true,
                 });
             break;
@@ -118,9 +119,9 @@ function ProjectSection() {
                 setFilter({
                     "All": true,
                     "JS": false,
-                    "Lua": false,
                     "Python": false,
                     "Node": false,
+                    "Lua": false,
                     "CSS": false,
                 });
                 break;
@@ -224,7 +225,7 @@ function ProjectSection() {
 
 
 
-    let filtersOptions = ["All", "JS", "Lua", "Python", "Node", "CSS"];
+    let filtersOptions = ["All", "JS", "Python", "Node", "Lua", "CSS"];
      return (
 
             <section id="projects" className="project-section">

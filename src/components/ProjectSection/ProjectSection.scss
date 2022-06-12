@@ -204,18 +204,8 @@
     left: -62px;
 }
 
-// LUA
-.dropdown-content button:nth-child(3)::before {
-    content: url('../../Assets/lua-logo.png');
-    display: inline-block;
-    position: relative; /*or absolute*/
-    z-index:100000; /*a number that's more than the modal box*/
-    left: -62px;
-    top: 32px;
-}
-
 // PYTHON
-.dropdown-content button:nth-child(4)::before {
+.dropdown-content button:nth-child(3)::before {
     content: url('../../Assets/python-logo.png');
     display: inline-block;
     position: relative; /*or absolute*/
@@ -224,8 +214,20 @@
     top: 29px;
 }
 
-// NODE
+// LUA
 .dropdown-content button:nth-child(5)::before {
+    content: url('../../Assets/lua-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 32px;
+}
+
+
+
+// NODE
+.dropdown-content button:nth-child(4)::before {
     content: url('../../Assets/node-logo.png');
     display: inline-block;
     position: relative; /*or absolute*/
