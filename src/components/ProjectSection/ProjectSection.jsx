@@ -48,14 +48,13 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
 }
 
 function ProjectSection() {
-    const [showMore, setShowMore] = useState(false);
-
     const [filter, setFilter] = useState({
         "All": false,
-        "JavaScript": false,
+        "JS": false,
         "Lua": false,
         "Python": false,
         "Node": false,
+        "CSS": false,
     })
 
     function myFunction() {
@@ -64,49 +63,65 @@ function ProjectSection() {
 
     let stateHandler = (language) => {
         switch (language) {
-            case "JavaScript":
+            case "JS":
                 setFilter({
                     "All": false,
-                    "JavaScript": true,
+                    "JS": true,
                     "Lua": false,
                     "Python": false,
                     "Node": false,
+                    "CSS": false,
                 });
                 break;
             case "Lua":
                 setFilter({
                     "All": false,
-                    "JavaScript": false,
+                    "JS": false,
                     "Lua": true,
                     "Python": false,
                     "Node": false,
+                    "CSS": false,
                 });
                 break;
             case "Python":
                 setFilter({
                     "All": false,
-                    "JavaScript": false,
+                    "JS": false,
                     "Lua": false,
                     "Python": true,
                     "Node": false,
+                    "CSS": false,
+
                 });
                 break;
             case "Node":
                 setFilter({
                     "All": false,
-                    "JavaScript": false,
+                    "JS": false,
                     "Lua": false,
                     "Python": false,
                     "Node": true,
+                    "CSS": false,
+                });
+                break;
+            case "CSS":
+                setFilter({
+                    "All": false,
+                    "JS": false,
+                    "Lua": false,
+                    "Python": false,
+                    "Node": false,
+                    "CSS": true,
                 });
             break;
             default:
                 setFilter({
                     "All": true,
-                    "JavaScript": false,
+                    "JS": false,
                     "Lua": false,
                     "Python": false,
                     "Node": false,
+                    "CSS": false,
                 });
                 break;
         }
@@ -160,35 +175,42 @@ function ProjectSection() {
         switch (language) {
             case "All":
                 if (filter.All) {
-                    str = " ✓"
+                    str = "✓"
                 } else {
                     str = ""
                 }
                 break;
-            case "JavaScript":
-                if (filter.JavaScript) {
-                    str = " ✓"
+            case "JS":
+                if (filter.JS) {
+                    str = "✓"
                 } else {
                     str = ""
                 }
                 break;
             case "Lua":
                 if (filter.Lua) {
-                    str = " ✓"
+                    str = "✓"
                 } else {
                     str = ""
                 }
                 break;
             case "Python":
                 if (filter.Python) {
-                    str = " ✓"
+                    str = "✓"
                 } else {
                     str = ""
                 }
                 break;
             case "Node":
                 if (filter.Node) {
-                    str = " ✓"
+                    str = "✓"
+                } else {
+                    str = ""
+                }
+                break;
+            case "CSS":
+                if (filter.CSS) {
+                    str = "✓"
                 } else {
                     str = ""
                 }
@@ -202,7 +224,7 @@ function ProjectSection() {
 
 
 
-    let filtersOptions = ["All", "JavaScript", "Lua", "Python", "Node"];
+    let filtersOptions = ["All", "JS", "Lua", "Python", "Node", "CSS"];
      return (
 
             <section id="projects" className="project-section">
@@ -219,8 +241,9 @@ function ProjectSection() {
                                 filterHandler(language);
                                 stateHandler(language);
                             }}>
-                                {language}
-                            {!filter.All && !filter.JavaScript && !filter.Lua && !filter.Node && !filter.Python ? language === "All" ? " ✓" : "" : ""}
+                                {language}{" "}
+                                {/* default check */}
+                            {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python && !filter.CSS ? language === "All" ? "✓" : "" : ""}
                             {checkHandler(language)}</button>)}
                         </div>
                     </div>
@@ -238,7 +261,7 @@ function ProjectSection() {
                         <ProjectCard title="A* Pathfinding Algorithm" description="Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades." tech1="Python" githubSrc="https://github.com/RobbieBendick/a-star-pathfinding" techTag={"Python"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="MobileGrub" description="Full stack web app that is used to easily locate food vendors." tech1="Python" tech2="Django" tech3="CSS" tech4="JWT" externalSrc="https://mobilegrub-backend.herokuapp.com/" techTag={"Python"}/>
+                        <ProjectCard title="MobileGrub" description="Full stack web app that is used to easily locate food vendors." tech1="Python" tech2="Django" tech3="CSS" tech4="JWT" externalSrc="https://mobilegrub-backend.herokuapp.com/" techTag={"Python CSS"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
                         <ProjectCard title="Dark Theme" description="Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua." tech1="Lua" githubSrc="https://github.com/RobbieBendick/DarkTheme" techTag={"Lua"}/>
@@ -247,25 +270,25 @@ function ProjectSection() {
                         <ProjectCard title="Space Shooter" description="Space-Shooter mini game written in Python." tech1="Python" githubSrc="https://github.com/RobbieBendick/pygame-shooter" techTag={"Python"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" techTag={"JavaScript"}/>
+                        <ProjectCard title="Google Keep Clone" description="A simple Google Keep clone built with React." tech1="JS" tech2="React" tech3="CSS" githubSrc="https://github.com/RobbieBendick/note-keeper" externalSrc="https://robbiebendick.github.io/note-keeper/" techTag={"JS React CSS"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express" tech4="MongoDB" githubSrc="https://github.com/RobbieBendick/blog" techTag={"JavaScript Node"}/>
+                        <ProjectCard title="Blog" description="Not a personal blog; Blog for proof of concept." tech1="JS" tech2="Node" tech3="Express" tech4="MongoDB" githubSrc="https://github.com/RobbieBendick/blog" techTag={"JS Node"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/" techTag={"JavaScript"}/>
+                        <ProjectCard title="Simon Clone" description="Web clone of the game 'Simon'." tech1="JS" tech2="JQuery" tech3="CSS" tech4="HTML" githubSrc="https://github.com/RobbieBendick/memorizing-game" externalSrc="https://robbiebendick.github.io/memorizing-game/" techTag={"JS CSS"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" techTag={"JavaScript"}/>
+                        <ProjectCard title="Drum Kit" description="A web app where you can play the drums." tech1="JS" tech2="HTML" tech3="CSS" githubSrc="https://github.com/RobbieBendick/drum-kit" externalSrc="https://robbiebendick.github.io/drum-kit/" techTag={"JS"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                    <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" techTag={"JavaScript Node CSS"} />
+                    <ProjectCard title="Construction" description="Web app for a construction company to advertise their prices." tech1="JS" tech2="Node" tech3="Express" tech4="EJS" githubSrc="https://github.com/RobbieBendick/brookeban" techTag={"JS Node CSS"} />
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="To Do List" description="Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="Node" tech2="Express" tech3="MongoDB/Mongoose" techTag={"JavaScript Node CSS"}/>
+                        <ProjectCard title="To Do List" description="Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="Node" tech2="Express" tech3="MongoDB/Mongoose" techTag={"JS Node CSS"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/news-letter" tech1="JS" tech2="Express" tech3="Node" tech4="CSS" techTag={"JavaScript Node CSS"}/>
+                        <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/news-letter" tech1="JS" tech2="Express" tech3="Node" tech4="CSS" techTag={"JS Node CSS"}/>
                     </FadeInDiv>
                 </ul>
             </section>

@@ -1,6 +1,8 @@
 
 .project-section {
     margin-top: 15rem;
+    height: 100%;
+    min-height: 35rem !important;
     .card-body {
         border: none;
         padding: 0;
@@ -185,18 +187,71 @@
     position: absolute;
     left: 97%;
     background-color: var(--light-navy);
-    min-width: 160px;
+    min-width: 180px;
     max-height: 200px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
   }
-  
+
+
+//  JS
+.dropdown-content button:nth-child(2)::before {
+    content: url('../../Assets/JavaScript-logo.png');
+    display: inline-block;
+    position:relative; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    top: 27px;
+    left: -62px;
+}
+
+// LUA
+.dropdown-content button:nth-child(3)::before {
+    content: url('../../Assets/lua-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 32px;
+}
+
+// PYTHON
+.dropdown-content button:nth-child(4)::before {
+    content: url('../../Assets/python-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 29px;
+}
+
+// NODE
+.dropdown-content button:nth-child(5)::before {
+    content: url('../../Assets/node-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 25px;
+}
+
+// CSS
+.dropdown-content button:nth-child(6)::before {
+    content: url('../../Assets/css-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index:100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 25px;
+}
+
   /* Links inside the dropdown */
   .dropdown-content button {
     color: var(--lightest-slate);
     padding: 12px 16px;
     text-decoration: none;
-    display: block;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     border: none;
     background-color: var(--light-navy);
     &:not(button:last-of-type)::after {
