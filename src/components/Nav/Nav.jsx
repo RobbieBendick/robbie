@@ -5,13 +5,15 @@ import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
 import Signature from "../../Assets/Signature";
 
-function Nav() {    
+let Nav = () => {    
     const isMobile = mobile();
     const [sidebarIsOpen, setSidebarIsOpen] = useState(false);
     const sidebarWidth = "min(75vw, 400px)";
     let nav = document.getElementById("mySidenav");
     let menuRef = useRef();
     let menuToggleButtonRef = useRef();
+    let disabledButtonSelector = $("#root button:not(.nav-btn)");
+    let diabledAnchorSelector = $('a:not(aside a)');
 
     // "click-out" of sidebar
     useEffect(() => {
@@ -24,7 +26,7 @@ function Nav() {
     
     // shows nav on scroll-up and hide nav on scroll-down
     useEffect(() => {
-        $(document).ready(function() {
+        $(document).ready(() => {
 
             var previousScroll = 0;
             
@@ -61,9 +63,7 @@ function Nav() {
     }, [isMobile])
 
     // shows nav if scrolled up all the way
-    useEffect(() => {
-        if ($(window).scrollTop() === 0) showNav();
-    });
+    useEffect(() => {if ($(window).scrollTop() === 0) showNav()});
 
     let closeSidebar = () => {
         // hide sidebar
@@ -75,11 +75,9 @@ function Nav() {
         $("#root > *:not(aside)").css({"filter": "none"});
         $(".nav-btn").removeClass("changed");
         //re-enable all buttons
-        $("#root button").removeAttr("disabled");
+        $(disabledButtonSelector).removeAttr("disabled");
         // re-enable all links
-        setTimeout(() => {
-            $('a:not(aside a)').unbind('click').click();
-        }, 200);
+        window.setTimeout(() => $(diabledAnchorSelector).unbind('click').click(), 200);
     }
 
     // blur everything besides sidebar and stop scrolling when sidebar is open
@@ -95,9 +93,9 @@ function Nav() {
             // blur behind sidebar
             $("#root > *:not(aside)").css({"filter": "blur(4px)"});
             // disable all buttons
-            $("#root button").attr("disabled", "disabled");
+            $(disabledButtonSelector).attr("disabled", "disabled");
             // disable all links
-            $(() => $('a:not(aside a)').on("click", e => e.preventDefault()));    
+            $(() => $(diabledAnchorSelector).on("click", e => e.preventDefault()));    
            
             $(".nav-btn").addClass("changed");
         }
@@ -156,7 +154,7 @@ function Nav() {
                                     <SidebarAnchorItem txt="Projects" href="#projects"/>
                                     <SidebarAnchorItem txt="Contact" href="#contact"/>
                                 </ol>
-                                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} target="_blank" whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} className="sidebar-resume-button" rel="noopener noreferrer">Resume</motion.a>
+                                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={() => closeSidebar()} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                             </aside>
                         </div>
                         :
@@ -170,7 +168,7 @@ function Nav() {
                             <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.3, duration: 0.4}}  className="nav-item">
                                 <button class="nav-link" onClick={() => smoothScroll("#contact")}>Contact</button>
                             </motion.li>
-                            <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}                        
+                            <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
                             transition={{ delay: 0.4, duration: 0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                         </ol>
                         }
