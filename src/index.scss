@@ -74,7 +74,7 @@ body {
 }
 .show {
   display: block;
-  animation: fadeIn 400ms ease-in;
+  animation: fadeIn 500ms ease forwards;
 }
 
 .show-instant {
@@ -143,10 +143,12 @@ body {
 }
 
 @keyframes fadeOut {
-  0%   {opacity: 1;}
-  70%  {opacity: 1;}
-  90% {opacity: 1;-webkit-transform: translateY(0px);}
-  100% {opacity: 0;-webkit-transform: translateY(-30px);}
+  from {
+  	opacity: 1;
+  }
+  to {
+ 	opacity: 0;
+  }
 }
 
 @keyframes fadeIn {
