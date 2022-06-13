@@ -181,14 +181,15 @@ function ProjectSection() {
         }, 20); 
     }
     let stateHandler = language => {
+        if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false});
         if (language === "JS") setFilter({"All": false, "JS": true, "Python": false, "Node": false, "Lua": false});
         if (language === "Python") setFilter({"All": false,"JS": false,"Python": true,"Node": false,"Lua": false});
         if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false});
         if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true});
-        if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false});
     }
     let checkHandler = language => {
         let str = "";
+        if (language === "All") if (filter.All) str = "✓";
         if (language === "JS") if (filter.JS) str = "✓";
         if (language === "Python") if (filter.Python) str = "✓";
         if (language === "Node") if (filter.Node) str = "✓";
@@ -197,7 +198,7 @@ function ProjectSection() {
     }
 
     useEffect(() => {
-        // Close the dropdown menu if the user clicks outside of it
+        // Close the filter-dropdown menu if the user clicks outside of it
         window.onclick = event => {
             if (!event.target.matches('.dropbtn')) {
                 let dropdowns = document.getElementsByClassName("dropdown-content");
@@ -250,7 +251,7 @@ function ProjectSection() {
                             {checkHandler(language)}</button>)}
                         </div>
                     </div>
-                    {/* checking to see if there's a valid filter applied and display it */}
+                    {/* checking to see if there's a valid filter applied and display it on the screen */}
                     <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python) ? ` ${findFilteredLanguage()}`: ""}</p>
                 </div>
                 <ul className="projects-grid">
