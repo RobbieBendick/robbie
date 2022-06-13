@@ -54,16 +54,14 @@ function ProjectSection() {
         "Python": false,
         "Node": false,
         "Lua": false,
-        "CSS": false,
     });
 
     let stateHandler = language => {
-        if (language === "JS") setFilter({"All": false, "JS": true, "Python": false, "Node": false, "Lua": false, "CSS": false});
-        if (language === "Python") setFilter({"All": false,"JS": false,"Python": true,"Node": false,"Lua": false,"CSS": false});
-        if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false, "CSS": false});
-        if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true, "CSS": false});
-        if (language === "CSS") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": false, "CSS": true});
-        if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false, "CSS": false})
+        if (language === "JS") setFilter({"All": false, "JS": true, "Python": false, "Node": false, "Lua": false});
+        if (language === "Python") setFilter({"All": false,"JS": false,"Python": true,"Node": false,"Lua": false});
+        if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false});
+        if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true});
+        if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false});
     }
 
 
@@ -131,13 +129,6 @@ function ProjectSection() {
                     str = ""
                 }
                 break;
-            case "CSS":
-                if (filter.CSS) {
-                    str = "✓"
-                } else {
-                    str = ""
-                }
-                break;
             default:
                 str = ""
                 break;
@@ -174,10 +165,9 @@ function ProjectSection() {
         if (filter.Python) str = "Filter: Python";
         if (filter.Node) str = "Filter: Node";
         if (filter.Lua) str = "Filter: Lua";
-        if (filter.CSS) str = "Filter: CSS";
         return str;
     }
-    let filtersOptions = ["All", "JS", "Python", "Node", "Lua", "CSS"];
+    let filtersOptions = ["All", "JS", "Python", "Node", "Lua"];
 
      return (
 
@@ -197,12 +187,12 @@ function ProjectSection() {
                             }}>
                                 {language}{" "}
                                 {/* default check */}
-                            {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python && !filter.CSS ? language === "All" ? "✓" : "" : ""}
+                            {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" ? "✓" : "" : ""}
                             {checkHandler(language)}</button>)}
                         </div>
                     </div>
                     {/* checking to see if there's a valid filter applied and display it */}
-                    <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python && !filter.CSS) ? ` ${findTrueValue()}`: ""}</p>
+                    <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python) ? ` ${findTrueValue()}`: ""}</p>
                 </div>
                 <ul className="projects-grid">
                     {/* alternate fade-in-3 and 4 while on tablet */}
