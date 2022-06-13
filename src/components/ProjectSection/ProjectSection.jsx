@@ -220,7 +220,7 @@ function ProjectSection() {
         }
     });
 
-    let filterDropdownHandler = () => {
+    let showFilterDropdown = () => {
         let dropdown = document.getElementById("filterDropdown");
 
         dropdown.classList.toggle('show-instant');
@@ -245,7 +245,7 @@ function ProjectSection() {
                 <div className="container">
                     <div className="dropdown filter-button">
                         <FadeInDiv fadeInClass={2}>
-                            <button onClick={() => filterDropdownHandler()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></button>
+                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
                         </FadeInDiv>
                         <div id="filterDropdown" className="dropdown-content">
                             {filterOptions.map((language) => <button name={language} onClick={() => {

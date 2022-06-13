@@ -143,19 +143,21 @@
 .project-inner:hover .card-title  { 
     color: var(--light-green); 
     transition: color 100ms ease;
-
-
 }
 .project-links a:focus {
     color: var(--light-green) !important;
-    transition: color 100ms ease;
+    transition: all 180ms ease;
+    transform: translateY(-3px);
 }
-// highlights title when something within project-inner is focused
-.project-inner:focus-within .card-title{
+// highlights title when something within project-card is focused
+.project-card:focus-within .card-title {
     color: var(--light-green); 
-    transition: color 100ms ease;
+    transition: all 180ms ease;
 }
 
+.project-card:focus-within {
+    transform: translateY(-2px);
+}
 
 .filtering {
     text-align: center;
@@ -174,6 +176,9 @@
     font-size: 16px;
     border: 1px solid var(--light-green);
     cursor: pointer;
+    &:active {
+        background-color: var(--light-green-low-alpha);
+    }
     &:hover {
         background-color: var(--light-green-low-alpha);
     }

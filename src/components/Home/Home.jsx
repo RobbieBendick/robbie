@@ -12,13 +12,13 @@ function Home() {
   return (
     <>
     <Nav />
-    <SideSocials />
     <div className="main">
       <LandingPage />
       <AboutMe />
       <ProjectSection />
       <Contact />
     </div>
+    <SideSocials />
     <Footer />
     </>
   );
