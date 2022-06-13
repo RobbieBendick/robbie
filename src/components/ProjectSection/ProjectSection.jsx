@@ -245,7 +245,7 @@ function ProjectSection() {
                 <div className="container">
                     <div className="dropdown filter-button">
                         <FadeInDiv fadeInClass={2}>
-                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
+                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} whileHover={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
                         </FadeInDiv>
                         <div id="filterDropdown" className="dropdown-content">
                             {filterOptions.map((language) => <button name={language} onClick={() => {
