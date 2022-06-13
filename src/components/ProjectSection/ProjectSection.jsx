@@ -5,8 +5,7 @@ import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import $ from "jquery";
 
 
-function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc, externalSrc, techTag}) {
-    let tech = [tech1, tech2, tech3, tech4];
+function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
     return (
         <a className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
             <li>
@@ -37,7 +36,7 @@ function ProjectCard({title, description, tech1, tech2, tech3, tech4, githubSrc,
                         </header>
                         <footer>
                             <ul className="project-tech-list">
-                                {tech.map(tech => <li>{tech}</li>)}
+                                {techList.map(tech => <li>{tech}</li>)}
                             </ul>
                         </footer>
                     </div>
@@ -61,10 +60,7 @@ function ProjectSection() {
             "description": "Fully customizable addon that automates tedious UI tasks. 15k+ downloads and currently rank 31 in the world in popularity, among other addons in its respective category.",
             "githubSrc": "https://github.com/RobbieBendick/ArenaMarker",
             "externalSrc": null,
-            "tech1": "Lua",
-            "tech2": null,
-            "tech3": null,
-            "tech4": null,
+            "techList": ["Lua"],
             "techTag": "Lua",
         },
         {
@@ -72,10 +68,7 @@ function ProjectSection() {
             "description": "Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades.",
             "githubSrc": "https://github.com/RobbieBendick/a-star-pathfinding",
             "externalSrc": null,
-            "tech1": "Python",
-            "tech2": null,
-            "tech3": null,
-            "tech4": null,
+            "techList": ["Python"],
             "techTag": "Python",
         },
         {
@@ -83,10 +76,7 @@ function ProjectSection() {
             "description": "Full stack web app that is used to easily locate food vendors.",
             "githubSrc": null,
             "externalSrc": "https://mobilegrub-backend.herokuapp.com/",
-            "tech1": "Python",
-            "tech2": "Django",
-            "tech3": "CSS",
-            "tech4": "JWT",
+            "techList": ["Python", "Django", "CSS", "JWT"],
             "techTag": "Python CSS",
         },
         {
@@ -94,10 +84,8 @@ function ProjectSection() {
             "description": "Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.",
             "githubSrc": "https://github.com/RobbieBendick/DarkTheme",
             "externalSrc": null,
+            "techList": ["Lua"],
             "tech1": "Lua",
-            "tech2": null,
-            "tech3": null,
-            "tech4": null,
             "techTag": "Lua",
         },
         {
@@ -105,10 +93,7 @@ function ProjectSection() {
             "description": "Space-Shooter mini game written in Python.",
             "githubSrc": "https://github.com/RobbieBendick/pygame-shooter",
             "externalSrc": null,
-            "tech1": "Python",
-            "tech2": null,
-            "tech3": null,
-            "tech4": null,
+            "techList": ["Python"],
             "techTag": "Python",
         },
         {
@@ -116,10 +101,7 @@ function ProjectSection() {
             "description": "A simple Google Keep clone built with React.",
             "githubSrc": "https://github.com/RobbieBendick/note-keeper",
             "externalSrc": "https://robbiebendick.github.io/note-keeper/",
-            "tech1": "JS",
-            "tech2": "React",
-            "tech3": "CSS",
-            "tech4": null,
+            "techList": ["JS", "React", "CSS"],
             "techTag": "JS React CSS",
         },
         {
@@ -127,10 +109,7 @@ function ProjectSection() {
             "description": "Not a personal blog; Blog for proof of concept.",
             "githubSrc": "https://github.com/RobbieBendick/blog",
             "externalSrc": null,
-            "tech1": "JS",
-            "tech2": "Node",
-            "tech3": "Express",
-            "tech4": "MongoDB",
+            "techList": ["JS", "Node", "Express", "MongoDB"],
             "techTag": "JS Node",
         },
         {
@@ -138,10 +117,7 @@ function ProjectSection() {
             "description": "Web clone of the game 'Simon'.",
             "githubSrc": "https://github.com/RobbieBendick/memorizing-game",
             "externalSrc": "https://robbiebendick.github.io/memorizing-game/",
-            "tech1": "JS",
-            "tech2": "JQuery",
-            "tech3": "CSS",
-            "tech4": "HTML",
+            "techList": ["JS", "JQuery", "CSS", "HTML"],
             "techTag": "JS CSS",
         },
         {
@@ -149,10 +125,7 @@ function ProjectSection() {
             "description": "A web app where you can play the drums.",
             "githubSrc": "https://github.com/RobbieBendick/drum-kit",
             "externalSrc": "https://robbiebendick.github.io/drum-kit/",
-            "tech1": "JS",
-            "tech2": "HTML",
-            "tech3": "CSS",
-            "tech4": "HTML",
+            "techList": ["JS", "HTML", "CSS"],
             "techTag": "JS",
         },
         {
@@ -160,10 +133,7 @@ function ProjectSection() {
             "description": "Web app for a construction company to advertise their prices.",
             "githubSrc": "https://github.com/RobbieBendick/brookeban",
             "externalSrc": null,
-            "tech1": "JS",
-            "tech2": "Node",
-            "tech3": "Express",
-            "tech4": "EJS",
+            "techList": ["JS", "Node", "Express", "EJS"],
             "techTag": "JS Node CSS",
         },
         {
@@ -171,10 +141,7 @@ function ProjectSection() {
             "description": "Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks.",
             "githubSrc": "https://github.com/RobbieBendick/to-do-list",
             "externalSrc": null,
-            "tech1": "Node",
-            "tech2": "Express",
-            "tech3": "MongoDB/Mongoose",
-            "tech4": null,
+            "techList": ["Node", "Express", "MongoDB/Mongoose"],
             "techTag": "JS Node CSS",
         },
         {
@@ -182,10 +149,7 @@ function ProjectSection() {
             "description": "Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future.",
             "githubSrc": "https://github.com/RobbieBendick/news-letter",
             "externalSrc": null,
-            "tech1": "JS",
-            "tech2": "Node",
-            "tech3": "Express",
-            "tech4": "CSS",
+            "techList": ["JS", "Node", "Express", "CSS"],
             "techTag": "JS Node CSS",
         },
     ]);
@@ -244,7 +208,6 @@ function ProjectSection() {
                     }
                 }
             }
-
         }
     });
 
@@ -293,7 +256,7 @@ function ProjectSection() {
                 <ul className="projects-grid">
                             {cardDetails.map(v => { return (
                                 <FadeInDiv fadeInClass={2}>
-                                    <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} tech1={v.tech1} tech2={v.tech2} tech3={v.tech3} tech4={v.tech4} techTag={v.techTag}/>
+                                    <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} techList={v.techList} techTag={v.techTag}/>
                                 </FadeInDiv>
                             )})}
                 </ul>
