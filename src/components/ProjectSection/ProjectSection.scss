@@ -135,7 +135,7 @@
         color: var(--light-green);
     }
     .filter-button {
-        left: 82.2%;
+        left: 80.8%;
         position: relative;
     }
 }
@@ -169,7 +169,7 @@
   .dropdown-content {
     display: none;
     position: absolute;
-    left: 97%;
+    left: 0%;
     background-color: var(--light-navy);
     min-width: 180px;
     max-height: 200px;
@@ -242,6 +242,7 @@
         flex-direction: column;
         border: none;
         background-color: var(--light-navy);
+        font-size: 16px;
         &:not(button:last-of-type)::after {
             content: '';
             display: block;
