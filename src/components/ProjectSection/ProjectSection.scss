@@ -144,10 +144,10 @@
     color: var(--light-green); 
     transition: color 100ms ease;
 }
-.project-links a:focus {
-    color: var(--light-green) !important;
-    transition: all 180ms ease;
-    transform: translateY(-3px);
+
+.project-card {
+    display: inline-flex;
+    transition: transform 180ms ease;
 }
 // highlights title when something within project-card is focused
 .project-card:focus-within .card-title {
@@ -156,7 +156,8 @@
 }
 
 .project-card:focus-within {
-    transform: translateY(-2px);
+    transition: transform 180ms ease;
+    transform: translateY(-5px);
 }
 
 .filtering {

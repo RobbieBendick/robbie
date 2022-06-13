@@ -8,7 +8,7 @@ import $ from "jquery";
 function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
 
     return (
-        <a className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
+        <motion.a  className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
                     <div className="card">
                         <header>
@@ -19,12 +19,12 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
                                     </div>
                                     <div className="project-links">
                                         {githubSrc &&
-                                        <motion.a href={githubSrc} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
+                                        <motion.a href={githubSrc} whileFocus={{y: "-2px", color: "#64ffda"}} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
                                             <i class="fa-brands fa-github fa-sm"></i>
                                         </motion.a>
                                         }
                                         {externalSrc &&
-                                        <motion.a href={externalSrc} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
+                                        <motion.a href={externalSrc} whileFocus={{y: "-2px", color: "#64ffda"}} whileHover={{y: "-2px", color: "#64ffda"}} target="_blank" rel="noopener noreferrer">
                                             <i class="fa-solid fa-arrow-up-right-from-square fa-sm"></i>
                                         </motion.a>
                                         }
@@ -41,7 +41,7 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
                         </footer>
                     </div>
                 </motion.div>
-        </a>
+        </motion.a>
     )
 }
 
