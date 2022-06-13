@@ -6,6 +6,7 @@ import $ from "jquery";
 
 
 function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
+
     return (
         <a className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
             <li>
@@ -59,7 +60,6 @@ function ProjectSection() {
             "title": "ArenaMarker",
             "description": "Fully customizable addon that automates tedious UI tasks. 15k+ downloads and currently rank 31 in the world in popularity, among other addons in its respective category.",
             "githubSrc": "https://github.com/RobbieBendick/ArenaMarker",
-            "externalSrc": null,
             "techList": ["Lua"],
             "techTag": "Lua",
         },
@@ -67,14 +67,12 @@ function ProjectSection() {
             "title": "A* Pathfinding Algorithm",
             "description": "Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades.",
             "githubSrc": "https://github.com/RobbieBendick/a-star-pathfinding",
-            "externalSrc": null,
             "techList": ["Python"],
             "techTag": "Python",
         },
         {
             "title": "MobileGrub",
             "description": "Full stack web app that is used to easily locate food vendors.",
-            "githubSrc": null,
             "externalSrc": "https://mobilegrub-backend.herokuapp.com",
             "techList": ["Python", "Django", "CSS", "JWT"],
             "techTag": "Python CSS",
@@ -83,7 +81,6 @@ function ProjectSection() {
             "title": "Dark Theme",
             "description": "Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.",
             "githubSrc": "https://github.com/RobbieBendick/DarkTheme",
-            "externalSrc": null,
             "techList": ["Lua"],
             "tech1": "Lua",
             "techTag": "Lua",
@@ -92,7 +89,6 @@ function ProjectSection() {
             "title": "Space Shooter",
             "description": "Space-Shooter mini game written in Python.",
             "githubSrc": "https://github.com/RobbieBendick/pygame-shooter",
-            "externalSrc": null,
             "techList": ["Python"],
             "techTag": "Python",
         },
@@ -108,9 +104,15 @@ function ProjectSection() {
             "title": "Blog",
             "description": "Not a personal blog; Blog for proof of concept.",
             "githubSrc": "https://github.com/RobbieBendick/blog",
-            "externalSrc": null,
             "techList": ["JS", "Node", "Express", "MongoDB"],
             "techTag": "JS Node",
+        },
+        {
+            "title": "BigHealthBar",
+            "description": "Plugin/AddOn that changes the size, color, texture, and location of the player's and their target's frames.",
+            "githubSrc": "https://github.com/RobbieBendick/BigHealthbar",
+            "techList": ["Lua"],
+            "techTag": "Lua",
         },
         {
             "title": "Simon Clone",
@@ -132,36 +134,45 @@ function ProjectSection() {
             "title": "Construction",
             "description": "Web app for a construction company to advertise their prices.",
             "githubSrc": "https://github.com/RobbieBendick/brookeban",
-            "externalSrc": null,
             "techList": ["JS", "Node", "Express", "EJS"],
             "techTag": "JS Node CSS",
+        },
+        {
+            "title": "Anon",
+            "description": "Plugin/AddOn that color-coordinates unit nameplates, and disguises player and player companion's names.",
+            "githubSrc": "https://github.com/RobbieBendick/Anon",
+            "techList": ["Lua"],
+            "techTag": "Lua",
         },
         {
             "title": "To Do List",
             "description": "Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks.",
             "githubSrc": "https://github.com/RobbieBendick/to-do-list",
-            "externalSrc": null,
             "techList": ["Node", "Express", "MongoDB/Mongoose"],
             "techTag": "JS Node CSS",
         },
         {
+            "title": "PartyFrames",
+            "description": "Plugin/AddOn to change sizes and colors of default game party frames.",
+            "githubSrc": "https://github.com/RobbieBendick/PartyFrames",
+            "techList": ["Lua"],
+            "techTag": "Lua",
+        },
+        {
             "title": "News Letter",
-            "description": "Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future.",
+            "description": "Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to receive emails in the future.",
             "githubSrc": "https://github.com/RobbieBendick/news-letter",
-            "externalSrc": null,
             "techList": ["JS", "Node", "Express", "CSS"],
             "techTag": "JS Node CSS",
         },
     ]);
-
     let filterHandler = language => {
         let anchors = $(".project-card");
         
         // adding invis to all cards to allow them to appear at the same time
         for (let i = 0; i < anchors.length; i++) {
             let anchor = anchors[i];
-            anchor.parentElement.classList.remove("invis");
-            anchor.parentElement.classList.add("invis");
+            if (!anchor.parentElement.classList.contains("invis")) anchor.parentElement.classList.add("invis");
         }
 
         // timeout allows all cards to appear at the same time
@@ -178,7 +189,7 @@ function ProjectSection() {
                     anchor.parentElement.classList.remove("invis");
                 }
             }
-        }, 20); 
+        }, 20);
     }
     let stateHandler = language => {
         if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false});
@@ -226,9 +237,9 @@ function ProjectSection() {
         if (filter.Lua) str = "Filter: Lua";
         return str;
     }
-    let filtersOptions = ["All", "JS", "Python", "Node", "Lua"];
+    let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
+    
      return (
-
             <section id="projects" className="project-section">
                 <FadeInDiv fadeInClass={2}>
                     <div className="projects">
@@ -241,25 +252,28 @@ function ProjectSection() {
                             <button onClick={() => filterDropdownHandler()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></button>
                         </FadeInDiv>
                         <div id="filterDropdown" className="dropdown-content">
-                            {filtersOptions.map(language => <button name={language} onClick={() => {
+                            {filterOptions.map(language => <button name={language} onClick={() => {
                                 filterHandler(language);
                                 stateHandler(language);
                             }}>
                                 {language}{" "}
                                 {/* add a check by default */}
-                            {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" ? "✓" : "" : ""}
+                            {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" 
+                            ? "✓"
+                            : ""
+                            : ""}
                             {checkHandler(language)}</button>)}
                         </div>
                     </div>
-                    {/* checking to see if there's a valid filter applied and display it on the screen */}
+                    {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
                     <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python) ? ` ${findFilteredLanguage()}`: ""}</p>
                 </div>
                 <ul className="projects-grid">
-                            {cardDetails.map(v => { return (
-                                <FadeInDiv fadeInClass={2}>
-                                    <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} externalSrc={v.externalSrc} techList={v.techList} techTag={v.techTag}/>
-                                </FadeInDiv>
-                            )})}
+                    {cardDetails.map(v => { return (
+                        <FadeInDiv fadeInClass={2}>
+                            <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} externalSrc={v.externalSrc} techList={v.techList} techTag={v.techTag}/>
+                        </FadeInDiv>
+                    )})}
                 </ul>
             </section>
     );
