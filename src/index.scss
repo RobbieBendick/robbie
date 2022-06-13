@@ -86,7 +86,7 @@ body {
 
 @keyframes slide-down {
   0% {
-    -webkit-transform: translateY(-10%);
+    -webkit-transform: translateY(-10px);
   }
   100% {
     -webkit-transform: translateX(0%);
@@ -95,7 +95,7 @@ body {
 
 @keyframes slide-in {
   0% {
-    -webkit-transform: translateX(100%);
+    -webkit-transform: translateX(-10px);
   }
   100% {
     -webkit-transform: translateX(0%);
