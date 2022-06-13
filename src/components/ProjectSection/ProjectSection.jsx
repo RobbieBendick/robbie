@@ -58,70 +58,12 @@ function ProjectSection() {
     });
 
     let stateHandler = language => {
-        switch (language) {
-            case "JS":
-                setFilter({
-                    "All": false,
-                    "JS": true,
-                    "Python": false,
-                    "Node": false,
-                    "Lua": false,
-                    "CSS": false,
-                });
-                break;
-            case "Python":
-                setFilter({
-                    "All": false,
-                    "JS": false,
-                    "Python": true,
-                    "Node": false,
-                    "Lua": false,
-                    "CSS": false,
-
-                });
-                break;
-            case "Node":
-                setFilter({
-                    "All": false,
-                    "JS": false,
-                    "Python": false,
-                    "Node": true,
-                    "Lua": false,
-                    "CSS": false,
-                });
-                break;
-
-            case "Lua":
-                setFilter({
-                    "All": false,
-                    "JS": false,
-                    "Python": false,
-                    "Node": false,
-                    "Lua": true,
-                    "CSS": false,
-                });
-                break;
-            case "CSS":
-                setFilter({
-                    "All": false,
-                    "JS": false,
-                    "Python": false,
-                    "Node": false,
-                    "Lua": false,
-                    "CSS": true,
-                });
-            break;
-            default:
-                setFilter({
-                    "All": true,
-                    "JS": false,
-                    "Python": false,
-                    "Node": false,
-                    "Lua": false,
-                    "CSS": false,
-                });
-                break;
-        }
+        if (language === "JS") setFilter({"All": false, "JS": true, "Python": false, "Node": false, "Lua": false, "CSS": false});
+        if (language === "Python") setFilter({"All": false,"JS": false,"Python": true,"Node": false,"Lua": false,"CSS": false});
+        if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false, "CSS": false});
+        if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true, "CSS": false});
+        if (language === "CSS") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": false, "CSS": true});
+        if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false, "CSS": false})
     }
 
 
@@ -219,13 +161,6 @@ function ProjectSection() {
 
         }
     })
-
-
-    // when do i need dismissed active?
-    // when I click toggle, after I toggle I check to see if shown, if it is then we want to close it, add dismiss and remove show-filter
-    // if it isnt shown then we want to open it, so remove dismiss and add show filter
-    
-    // dropdown.classList.remove('dismissed');
 
     function filterDropdownHandler() {
         let dropdown = document.getElementById("filterDropdown");

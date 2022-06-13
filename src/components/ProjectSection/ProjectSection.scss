@@ -184,7 +184,7 @@
     border: 1px solid var(--navy-shadow);
 
     button:nth-child(1) {
-        margin-top: 1rem;
+        margin-top: 0.7rem;
     }
   
     //  JS pic
@@ -251,14 +251,18 @@
         background-color: var(--light-navy);
         font-size: 16px;
         &:not(button:last-of-type)::after {
-            content: '';
-            display: block;
+            content: "";
+            position: relative;
             height: 1px;
-            width: 100px;
+            width: 101px;
             margin-inline: auto;
             background-color: var(--slate);
-            margin-top: 1.5rem;
-            opacity: 0.3;
+            margin-top: 0.8rem;
+            opacity: 2.3;
+            top: 12px;
+        }
+        &:not(button:first-of-type) {
+            padding-top: 0;
         }
         &:last-of-type {
             padding: 1rem 0 1.8rem 0;
