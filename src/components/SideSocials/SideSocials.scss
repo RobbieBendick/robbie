@@ -55,6 +55,10 @@
         transform: translateX(-2px);
         color: var(--light-green);
     }
+    a:focus {
+        transform: translateX(-2px);
+        color: var(--light-green);
+    }
     &::after {
         content: '';   
         width: 0;

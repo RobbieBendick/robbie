@@ -32,8 +32,12 @@
       width: -webkit-fill-available;  /* Mozilla-based browsers will ignore this. */
       width: fill-available;
       &:hover {
-        color: var(--light-green) !important;
         cursor: pointer;
+        color: var(--light-green) !important;
+      }
+      &:focus {
+        color: var(--light-green) !important;
+        
       }
     }
     .sidebar-resume-button {
@@ -161,7 +165,8 @@ nav {
     background-color: transparent;
     border: none;
   }
-  .nav-link:hover {
+  .nav-link:hover,  
+  .nav-link:focus {
     color: var(--light-green) !important;
   }
   .navbar-brand {
@@ -185,7 +190,7 @@ nav {
     display: block;
     transition: background-color 350ms ease;
   }
-  .resume-button:hover {
+  .resume-button:hover, .resume-button:focus {
     background-color: var(--light-green-low-alpha);
     transition: background-color 350ms ease;
   }

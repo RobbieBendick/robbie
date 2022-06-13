@@ -9,7 +9,6 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
 
     return (
         <a className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
-            <li>
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
                     <div className="card">
                         <header>
@@ -42,7 +41,6 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
                         </footer>
                     </div>
                 </motion.div>
-            </li>
         </a>
     )
 }
@@ -55,7 +53,7 @@ function ProjectSection() {
         "Node": false,
         "Lua": false,
     });
-    const [cardDetails, setCardDetails] = useState([
+    const cardDetails = [
         {
             "title": "ArenaMarker",
             "description": "Fully customizable addon that automates tedious UI tasks. 15k+ downloads and currently rank 31 in the world in popularity, among other addons in its respective category.",
@@ -165,7 +163,7 @@ function ProjectSection() {
             "techList": ["JS", "Node", "Express", "CSS"],
             "techTag": "JS Node CSS",
         },
-    ]);
+    ]
     let filterHandler = language => {
         let anchors = $(".project-card");        
         // adding invis to all cards to allow them to appear at the same time
@@ -237,11 +235,6 @@ function ProjectSection() {
         return str;
     }
     let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
-    
-
-
-    // if i click on button[name="programmingLanguage"], preven from activating if it's already selected.
-
      return (
             <section id="projects" className="project-section">
                 <FadeInDiv fadeInClass={2}>
@@ -256,6 +249,7 @@ function ProjectSection() {
                         </FadeInDiv>
                         <div id="filterDropdown" className="dropdown-content">
                             {filterOptions.map((language) => <button name={language} onClick={() => {
+                                // dont allow reclick if alrdy activated
                                 if (language === "All" && filter.All) return
                                 if (language === "JS" && filter.JS) return
                                 if (language === "Python" && filter.Python) return

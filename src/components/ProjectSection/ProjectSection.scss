@@ -142,7 +142,20 @@
 // card title on-hover
 .project-inner:hover .card-title  { 
     color: var(--light-green); 
+    transition: color 100ms ease;
+
+
 }
+.project-links a:focus {
+    color: var(--light-green) !important;
+    transition: color 100ms ease;
+}
+// highlights title when something within project-inner is focused
+.project-inner:focus-within .card-title{
+    color: var(--light-green); 
+    transition: color 100ms ease;
+}
+
 
 .filtering {
     text-align: center;

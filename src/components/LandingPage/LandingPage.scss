@@ -40,6 +40,9 @@
       letter-spacing: 1.2px;
       font-family: SansBold;
       font-weight: 500;
+      &:focus {
+        background-color: var(--light-green-low-alpha);
+      }
     }
 }
 
