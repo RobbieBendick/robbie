@@ -233,7 +233,17 @@ function ProjectSection() {
         dropdown.classList.toggle('show-instant');
     }
 
+    let findTrueValue = () => {
+        let str = "";
+        if (filter.JS) str = "Filter: JS";
+        if (filter.Python) str = "Filter: Python";
+        if (filter.Node) str = "Filter: Node";
+        if (filter.Lua) str = "Filter: Lua";
+        if (filter.CSS) str = "Filter: CSS";
+        return str;
+    }
     let filtersOptions = ["All", "JS", "Python", "Node", "Lua", "CSS"];
+
      return (
 
             <section id="projects" className="project-section">
@@ -256,6 +266,8 @@ function ProjectSection() {
                             {checkHandler(language)}</button>)}
                         </div>
                     </div>
+                    {/* checking to see if there's a valid filter applied and display it */}
+                    <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python && !filter.CSS) ? ` ${findTrueValue()}`: ""}</p>
                 </div>
                 <ul className="projects-grid">
                     {/* alternate fade-in-3 and 4 while on tablet */}
