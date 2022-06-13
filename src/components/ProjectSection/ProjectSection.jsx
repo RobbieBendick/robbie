@@ -234,7 +234,7 @@ function ProjectSection() {
                         <ProjectCard title="To Do List" description="Simple fullstack todo list that manipulates a MongoDB database to create, read, update & delete tasks." githubSrc="https://github.com/RobbieBendick/to-do-list" tech1="Node" tech2="Express" tech3="MongoDB/Mongoose" techTag={"JS Node CSS"}/>
                     </FadeInDiv>
                     <FadeInDiv fadeInClass={2}>
-                        <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/news-letter" tech1="JS" tech2="Express" tech3="Node" tech4="CSS" techTag={"JS Node CSS"}/>
+                        <ProjectCard title="News Letter" description="Fullstack webapp that allows users to easily subscribe and unsubscribe to a newsletter to recieve emails in the future." githubSrc="https://github.com/RobbieBendick/news-letter" tech1="JS" tech2="Node" tech3="Express"  tech4="CSS" techTag={"JS Node CSS"}/>
                     </FadeInDiv>
                 </ul>
             </section>
