@@ -49,7 +49,7 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
 
 function ProjectSection() {
     const [filter, setFilter] = useState({
-        "All": false,
+        "All": true,
         "JS": false,
         "Python": false,
         "Node": false,
@@ -167,8 +167,7 @@ function ProjectSection() {
         },
     ]);
     let filterHandler = language => {
-        let anchors = $(".project-card");
-        
+        let anchors = $(".project-card");        
         // adding invis to all cards to allow them to appear at the same time
         for (let i = 0; i < anchors.length; i++) {
             let anchor = anchors[i];
@@ -239,6 +238,10 @@ function ProjectSection() {
     }
     let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
     
+
+
+    // if i click on button[name="programmingLanguage"], preven from activating if it's already selected.
+
      return (
             <section id="projects" className="project-section">
                 <FadeInDiv fadeInClass={2}>
@@ -252,7 +255,12 @@ function ProjectSection() {
                             <button onClick={() => filterDropdownHandler()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></button>
                         </FadeInDiv>
                         <div id="filterDropdown" className="dropdown-content">
-                            {filterOptions.map(language => <button name={language} onClick={() => {
+                            {filterOptions.map((language) => <button name={language} onClick={() => {
+                                if (language === "All" && filter.All) return
+                                if (language === "JS" && filter.JS) return
+                                if (language === "Python" && filter.Python) return
+                                if (language === "Node" && filter.Node) return
+                                if (language === "Lua" && filter.Lua) return
                                 filterHandler(language);
                                 stateHandler(language);
                             }}>
