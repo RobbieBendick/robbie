@@ -75,7 +75,7 @@ function ProjectSection() {
             "title": "MobileGrub",
             "description": "Full stack web app that is used to easily locate food vendors.",
             "githubSrc": null,
-            "externalSrc": "https://mobilegrub-backend.herokuapp.com/",
+            "externalSrc": "https://mobilegrub-backend.herokuapp.com",
             "techList": ["Python", "Django", "CSS", "JWT"],
             "techTag": "Python CSS",
         },
@@ -257,7 +257,7 @@ function ProjectSection() {
                 <ul className="projects-grid">
                             {cardDetails.map(v => { return (
                                 <FadeInDiv fadeInClass={2}>
-                                    <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} techList={v.techList} techTag={v.techTag}/>
+                                    <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} externalSrc={v.externalSrc} techList={v.techList} techTag={v.techTag}/>
                                 </FadeInDiv>
                             )})}
                 </ul>
