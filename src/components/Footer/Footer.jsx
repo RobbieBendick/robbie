@@ -16,6 +16,7 @@ function Footer() {
                 </div>
             </div>
             <p>Created by Robert Bendick</p>
+            <small class="with-react">(with React)</small>
         </footer>
     )
 }
