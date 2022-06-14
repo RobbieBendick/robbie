@@ -3,6 +3,11 @@ import {React, useEffect, useState, useRef} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import $ from "jquery";
+import JS_pic from "../../Assets/JavaScript-logo.png";
+import PYTHON_pic from "../../Assets/python-logo.png";
+import NODE_pic from "../../Assets/node-logo.png"
+import LUA_pic from "../../Assets/lua-logo.png";
+
 
 
 function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
@@ -59,7 +64,14 @@ function ProjectSection() {
 
     // filter dropdown reference
     let filterDropdownRef = useRef();
-    
+
+    // close the filter-dropdown menu if the user clicks outside of it
+    useEffect(() => {
+        document.addEventListener('mousedown', event =>
+            !filterButtonRef.current.contains(event.target) && !filterDropdownRef.current.contains(event.target) && closeDropdown()
+        );
+    });
+
     // all project cards
     const cardDetails = [
         {
@@ -74,7 +86,6 @@ function ProjectSection() {
             "description": "Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.",
             "githubSrc": "https://github.com/RobbieBendick/DarkTheme",
             "techList": ["Lua"],
-            "tech1": "Lua",
             "techTag": "Lua",
         },
         {
@@ -190,7 +201,7 @@ function ProjectSection() {
     // stores the project amount per language
     const [projectAmount, setProjectAmount] = useState(
         {
-            "All": 0,
+            "All": cardDetails.length,
             "JS": 0,
             "Python": 0,
             "Node": 0,
@@ -212,17 +223,15 @@ function ProjectSection() {
             for (let i = 0; i < anchors.length; i++) {
                 let anchor = anchors[i];
     
-                if (anchor.classList.contains(language)) {
-                    anchor.parentElement.classList.remove("invis");
-                } else {
-                    anchor.parentElement.classList.add("invis");
-                }
-                if (language === "All") {
-                    anchor.parentElement.classList.remove("invis");
-                }
+                if (anchor.classList.contains(language)) anchor.parentElement.classList.remove("invis");
+                else anchor.parentElement.classList.add("invis");
+
+                if (language === "All") anchor.parentElement.classList.remove("invis");
             }
         }, 20);
     }
+
+    let closeDropdown = () => ($(".dropdown-content").hasClass("show-instant")) && $(".dropdown-content").removeClass("show-instant");
 
     // sets the state of the current filter
     let stateHandler = language => {
@@ -232,7 +241,7 @@ function ProjectSection() {
         if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false});
         if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true});
         closeDropdown();
-        }
+    }
         
         // returns a check mark string to place next to the clicked filter
         let checkHandler = language => {
@@ -244,14 +253,6 @@ function ProjectSection() {
         if (language === "Lua") if (filter.Lua) str = "✓";
         return str;
     }
-    let closeDropdown = () => ($(".dropdown-content").hasClass("show-instant")) ? $(".dropdown-content").removeClass("show-instant") : "";
-
-    // Close the filter-dropdown menu if the user clicks outside of it
-    useEffect(() => {
-        document.addEventListener('mousedown', event => {
-            if (!filterButtonRef.current.contains(event.target) && !filterDropdownRef.current.contains(event.target)) closeDropdown();
-        })
-    });
 
     // toggles filter dropdown
     let showFilterDropdown = () => {
@@ -279,32 +280,31 @@ function ProjectSection() {
         if (language === "Lua") str = `(${projectAmount.Lua})`;
         return str;
     }
-
-    let dontAllowReclick = language => {
-        if (language === "All" && filter.All) closeDropdown();
-        if (language === "JS" && filter.JS) closeDropdown();
-        if (language === "Python" && filter.Python) closeDropdown();
-        if (language === "Node" && filter.Node) closeDropdown();
-        if (language === "Lua" && filter.Lua) closeDropdown();
+    
+    let filterLinkOnClickHandler = language => {
+        // dont allow reclick if alrdy activated
+        if (language === "All" && filter.All) return closeDropdown();
+        if (language === "JS" && filter.JS) return closeDropdown();
+        if (language === "Python" && filter.Python) return closeDropdown();
+        if (language === "Node" && filter.Node) return closeDropdown();
+        if (language === "Lua" && filter.Lua) return closeDropdown();
+        filterHandler(language);
+        stateHandler(language);
     }
 
     // sets amount of projects per language
     if (projectAmount.JS === 0) {
-        let c = 0;
         for (let i = 0; i < cardDetails.length; i++) {
             const card = cardDetails[i];
-            if (card.techList.includes("JS")) projectAmount.JS++;
-            if (card.techList.includes("Python")) projectAmount.Python++;
-            if (card.techList.includes("Node")) projectAmount.Node++;
-            if (card.techList.includes("Lua")) projectAmount.Lua++;
-            c++;
+            if (card.techTag.split(" ").includes("JS")) projectAmount.JS++;
+            if (card.techTag.split(" ").includes("Python")) projectAmount.Python++;
+            if (card.techTag.split(" ").includes("Node")) projectAmount.Node++;
+            if (card.techTag.split(" ").includes("Lua")) projectAmount.Lua++;
         }
-        setProjectAmount({
-            ...projectAmount, "All": c
-        });
     }
-
+    
     let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
+
      return (
             <section id="projects" className="project-section">
                 <FadeInDiv fadeInClass={2}>
@@ -318,16 +318,13 @@ function ProjectSection() {
                             <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} whileHover={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} ref={filterButtonRef} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
                         </FadeInDiv>
                         <div id="filterDropdown" ref={filterDropdownRef} className="dropdown-content">
-                            {filterOptions.map(language => <button name={language} onClick={() => {
-                                // dont allow reclick if alrdy activated
-                                if (language === "All" && filter.All) return closeDropdown();
-                                if (language === "JS" && filter.JS) return closeDropdown();
-                                if (language === "Python" && filter.Python) return closeDropdown();
-                                if (language === "Node" && filter.Node) return closeDropdown();
-                                if (language === "Lua" && filter.Lua) return closeDropdown();
-                                filterHandler(language);
-                                stateHandler(language);
-                            }}>
+                            <div className="language-img-container">
+                                <img width="15" height="15" src={JS_pic}></img>
+                                <img width="15" height="15" src={PYTHON_pic}></img>
+                                <img width="15" height="15" src={NODE_pic}></img>
+                                <img width="15" height="15" src={LUA_pic}></img>
+                            </div>
+                            {filterOptions.map(language => <motion.button whileFocus={{"color": "hsl(166, 100%, 70%)"}} whileHover={{"color": "hsl(166, 100%, 70%)"}} name={language} onClick={() => filterLinkOnClickHandler(language)}>
                                 {language}
                                 {" "}
                                 {projectsPerLanguage(language)}
@@ -338,18 +335,18 @@ function ProjectSection() {
                                 : ""
                                 : ""}
                                 {checkHandler(language)}
-                                </button>)}
+                                </motion.button>)}
                         </div>
                     </div>
                     {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
                     <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python) ? ` ${findFilteredLanguage()}`: ""}</p>
                 </div>
                 <ul className="projects-grid">
-                    {cardDetails.map(v => { return (
+                    {cardDetails.map(v => (
                         <FadeInDiv fadeInClass={2}>
                             <ProjectCard key={v.title} title={v.title} description={v.description} githubSrc={v.githubSrc} externalSrc={v.externalSrc} techList={v.techList} techTag={v.techTag}/>
                         </FadeInDiv>
-                    )})}
+                    ))}
                 </ul>
             </section>
     );
