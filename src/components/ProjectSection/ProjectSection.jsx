@@ -99,6 +99,14 @@ function ProjectSection() {
             "techTag": "JS React CSS",
         },
         {
+            "title": "Tic-Tac-Toe",
+            "description": "Simple tic-tac-toe game made with JavaScript.",
+            "githubSrc": "https://github.com/RobbieBendick/tic-tac-toe",
+            "externalSrc": "https://robbiebendick.github.io/tic-tac-toe/",
+            "techList": ["JS", "HTML", "CSS"],
+            "techTag": "JS",
+        },
+        {
             "title": "Blog",
             "description": "Not a personal blog; Blog for proof of concept.",
             "githubSrc": "https://github.com/RobbieBendick/blog",

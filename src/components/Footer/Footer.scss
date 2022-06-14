@@ -12,17 +12,18 @@
     color: var(--light-slate);
     font-size: 12px;
     line-height: 1;
+    letter-spacing: 0.7px;
     p {
-        margin: 20px 0 0 0;
+        margin: 13px 0 3px 0;
         font-size: 13px;
     }
     small {
         font-size: 10px;
-        padding-top: 4px;
     }
     .footer-socials {
         display: flex;
         flex-direction: row;
+        justify-content: center;
         margin-top: 10px;
         gap: 18px;
         a {
