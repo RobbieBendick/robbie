@@ -195,8 +195,7 @@
     box-shadow: 0px 8px 16px 0px var(--navy-shadow);
     z-index: 1;
     border: 1px solid var(--navy-shadow);
-
-
+    
     /* Links inside the dropdown */
     button {
         color: var(--lightest-slate);
@@ -229,11 +228,9 @@
             color: var(--light-green)
         }
     }
-
     button:nth-child(1) {
         margin-top: 0.7rem;
     }
-  
     //  JS pic
     button:nth-child(2)::before {
         content: url('../../Assets/JavaScript-logo.png');

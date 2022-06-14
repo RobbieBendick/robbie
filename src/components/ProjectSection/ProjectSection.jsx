@@ -275,18 +275,18 @@ function ProjectSection() {
     }
 
     if (projectAmount.JS === 0) {
-        let all = 0;
+        let c = 0;
         for (let i = 0; i < cardDetails.length; i++) {
-            const e = cardDetails[i];
-            if (e.techList.includes("JS")) projectAmount.JS++;
-            if (e.techList.includes("Python")) projectAmount.Python++;
-            if (e.techList.includes("Node")) projectAmount.Node++;
-            if (e.techList.includes("Lua")) projectAmount.Lua++;
-            all++;
+            const card = cardDetails[i];
+            if (card.techList.includes("JS")) projectAmount.JS++;
+            if (card.techList.includes("Python")) projectAmount.Python++;
+            if (card.techList.includes("Node")) projectAmount.Node++;
+            if (card.techList.includes("Lua")) projectAmount.Lua++;
+            c++;
         }
         setProjectAmount({
-            ...projectAmount, "All": all
-        })
+            ...projectAmount, "All": c
+        });
     }
 
 
