@@ -55,8 +55,11 @@ function ProjectSection() {
     });
 
     // filter button reference
-    let filterRef = useRef();
+    let filterButtonRef = useRef();
 
+    // filter dropdown reference
+    let filterDropdownRef = useRef();
+    
     // all project cards
     const cardDetails = [
         {
@@ -228,10 +231,11 @@ function ProjectSection() {
         if (language === "Python") setFilter({"All": false,"JS": false,"Python": true,"Node": false,"Lua": false});
         if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false});
         if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true});
-    }
-    
-    // returns a check mark string to place next to the clicked filter
-    let checkHandler = language => {
+        closeDropdown();
+        }
+        
+        // returns a check mark string to place next to the clicked filter
+        let checkHandler = language => {
         let str = "";
         if (language === "All") if (filter.All) str = "✓";
         if (language === "JS") if (filter.JS) str = "✓";
@@ -240,14 +244,12 @@ function ProjectSection() {
         if (language === "Lua") if (filter.Lua) str = "✓";
         return str;
     }
+    let closeDropdown = () => ($(".dropdown-content").hasClass("show-instant")) ? $(".dropdown-content").removeClass("show-instant") : "";
 
     // Close the filter-dropdown menu if the user clicks outside of it
     useEffect(() => {
         document.addEventListener('mousedown', event => {
-            if (!filterRef.current.contains(event.target)) {
-                let dropdown = $(".dropdown-content");
-                if (dropdown.hasClass("show-instant")) dropdown.removeClass("show-instant");   
-            }
+            if (!filterButtonRef.current.contains(event.target) && !filterDropdownRef.current.contains(event.target)) closeDropdown();
         })
     });
 
@@ -278,6 +280,14 @@ function ProjectSection() {
         return str;
     }
 
+    let dontAllowReclick = language => {
+        if (language === "All" && filter.All) closeDropdown();
+        if (language === "JS" && filter.JS) closeDropdown();
+        if (language === "Python" && filter.Python) closeDropdown();
+        if (language === "Node" && filter.Node) closeDropdown();
+        if (language === "Lua" && filter.Lua) closeDropdown();
+    }
+
     // sets amount of projects per language
     if (projectAmount.JS === 0) {
         let c = 0;
@@ -305,16 +315,16 @@ function ProjectSection() {
                 <div className="container">
                     <div className="dropdown filter-button">
                         <FadeInDiv fadeInClass={2}>
-                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} whileHover={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} ref={filterRef} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
+                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} whileHover={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} ref={filterButtonRef} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
                         </FadeInDiv>
-                        <div id="filterDropdown" className="dropdown-content">
-                            {filterOptions.map((language) => <button name={language} onClick={() => {
+                        <div id="filterDropdown" ref={filterDropdownRef} className="dropdown-content">
+                            {filterOptions.map(language => <button name={language} onClick={() => {
                                 // dont allow reclick if alrdy activated
-                                if (language === "All" && filter.All) return
-                                if (language === "JS" && filter.JS) return
-                                if (language === "Python" && filter.Python) return
-                                if (language === "Node" && filter.Node) return
-                                if (language === "Lua" && filter.Lua) return
+                                if (language === "All" && filter.All) return closeDropdown();
+                                if (language === "JS" && filter.JS) return closeDropdown();
+                                if (language === "Python" && filter.Python) return closeDropdown();
+                                if (language === "Node" && filter.Node) return closeDropdown();
+                                if (language === "Lua" && filter.Lua) return closeDropdown();
                                 filterHandler(language);
                                 stateHandler(language);
                             }}>
