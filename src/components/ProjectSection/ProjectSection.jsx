@@ -99,6 +99,14 @@ function ProjectSection() {
             "techTag": "JS React CSS",
         },
         {
+            "title": "Simon Clone",
+            "description": "Web clone of the game 'Simon'.",
+            "githubSrc": "https://github.com/RobbieBendick/memorizing-game",
+            "externalSrc": "https://robbiebendick.github.io/memorizing-game/",
+            "techList": ["JS", "JQuery", "CSS", "HTML"],
+            "techTag": "JS CSS",
+        },
+        {
             "title": "Tic-Tac-Toe",
             "description": "Simple tic-tac-toe game made with JavaScript.",
             "githubSrc": "https://github.com/RobbieBendick/tic-tac-toe",
@@ -121,12 +129,11 @@ function ProjectSection() {
             "techTag": "Lua",
         },
         {
-            "title": "Simon Clone",
-            "description": "Web clone of the game 'Simon'.",
-            "githubSrc": "https://github.com/RobbieBendick/memorizing-game",
-            "externalSrc": "https://robbiebendick.github.io/memorizing-game/",
-            "techList": ["JS", "JQuery", "CSS", "HTML"],
-            "techTag": "JS CSS",
+            "title": "Crown",
+            "description": "Fullstack community web-app with user accounts, user authentication, forums and 3rd-party API integration.",
+            "githubSrc": "https://github.com/matthewdawkins/crownguild",
+            "techList": ["JS", "Node", "Express", "MongoDB"],
+            "techTag": "JS Node",
         },
         {
             "title": "PartyFrames",
@@ -172,6 +179,7 @@ function ProjectSection() {
             "techTag": "JS Node CSS",
         },
     ]
+
     let filterHandler = language => {
         let anchors = $(".project-card");        
         // adding invis to all cards to allow them to appear at the same time
@@ -242,6 +250,46 @@ function ProjectSection() {
         if (filter.Lua) str = "Filter: Lua";
         return str;
     }
+
+
+
+    const [projectAmount, setProjectAmount] = useState(
+        {
+            "All": 0,
+            "JS": 0,
+            "Python": 0,
+            "Node": 0,
+            "Lua": 0,
+        }
+    )
+
+    let amountHandler = language => {
+        let str;
+        if (language === "All") str = `(${projectAmount.All})`;
+        if (language === "JS") str = `(${projectAmount.JS})`;
+        if (language === "Python") str = `(${projectAmount.Python})`;
+        if (language === "Node") str = `(${projectAmount.Node})`;
+        if (language === "Lua") str = `(${projectAmount.Lua})`;
+
+        return str;
+    }
+
+    if (projectAmount.JS === 0) {
+        let all = 0;
+        for (let i = 0; i < cardDetails.length; i++) {
+            const e = cardDetails[i];
+            if (e.techList.includes("JS")) projectAmount.JS++;
+            if (e.techList.includes("Python")) projectAmount.Python++;
+            if (e.techList.includes("Node")) projectAmount.Node++;
+            if (e.techList.includes("Lua")) projectAmount.Lua++;
+            all++;
+        }
+        setProjectAmount({
+            ...projectAmount, "All": all
+        })
+    }
+
+
     let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
      return (
             <section id="projects" className="project-section">
@@ -266,13 +314,17 @@ function ProjectSection() {
                                 filterHandler(language);
                                 stateHandler(language);
                             }}>
-                                {language}{" "}
+                                {language}
+                                {" "}
+                                {amountHandler(language)}
+                                {" "}
                                 {/* add a check by default */}
-                            {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" 
-                            ? "✓"
-                            : ""
-                            : ""}
-                            {checkHandler(language)}</button>)}
+                                {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" 
+                                ? "✓"
+                                : ""
+                                : ""}
+                                {}
+                                {checkHandler(language)}</button>)}
                         </div>
                     </div>
                     {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
