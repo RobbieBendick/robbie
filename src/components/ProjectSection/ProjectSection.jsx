@@ -6,7 +6,6 @@ import $ from "jquery";
 
 
 function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
-
     return (
         <motion.a  className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
@@ -46,6 +45,7 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
 }
 
 function ProjectSection() {
+    // all filters
     const [filter, setFilter] = useState({
         "All": true,
         "JS": false,
@@ -53,6 +53,8 @@ function ProjectSection() {
         "Node": false,
         "Lua": false,
     });
+
+    // all project cards
     const cardDetails = [
         {
             "title": "ArenaMarker",
@@ -178,8 +180,19 @@ function ProjectSection() {
             "techList": ["JS", "Node", "Express", "CSS"],
             "techTag": "JS Node CSS",
         },
-    ]
-
+    ];
+    // stores the project amount per language
+    const [projectAmount, setProjectAmount] = useState(
+        {
+            "All": 0,
+            "JS": 0,
+            "Python": 0,
+            "Node": 0,
+            "Lua": 0,
+        }
+    );
+    
+    // shows and hides cards based on filter
     let filterHandler = language => {
         let anchors = $(".project-card");        
         // adding invis to all cards to allow them to appear at the same time
@@ -204,6 +217,8 @@ function ProjectSection() {
             }
         }, 20);
     }
+
+    // sets the state of the current filter
     let stateHandler = language => {
         if (language === "All") setFilter({"All": true, "JS": false, "Python": false, "Node": false, "Lua": false});
         if (language === "JS") setFilter({"All": false, "JS": true, "Python": false, "Node": false, "Lua": false});
@@ -211,6 +226,7 @@ function ProjectSection() {
         if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false});
         if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true});
     }
+    // returns a check mark string to place next to the clicked filter
     let checkHandler = language => {
         let str = "";
         if (language === "All") if (filter.All) str = "✓";
@@ -221,6 +237,7 @@ function ProjectSection() {
         return str;
     }
 
+    // closes filter dropdown
     useEffect(() => {
         // Close the filter-dropdown menu if the user clicks outside of it
         window.onclick = event => {
@@ -236,12 +253,13 @@ function ProjectSection() {
         }
     });
 
+    // toggles filter dropdown
     let showFilterDropdown = () => {
         let dropdown = document.getElementById("filterDropdown");
-
         dropdown.classList.toggle('show-instant');
     };
 
+    // return a string of the current filtered language
     let findFilteredLanguage = () => {
         let str = "";
         if (filter.JS) str = "Filter: JS";
@@ -251,19 +269,8 @@ function ProjectSection() {
         return str;
     }
 
-
-
-    const [projectAmount, setProjectAmount] = useState(
-        {
-            "All": 0,
-            "JS": 0,
-            "Python": 0,
-            "Node": 0,
-            "Lua": 0,
-        }
-    )
-
-    let amountHandler = language => {
+    // returns a string of the number of projects per language
+    let projectsPerLanguage = language => {
         let str;
         if (language === "All") str = `(${projectAmount.All})`;
         if (language === "JS") str = `(${projectAmount.JS})`;
@@ -274,6 +281,7 @@ function ProjectSection() {
         return str;
     }
 
+    // sets amount of projects per language
     if (projectAmount.JS === 0) {
         let c = 0;
         for (let i = 0; i < cardDetails.length; i++) {
@@ -288,7 +296,6 @@ function ProjectSection() {
             ...projectAmount, "All": c
         });
     }
-
 
     let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
      return (
@@ -316,15 +323,15 @@ function ProjectSection() {
                             }}>
                                 {language}
                                 {" "}
-                                {amountHandler(language)}
+                                {projectsPerLanguage(language)}
                                 {" "}
                                 {/* add a check by default */}
                                 {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" 
                                 ? "✓"
                                 : ""
                                 : ""}
-                                {}
-                                {checkHandler(language)}</button>)}
+                                {checkHandler(language)}
+                                </button>)}
                         </div>
                     </div>
                     {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
