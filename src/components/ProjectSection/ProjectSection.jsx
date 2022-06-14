@@ -1,5 +1,5 @@
 import "./ProjectSection.scss";
-import {React, useEffect, useState} from "react";
+import {React, useEffect, useState, useRef} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import $ from "jquery";
@@ -53,6 +53,9 @@ function ProjectSection() {
         "Node": false,
         "Lua": false,
     });
+
+    // filter button reference
+    let filterRef = useRef();
 
     // all project cards
     const cardDetails = [
@@ -132,7 +135,7 @@ function ProjectSection() {
         },
         {
             "title": "Crown",
-            "description": "Fullstack community web-app with user accounts, user authentication, forums and 3rd-party API integration.",
+            "description": "Fullstack community web app with user accounts, user authentication, forums and 3rd-party API integration.",
             "githubSrc": "https://github.com/matthewdawkins/crownguild",
             "techList": ["JS", "Node", "Express", "MongoDB"],
             "techTag": "JS Node",
@@ -191,7 +194,7 @@ function ProjectSection() {
             "Lua": 0,
         }
     );
-    
+
     // shows and hides cards based on filter
     let filterHandler = language => {
         let anchors = $(".project-card");        
@@ -226,6 +229,7 @@ function ProjectSection() {
         if (language === "Node") setFilter({"All": false, "JS": false, "Python": false, "Node": true, "Lua": false});
         if (language === "Lua") setFilter({"All": false, "JS": false, "Python": false, "Node": false, "Lua": true});
     }
+    
     // returns a check mark string to place next to the clicked filter
     let checkHandler = language => {
         let str = "";
@@ -237,20 +241,14 @@ function ProjectSection() {
         return str;
     }
 
-    // closes filter dropdown
+    // Close the filter-dropdown menu if the user clicks outside of it
     useEffect(() => {
-        // Close the filter-dropdown menu if the user clicks outside of it
-        window.onclick = event => {
-            if (!event.target.matches('.dropbtn')) {
-                let dropdowns = document.getElementsByClassName("dropdown-content");
-                for (let i = 0; i < dropdowns.length; i++) {
-                    let openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show-instant')) {
-                        openDropdown.classList.remove('show-instant');
-                    }
-                }
+        document.addEventListener('mousedown', event => {
+            if (!filterRef.current.contains(event.target)) {
+                let dropdown = $(".dropdown-content");
+                if (dropdown.hasClass("show-instant")) dropdown.removeClass("show-instant");   
             }
-        }
+        })
     });
 
     // toggles filter dropdown
@@ -277,7 +275,6 @@ function ProjectSection() {
         if (language === "Python") str = `(${projectAmount.Python})`;
         if (language === "Node") str = `(${projectAmount.Node})`;
         if (language === "Lua") str = `(${projectAmount.Lua})`;
-
         return str;
     }
 
@@ -308,7 +305,7 @@ function ProjectSection() {
                 <div className="container">
                     <div className="dropdown filter-button">
                         <FadeInDiv fadeInClass={2}>
-                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} whileHover={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
+                            <motion.button whileFocus={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} whileHover={{"backgroundColor": "hsl(166, 100%, 70% / 0.1)"}} onClick={() => showFilterDropdown()} ref={filterRef} className="dropbtn">Filter <i class="fa-solid fa-arrow-down-short-wide"></i></motion.button>
                         </FadeInDiv>
                         <div id="filterDropdown" className="dropdown-content">
                             {filterOptions.map((language) => <button name={language} onClick={() => {
