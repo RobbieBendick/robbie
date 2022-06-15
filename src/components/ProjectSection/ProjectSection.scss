@@ -203,7 +203,7 @@
     .language-img-container {
         display: inline-block;
         position: relative;
-        left: 5px;
+        left: 8px;
         @for $i from 1 to 5 {
             img:nth-child(#{$i}) {
                 position: relative;

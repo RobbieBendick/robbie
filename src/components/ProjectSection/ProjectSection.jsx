@@ -209,6 +209,8 @@ function ProjectSection() {
         }
     );
 
+    let filterKeys = Object.keys(filter);
+
     // shows and hides cards based on filter
     let filterHandler = language => {
         let anchors = $(".project-card");        
@@ -243,51 +245,31 @@ function ProjectSection() {
         closeDropdown();
     }
         
-        // returns a check mark string to place next to the clicked filter
-        let checkHandler = language => {
+    // returns a check mark string to place next to the clicked filter
+    let checkHandler = language => {
         let str = "";
-        if (language === "All") if (filter.All) str = "✓";
-        if (language === "JS") if (filter.JS) str = "✓";
-        if (language === "Python") if (filter.Python) str = "✓";
-        if (language === "Node") if (filter.Node) str = "✓";
-        if (language === "Lua") if (filter.Lua) str = "✓";
+        for (let key of filterKeys) if (language === key) if (filter[key]) str = "✓";
         return str;
     }
 
     // toggles filter dropdown
-    let showFilterDropdown = () => {
-        let dropdown = document.getElementById("filterDropdown");
-        dropdown.classList.toggle('show-instant');
-    };
+    let showFilterDropdown = () => document.getElementById("filterDropdown").classList.toggle('show-instant');
 
     // return a string of the current filtered language
     let findFilteredLanguage = () => {
         let str = "";
-        if (filter.JS) str = "Filter: JS";
-        if (filter.Python) str = "Filter: Python";
-        if (filter.Node) str = "Filter: Node";
-        if (filter.Lua) str = "Filter: Lua";
+        for (let key of filterKeys) if (key !== "All") if (filter[key]) str = `Filter: ${key}`;
         return str;
     }
 
     // returns a string of the number of projects per language
     let projectsPerLanguage = language => {
-        let str;
-        if (language === "All") str = `(${projectAmount.All})`;
-        if (language === "JS") str = `(${projectAmount.JS})`;
-        if (language === "Python") str = `(${projectAmount.Python})`;
-        if (language === "Node") str = `(${projectAmount.Node})`;
-        if (language === "Lua") str = `(${projectAmount.Lua})`;
-        return str;
+        for(let key of filterKeys) if (key === language) return `(${projectAmount[key]})`;
     }
-    
+
     let filterLinkOnClickHandler = language => {
         // dont allow reclick if alrdy activated
-        if (language === "All" && filter.All) return closeDropdown();
-        if (language === "JS" && filter.JS) return closeDropdown();
-        if (language === "Python" && filter.Python) return closeDropdown();
-        if (language === "Node" && filter.Node) return closeDropdown();
-        if (language === "Lua" && filter.Lua) return closeDropdown();
+        for(let key of filterKeys) if (language === key && filter[key]) return closeDropdown();
         filterHandler(language);
         stateHandler(language);
     }
@@ -296,15 +278,17 @@ function ProjectSection() {
     if (projectAmount.JS === 0) {
         for (let i = 0; i < cardDetails.length; i++) {
             const card = cardDetails[i];
-            if (card.techTag.split(" ").includes("JS")) projectAmount.JS++;
-            if (card.techTag.split(" ").includes("Python")) projectAmount.Python++;
-            if (card.techTag.split(" ").includes("Node")) projectAmount.Node++;
-            if (card.techTag.split(" ").includes("Lua")) projectAmount.Lua++;
+            // traverse through filter keys and increment each project with a its associated techTag 
+            for (let key of filterKeys) if (card.techTag.split(" ").includes(`${key}`)) projectAmount[key]++;
         }
     }
-    
-    let filterOptions = ["All", "JS", "Python", "Node", "Lua"];
 
+    let atleastOneFilterIsActive = () => {
+        for (let key of filterKeys) if (key !== "All") if (filter[key]) return true;
+        return false;
+    }
+    
+    let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic];
      return (
             <section id="projects" className="project-section">
                 <FadeInDiv fadeInClass={2}>
@@ -319,27 +303,20 @@ function ProjectSection() {
                         </FadeInDiv>
                         <div id="filterDropdown" ref={filterDropdownRef} className="dropdown-content">
                             <div className="language-img-container">
-                                <img width="15" height="15" src={JS_pic}></img>
-                                <img width="15" height="15" src={PYTHON_pic}></img>
-                                <img width="15" height="15" src={NODE_pic}></img>
-                                <img width="15" height="15" src={LUA_pic}></img>
+                                {languageImages.map(v => <img width="15" height="15" src={v} alt="Programming Language Icon" />)}
                             </div>
-                            {filterOptions.map(language => <motion.button whileFocus={{"color": "hsl(166, 100%, 70%)"}} whileHover={{"color": "hsl(166, 100%, 70%)"}} name={language} onClick={() => filterLinkOnClickHandler(language)}>
+                            {filterKeys.map(language => <motion.button whileFocus={{"color": "hsl(166, 100%, 70%)"}} whileHover={{"color": "hsl(166, 100%, 70%)"}} name={language} onClick={() => filterLinkOnClickHandler(language)}>
                                 {language}
                                 {" "}
                                 {projectsPerLanguage(language)}
                                 {" "}
                                 {/* add a check by default */}
-                                {!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python ? language === "All" 
-                                ? "✓"
-                                : ""
-                                : ""}
                                 {checkHandler(language)}
                                 </motion.button>)}
                         </div>
                     </div>
                     {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
-                    <p className="filtering light-slate-color">{!(!filter.All && !filter.JS && !filter.Lua && !filter.Node && !filter.Python) ? ` ${findFilteredLanguage()}`: ""}</p>
+                    <p className="filtering light-slate-color">{atleastOneFilterIsActive() ? ` ${findFilteredLanguage()}`: ""}</p>
                 </div>
                 <ul className="projects-grid">
                     {cardDetails.map(v => (
