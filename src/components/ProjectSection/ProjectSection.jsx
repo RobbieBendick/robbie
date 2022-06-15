@@ -283,7 +283,7 @@ let ProjectSection = () => {
         for (let i = 0; i < cardDetails.length; i++) {
             const card = cardDetails[i];
             // traverse through filter keys and increment each project with a its associated techTag 
-            for (let key of filterKeys) if (card.techTag.split(" ").includes(`${key}`)) projectAmount[key]++;
+            for (let key of filterKeys) if (card.techTag.split(" ").includes(key)) projectAmount[key]++;
         }
     }
 
