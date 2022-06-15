@@ -12,7 +12,7 @@ import LUA_pic from "../../Assets/lua-logo.png";
 
 function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
     return (
-        <motion.a  className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
+            <a className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
                     <div className="card">
                         <header>
@@ -45,11 +45,11 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
                         </footer>
                     </div>
                 </motion.div>
-        </motion.a>
+            </a>
     )
 }
 
-function ProjectSection() {
+let ProjectSection = () => {
     // all filters
     const [filter, setFilter] = useState({
         "All": true,
@@ -65,12 +65,8 @@ function ProjectSection() {
     // filter dropdown reference
     let filterDropdownRef = useRef();
 
-    // close the filter-dropdown menu if the user clicks outside of it
-    useEffect(() => {
-        document.addEventListener('mousedown', event =>
-            !filterButtonRef.current.contains(event.target) && !filterDropdownRef.current.contains(event.target) && closeDropdown()
-        );
-    });
+    // list of filter keys
+    let filterKeys = Object.keys(filter);
 
     // all project cards
     const cardDetails = [
@@ -198,6 +194,14 @@ function ProjectSection() {
             "techTag": "JS Node CSS",
         },
     ];
+
+    // close the filter-dropdown menu if the user clicks outside of it
+    useEffect(() => {
+        document.addEventListener('mousedown', event =>
+            !filterButtonRef.current.contains(event.target) && !filterDropdownRef.current.contains(event.target) && closeDropdown()
+        );
+    });
+
     // stores the project amount per language
     const [projectAmount, setProjectAmount] = useState(
         {
@@ -208,8 +212,6 @@ function ProjectSection() {
             "Lua": 0,
         }
     );
-
-    let filterKeys = Object.keys(filter);
 
     // shows and hides cards based on filter
     let filterHandler = language => {
@@ -233,7 +235,11 @@ function ProjectSection() {
         }, 20);
     }
 
-    let closeDropdown = () => ($(".dropdown-content").hasClass("show-instant")) && $(".dropdown-content").removeClass("show-instant");
+    // toggles filter dropdown
+    let showFilterDropdown = () => document.getElementById("filterDropdown").classList.toggle('show-instant');
+
+    // closes filter-dropdown
+    let closeDropdown = () => $(".dropdown-content").hasClass("show-instant") && $(".dropdown-content").removeClass("show-instant");
 
     // sets the state of the current filter
     let stateHandler = language => {
@@ -252,9 +258,6 @@ function ProjectSection() {
         return str;
     }
 
-    // toggles filter dropdown
-    let showFilterDropdown = () => document.getElementById("filterDropdown").classList.toggle('show-instant');
-
     // return a string of the current filtered language
     let findFilteredLanguage = () => {
         let str = "";
@@ -270,6 +273,7 @@ function ProjectSection() {
     let filterLinkOnClickHandler = language => {
         // dont allow reclick if alrdy activated
         for(let key of filterKeys) if (language === key && filter[key]) return closeDropdown();
+        
         filterHandler(language);
         stateHandler(language);
     }
@@ -310,13 +314,12 @@ function ProjectSection() {
                                 {" "}
                                 {projectsPerLanguage(language)}
                                 {" "}
-                                {/* add a check by default */}
                                 {checkHandler(language)}
                                 </motion.button>)}
                         </div>
                     </div>
                     {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
-                    <p className="filtering light-slate-color">{atleastOneFilterIsActive() ? ` ${findFilteredLanguage()}`: ""}</p>
+                    <p className="filtering light-slate-color">{atleastOneFilterIsActive() ? findFilteredLanguage() : ""}</p>
                 </div>
                 <ul className="projects-grid">
                     {cardDetails.map(v => (
