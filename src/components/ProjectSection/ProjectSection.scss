@@ -207,7 +207,7 @@
         @for $i from 1 to 5 {
             img:nth-child(#{$i}) {
                 position: relative;
-                top:32px;
+                top: 32px;
                 z-index: #{$i};
             }
     }
@@ -321,14 +321,12 @@
     .project-inner {
         margin-inline: auto;
     }
-    .projects p{
+    .projects p {
         text-align: left;
     }
-
     .projects-grid {
         justify-content: center;
     }
-    
     ul.projects-grid {
         a {
             width: fill-available;

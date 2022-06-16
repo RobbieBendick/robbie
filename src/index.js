@@ -4,6 +4,7 @@ import { HashRouter as Router, Route, Routes} from "react-router-dom";
 import './index.scss';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
+import LeetCode from './components/LeetCode/LeetCode';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -12,6 +13,7 @@ root.render(
     <Routes>
       <Route path='/' element={<Home />}/>
       <Route path='/resume' element={<Resume />} />
+      <Route path='/leetcode' element={<LeetCode />} />
     </Routes>
   </Router>
 );

@@ -1,0 +1,52 @@
+table {
+    margin-top: 5rem;
+    width: 70%;
+    margin-inline: auto;
+
+}
+table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    color: var(--lightest-slate)
+}
+
+.leetcode-title {
+    font-weight: 500;
+    font-size: 21px;
+}
+
+
+table td, table th {
+    border-bottom: 1px solid var(--slate);
+    border-top: 1px solid var(--slate);
+    padding: 10px;
+}
+
+table {
+    border: 1px solid var(--slate);
+}
+
+tr > td:not(td:first-of-type), tr > th:not(th:first-of-type) {
+    text-align: center;
+}
+
+.easy {
+    color: #48c78e;
+}
+
+.medium {
+    color: #946c00;
+}
+
+table button {
+    font-size: 1rem;
+    background-color: hsl(153, 53%, 53%,  0.1);
+    border-radius: 9999px;
+    padding: 0.1em 1.25em;
+    color: #48c78e;
+    border: transparent;
+}
+
+tr > td:first-of-type {
+    color: var(--lightest-slate);
+}

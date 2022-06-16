@@ -28,7 +28,7 @@ let Nav = () => {
     useEffect(() => {
         $(document).ready(() => {
 
-            var previousScroll = 0;
+                var previousScroll = 0;
             
             $(window).scroll(function() {
             

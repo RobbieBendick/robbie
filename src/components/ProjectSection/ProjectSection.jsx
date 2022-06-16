@@ -40,7 +40,7 @@ function ProjectCard({title, description, techList, githubSrc, externalSrc, tech
                         </header>
                         <footer>
                             <ul className="project-tech-list">
-                                {techList.map(tech => <li>{tech}</li>)}
+                                {techList && techList.map(tech => <li>{tech}</li>)}
                             </ul>
                         </footer>
                     </div>
@@ -307,7 +307,7 @@ let ProjectSection = () => {
                         </FadeInDiv>
                         <div id="filterDropdown" ref={filterDropdownRef} className="dropdown-content">
                             <div className="language-img-container">
-                                {languageImages.map(v => <img width="15" height="15" src={v} alt="Programming Language Icon" />)}
+                                {languageImages.map(pic => <img width="15" height="15" src={pic} alt="Programming Language Icon" />)}
                             </div>
                             {filterKeys.map(language => <motion.button whileFocus={{"color": "hsl(166, 100%, 70%)"}} whileHover={{"color": "hsl(166, 100%, 70%)"}} name={language} onClick={() => filterLinkOnClickHandler(language)}>
                                 {language}
