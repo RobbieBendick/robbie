@@ -1,6 +1,6 @@
 table {
     margin-top: 5rem;
-    width: 70%;
+    width: 80%;
     margin-inline: auto;
 
 }
@@ -35,7 +35,8 @@ tr > td:not(td:first-of-type), tr > th:not(th:first-of-type) {
 }
 
 .medium {
-    color: #946c00;
+    color: hsl(44, 98%, 50%);
+    background-color: hsl(44, 98%, 50%, 0.1);
 }
 
 table button {
@@ -49,4 +50,28 @@ table button {
 
 tr > td:first-of-type {
     color: var(--lightest-slate);
+}
+
+.modal-content {
+    background-color: var(--lightest-navy) !important;
+
+}
+
+.btn-close {
+    color: var(--slate) !important;
+}
+
+.modal-footer {
+    justify-content: space-between;
+}
+
+.modal-title {
+    color: var(--lightest-slate);
+}
+
+@media (min-width: 576px){
+
+    .modal-dialog {
+        max-width: 900px;
+    }
 }
