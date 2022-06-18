@@ -31,12 +31,15 @@ tr > td:not(td:first-of-type), tr > th:not(th:first-of-type) {
 }
 
 .easy {
-    color: #48c78e;
+    color: hsl(153, 53%, 53%) !important;
+    background-color: hsl(153, 53%, 53%, 0.1) !important;
+    font-weight: 600;
 }
 
 .medium {
-    color: hsl(44, 98%, 50%);
-    background-color: hsl(44, 98%, 50%, 0.1);
+    color: hsl(44, 98%, 50%) !important;
+    background-color: hsl(44, 98%, 50%, 0.1) !important;
+    font-weight: 600;
 }
 
 table button {
@@ -44,13 +47,26 @@ table button {
     background-color: hsl(153, 53%, 53%,  0.1);
     border-radius: 9999px;
     padding: 0.1em 1.25em;
-    color: #48c78e;
+    color: var(--light-green);
     border: transparent;
 }
 
 tr > td:first-of-type {
     color: var(--lightest-slate);
 }
+
+.modal-header .btn-close {
+
+}
+
+.modal-header .modal-title:last-of-type:not(.modal-title:first-of-type) {
+    margin-left: 1.5rem;
+    font-size: 15px;
+    border-radius: 100vw;
+    padding: 2px 15px;
+    font-weight: 600;
+}
+
 
 .modal-content {
     background-color: var(--lightest-navy) !important;
