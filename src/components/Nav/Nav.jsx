@@ -159,7 +159,7 @@ let Nav = () => {
                         </div>
                         :
                         <ol class="navbar-nav ml-auto">
-                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.1, duration: 0.4}}  className="nav-item">
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.1, duration: 0.4}} whileFocus={{color: "hsl(166, 100%, 70%)"}} whileHover={{color: "hsl(166, 100%, 70%)"}} className="nav-item">
                                 <button class="nav-link" onClick={() => smoothScroll("#about")}>About</button>
                             </motion.li>
                             <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.2, duration: 0.4}}  className="nav-item">

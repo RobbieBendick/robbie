@@ -15,6 +15,7 @@ let LeetCode = () => {
             "title": "",
             "difficulty": "",
             "language": "",
+            "problemHref": "",
             "problem": "",
             "problemDescription": "",
             "solution": "",
@@ -22,32 +23,33 @@ let LeetCode = () => {
             "timeComplexity": "",
         })
 
-    const handleShow = (title, solution, problemDescription, problem, solutionDescription, timeComplexity, difficulty) => {
-        setModalInfo({title: title, solution: solution, problemDescription: problemDescription, problem, solutionDescription, timeComplexity, difficulty })
+    const handleShow = (title, solution, problemHref, problemDescription, problem, solutionDescription, timeComplexity, difficulty) => {
+        setModalInfo({title: title, solution: solution, problemHref: problemHref, problemDescription: problemDescription, problem, solutionDescription, timeComplexity, difficulty })
         setShow(true);
     };
     let MyModal = () => {
         let navyShadow = "hsl(216, 86%, 6%, 0.7)";
         let slate = 'hsl(225, 20%, 61%)';
         let lightestSlate = 'hsl(226, 70%, 88%)';
-        const {title, solution, problemDescription, problem, solutionDescription, timeComplexity, difficulty} = modalInfo;
+        let lightestNavy = 'hsl(218, 41%, 23%)';
+        const {title, solution, problemHref, problemDescription, problem, solutionDescription, timeComplexity, difficulty} = modalInfo;
         return (
               <>
                 <Modal show={show} onHide={handleClose} style={{width: "100%",backgroundColor: 'hsl(216, 65%, 11%)',  border: 'none', boxShadow: `0 10px 30px -15px ${navyShadow}`}}>
-                <Modal.Header  closeButton style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none'}}>
-                    <Modal.Title style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: lightestSlate, display: 'flex'}}>{title}</Modal.Title>
+                <Modal.Header  closeButton style={{ backgroundColor: lightestNavy, border: 'none'}}>
+                    <Modal.Title style={{ backgroundColor: lightestNavy, border: 'none', color: lightestSlate, display: 'flex'}}><motion.a whileHover={{color: 'hsl(166, 100%, 70%)'}} href={problemHref}>{title}</motion.a></Modal.Title>
                     <Modal.Title className={difficulty.toLowerCase()}>{difficulty}</Modal.Title>
                   </Modal.Header>
-                <Modal.Body style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: slate}}>{problemDescription}</Modal.Body>
-                <Modal.Body style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: slate}}>{problem}</Modal.Body>
-                <Modal.Header  style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none'}}>
-                    <Modal.Title style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: lightestSlate}}>{"Solution"}</Modal.Title>
+                <Modal.Body style={{ backgroundColor: lightestNavy, border: 'none', color: slate}}>{problemDescription}</Modal.Body>
+                <Modal.Body style={{ backgroundColor: lightestNavy, border: 'none', color: slate}}>{problem}</Modal.Body>
+                <Modal.Header  style={{ backgroundColor: lightestNavy, border: 'none'}}>
+                    <Modal.Title style={{ backgroundColor: lightestNavy, border: 'none', color: lightestSlate}}>{"Solution"}</Modal.Title>
                 </Modal.Header>
-                  <Modal.Body style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: slate}}>{solution}</Modal.Body>
-                  <Modal.Footer style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: slate }}>
+                  <Modal.Body style={{ backgroundColor: lightestNavy, border: 'none', color: slate}}>{solution}</Modal.Body>
+                  <Modal.Footer style={{ backgroundColor: lightestNavy, border: 'none', color: slate }}>
                     <p>{solutionDescription}</p>
                   </Modal.Footer>
-                  <Modal.Footer style={{ backgroundColor: 'hsl(218, 41%, 23%)', border: 'none', color: slate }}>
+                  <Modal.Footer style={{ backgroundColor: lightestNavy, border: 'none', color: slate }}>
                     <p>Time Complexity: {timeComplexity}</p>
                   </Modal.Footer>
                 </Modal>
@@ -58,12 +60,12 @@ let LeetCode = () => {
 
     let Table = () => {
 
-        let tableBodyRow = (title, difficulty, language, problemDescription, problem, solution, solutionDescription, timeComplexity) => {
+        let tableBodyRow = (title, difficulty, language, problemHref, problemDescription, problem, solution, solutionDescription, timeComplexity) => {
             return (
             <tr>
-                <td>{title}</td>
+                <td><motion.a whileHover={{color: 'hsl(166, 100%, 70%)'}} href={problemHref} target="_blank" rel="noopener noreferrer">{title}</motion.a></td>
                 <td><button className={difficulty.toLowerCase()}>{difficulty}</button></td>
-                <td><motion.button whileHover={{backgroundColor: 'hsl(166, 100%, 70%, / 0.1)'}} onClick={() => handleShow(title, solution, problemDescription, problem, solutionDescription, timeComplexity, difficulty)}>Explanation</motion.button></td>
+                <td><motion.button whileHover={{backgroundColor: 'hsl(166, 100%, 70%, / 0.1)'}} onClick={() => handleShow(title, solution, problemHref, problemDescription, problem, solutionDescription, timeComplexity, difficulty)}>Explanation</motion.button></td>
                 <td>{language}</td>
             </tr>
             )
@@ -75,6 +77,7 @@ let LeetCode = () => {
             "title": "Find First and Last Position of Element in Sorted Array",
             "difficulty": "Medium",
             "language": "JavaScript",
+            "problemHref": "https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/",
             "problemDescription": "Given an array of integers nums sorted in non-decreasing order, find the starting and ending position of a given target value. If target is not found in the array, return [-1, -1].",
             "problem": <SyntaxHighlighter>{`Example 1: Input: nums = [5,7,7,8,8,10], target = 8;\n           Output: [3,4];\nExample 2: Input: nums = [5,7,7,8,8,10], target = 6;\n           Output: [-1,-1];\nExample 3: Input: nums = [], target = 0;\n           Output: [-1,-1];\n`}</SyntaxHighlighter>,
             "solutionDescription": "Solution Description",
@@ -193,7 +196,7 @@ Example 3 Input: nums = [], target = 0;\n
                             </tr>
                         </thead>
                         <tbody>
-                            {tableRows.map(v => tableBodyRow(v.title, v.difficulty, v.language, v.problemDescription, v.problem, v.solution, v.solutionDescription, v.timeComplexity))}
+                            {tableRows.map(v => tableBodyRow(v.title, v.difficulty, v.language, v.problemHref, v.problemDescription, v.problem, v.solution, v.solutionDescription, v.timeComplexity))}
                         </tbody>
                     </table>
             <MyModal />

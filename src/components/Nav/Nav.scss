@@ -163,11 +163,13 @@ nav {
     letter-spacing: 1.2px;
     cursor: pointer;
     background-color: transparent;
+    transition: color 200ms ease;
     border: none;
   }
   .nav-link:hover,  
   .nav-link:focus {
     color: var(--light-green) !important;
+    transition: color 200ms ease;
   }
   .navbar-brand {
     padding-top: 0.9125rem;
