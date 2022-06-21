@@ -21,7 +21,8 @@ let LeetCode = () => {
             "solution": "",
             "solutionDescription": "",
             "timeComplexity": "",
-        })
+        }
+    );
 
     const handleShow = (title, solution, problemHref, problemDescription, problem, solutionDescription, timeComplexity, difficulty) => {
         setModalInfo({title: title, solution: solution, problemHref: problemHref, problemDescription: problemDescription, problem, solutionDescription, timeComplexity, difficulty })
@@ -85,24 +86,10 @@ let LeetCode = () => {
 `let searchRange = (nums, target) => {
     let first = -1;
     let last = -1;
-    let j = nums.length;
-
-    // if array is empty or has 1 element
-    if (nums.length === 0) return [first,last];
-    if (nums.length === 1) return nums[0] === target ? [0, 0] : [first, last];
-
-    // traverse through list from both ways
     for(i=0;i<nums.length;i++){
         if(nums[i] === target && first === -1) first = i;
-        if(nums[j] === target && last === -1) last = j;
-        j--;
+        if(nums[i] === target && first !== -1 && nums[i+1] !== target) last = i;
     }
-                
-    // if there's only one target in the array
-    if (first === -1 && last !== -1) first = last;
-    if (last === -1 && first !== -1) last = first;
-
-    // return array of first and last indices.
     return [first, last];
 };`}
             </SyntaxHighlighter>,
