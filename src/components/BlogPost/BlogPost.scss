@@ -1,7 +1,10 @@
 .blog-post-title {
-    padding: 20px 0;
+    padding: 20px 0; 
+    color: var(--lightest-slate);
 }
 
 .blog-post-container {
-    padding: 40px;
+    max-width: 80%;
+    margin-left: 5.5%;
+    padding-top: 5%;
 }
