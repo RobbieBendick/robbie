@@ -28,7 +28,7 @@ let Nav = () => {
     useEffect(() => {
         $(document).ready(() => {
 
-                var previousScroll = 0;
+            var previousScroll = 0;
             
             $(window).scroll(function() {
             
@@ -128,77 +128,81 @@ let Nav = () => {
         });
     }
 
-const removeHash = () => window.history.pushState("", document.title, `${window.location.pathname}${window.location.search}`);
-const blog = () => {
-    window.history.pushState("", document.title, `/#/blog${window.location.search}`);
-    window.location.reload();
-}
     let home = window.location.hash === '';
 
     let homeIconHandler = () => {
         if (home) window.scrollTo(0,0)
         else {
+            closeSidebar();
             window.location.hash = '';
-            console.log("a");
-            setSidebarIsOpen("false");
+            setSidebarIsOpen(false);
         } 
     }
 
+
+    let hrefFinder = () => {
+        let dev = process.env.NODE_ENV === 'development';
+        let ans;
+        dev ? ans = "" : ans = process.env.PUBLIC_URL;
+        return ans;
+    }
     return (
         <>
         {home &&
             <button className="skip-nav-link" onClick={() => smoothScroll("#about")}>
                 Skip navigation
             </button>
-            }
+        }
             
-            <nav id="navbar" class="navbar navbar-light sticky">
-                <button class="navbar-brand" onClick={homeIconHandler}>
-                    <Signature />
-                </button>
-                <div id="navbarNav">
-                        {isMobile ?
-                        <div style={{"display": "block"}}> 
-                            <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={() => {
-                                toggleSidebar();
-                            }}>
-                                <div className="ham-box">
-                                    <div className="ham-box-inner">
-                                    </div>
+        <nav id="navbar" class="navbar navbar-light sticky">
+            <button class="navbar-brand" onClick={homeIconHandler}>
+                <Signature />
+            </button>
+            <div id="navbarNav">
+                    {isMobile ?
+                    <div style={{"display": "block"}}> 
+                        <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={() => {
+                            toggleSidebar();
+                        }}>
+                            <div className="ham-box">
+                                <div className="ham-box-inner">
                                 </div>
-                            </button>
-                            <aside ref={menuRef} id="mySidenav" class="sidenav">
-                                {home ?                                 <ol>
-                                    <SidebarAnchorItem txt="About" href="#about"/>
-                                    <SidebarAnchorItem txt="Projects" href="#projects"/>
-                                    <SidebarAnchorItem txt="Contact" href="#contact"/>
-                                </ol> : <button onClick={()=>homeIconHandler()}><i class="fa-solid fa-arrow-left"></i>Go back home</button>}
+                            </div>
+                        </button>
+                        <aside ref={menuRef} id="mySidenav" class="sidenav">
+                            {home ?                                 <ol>
+                                <SidebarAnchorItem txt="About" href="#about"/>
+                                <SidebarAnchorItem txt="Projects" href="#projects"/>
+                                <SidebarAnchorItem txt="Contact" href="#contact"/>
+                            </ol> : <button onClick={homeIconHandler}><i class="fa-solid fa-arrow-left"></i>Go back home</button>}
 
-                                <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={() => closeSidebar()} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
-                            </aside>
-                        </div>
-                        :
-                        <ol class="navbar-nav ml-auto">
-                            {home ?
-                                <>
-                                <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.1, duration: 0.4}} whileFocus={{color: "hsl(166, 100%, 70%)"}} whileHover={{color: "hsl(166, 100%, 70%)"}} className="nav-item">
-                                    <button class="nav-link" onClick={() => smoothScroll("#about")}>About</button>
-                                </motion.li>
-                                <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.2, duration: 0.4}}  className="nav-item">
-                                    <button class="nav-link" onClick={() => smoothScroll("#projects")}>Projects</button>
-                                </motion.li>
-                                <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.3, duration: 0.4}}  className="nav-item">
-                                    <button class="nav-link" onClick={() => smoothScroll("#contact")}>Contact</button>
-                                </motion.li>
-                                </> : null}
+                            <motion.a href={`${hrefFinder()}/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={() => closeSidebar()} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                            <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={() => closeSidebar()} className="sidebar-blog-button">Blog</motion.a>
+                        </aside>
+                    </div>
+                    :
+                    <ol class="navbar-nav ml-auto">
+                        {home ?
+                            <>
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.1, duration: 0.4}} whileFocus={{color: "hsl(166, 100%, 70%)"}} whileHover={{color: "hsl(166, 100%, 70%)"}} className="nav-item">
+                                <button class="nav-link" onClick={() => smoothScroll("#about")}>About</button>
+                            </motion.li>
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.2, duration: 0.4}}  className="nav-item">
+                                <button class="nav-link" onClick={() => smoothScroll("#projects")}>Projects</button>
+                            </motion.li>
+                            <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.3, duration: 0.4}}  className="nav-item">
+                                <button class="nav-link" onClick={() => smoothScroll("#contact")}>Contact</button>
+                            </motion.li>
+                            </> : <motion.a onClick={homeIconHandler} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                        transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Home</motion.a>}
 
-                            <motion.a href={`${process.env.PUBLIC_URL}/#/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
-                            transition={{ delay: 0.4, duration: 0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
-                            {home &&                             <motion.a onClick={() => blog()} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
-                            transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>}
+                        <motion.a href={`${hrefFinder()}/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                        transition={{ delay: 0.4, duration: 0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                        {home && <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                        transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>}
 
-                        </ol>
-                        }
+                    </ol>
+                    }
                 </div>
             </nav>
         </>

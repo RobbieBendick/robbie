@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import "./BlogPost.scss";
-import { useParams } from 'react-router-dom';
 import BlogPostList from "../BlogPostList/BlogPostList";
 import Nav from "../Nav/Nav"
 
-let BlogPost = () => {
-    const { id } = useParams();
+let BlogPost = ({id}) => {
 
     // find which post was clicked on
     let filtered = BlogPostList.filter(item => item.id == id);

@@ -1,15 +1,15 @@
 .blog-list-container {
     padding: 40px 0px 20px 0px;
     &::after {
-            content: '';
-            display: block;
-            position: relative;
-            bottom: -50px;
-            height: 1px;
-            width: 100%;
-            background: var(--slate);
-            opacity: 0.3;
-            margin: 10px 0;
+          content: '';
+          display: block;
+          position: relative;
+          bottom: -50px;
+          height: 1px;
+          width: 100%;
+          background: var(--slate);
+          opacity: 0.3;
+          margin: 10px 0;
         }
     a {
         position: relative;
@@ -22,7 +22,7 @@
     }
       
       a::before {
-        content: "";
+        content: '';
         position: absolute;
         display: block;
         width: 100%;
@@ -34,12 +34,12 @@
         transition: transform 0.3s ease;
         margin: 10px 0;
       }
-      
+
     
       .blog-list-title {
         padding: 20px 0;
         & > a::before {
-          content: "";
+          content: '';
           position: absolute;
           display: block;
           width: 100%;
@@ -59,9 +59,9 @@
 
 
 .blog-parent {
-    max-width: 80%;
-    margin-left: 4.5%;
-    padding-top: 5%;
-    display: flex;
-    flex-direction: column;
+  max-width: 80%;
+  margin-left: 4.5%;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
 }
