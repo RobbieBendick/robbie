@@ -138,8 +138,9 @@ const blog = () => {
     let homeIconHandler = () => {
         if (home) window.scrollTo(0,0)
         else {
-            removeHash();
-            window.location.reload();
+            window.location.hash = '';
+            console.log("a");
+            setSidebarIsOpen("false");
         } 
     }
 

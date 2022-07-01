@@ -1,6 +1,9 @@
 .blog-post-title {
     padding: 20px 0; 
     color: var(--lightest-slate);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 7px;
 }
 
 .blog-post-container {

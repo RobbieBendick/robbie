@@ -19,7 +19,7 @@ let SettingUpMongoDB = () => {
                     Now that we've made our .bash_profile file, we're going to allow our terminal to easily communicate with MongoDB by editing this file, but first we need to know exactly what version we're working with.
                 </li>
                 <li>
-                    In your C: directory, there should be a <b>Program Files > MongoDB > Server > VersionNumber</b>. In my case It's 5.0, but double check to make sure.
+                    In your C: directory, there should be a <b>Program Files {'>'} MongoDB {'>'} Server {'>'} VersionNumber</b>. In my case It's 5.0, but double check to make sure.
                 </li>
                 <li>
                    Okay, now we're finally ready to edit this file. In my case I'll be using vim. While still in the home directory, type <code>vim .bash_profile</code>
