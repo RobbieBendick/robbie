@@ -1,0 +1,28 @@
+
+.blog-post-list {
+    li {
+        padding: 12px;
+        list-style: circle;
+    }
+
+    code {
+        background-color: rgb(20, 20, 20, 0.7);
+        color: var(--light-green);
+    }
+
+    a {
+        position: relative;
+        color: var(--light-green);
+        text-decoration: none;
+    }
+
+}
+
+
+.sub-bullet-point {
+    list-style-type: disc !important;
+}
+
+.blog-list-title > a {
+    color: var(--lightest-slate) !important;
+}

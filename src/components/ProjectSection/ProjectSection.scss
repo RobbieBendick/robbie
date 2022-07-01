@@ -264,7 +264,7 @@
     }
     //  JS pic
     button:nth-child(3)::before {
-        content: url('../../Assets/JavaScript-logo.png');
+        content: url('../../Assets/images/JavaScript-logo.png');
         display: inline-block;
         position:relative; /*or absolute*/
         z-index:100000; /*a number that's more than the modal box*/
@@ -275,7 +275,7 @@
         
     // PYTHON
     button:nth-child(4)::before {
-        content: url('../../Assets/python-logo.png');
+        content: url('../../Assets/images/python-logo.png');
         display: inline-block;
         position: relative; /*or absolute*/
         z-index:100000; /*a number that's more than the modal box*/
@@ -286,7 +286,7 @@
 
     // NODE
     button:nth-child(5)::before {
-        content: url('../../Assets/node-logo.png');
+        content: url('../../Assets/images/node-logo.png');
         display: inline-block;
         position: relative; /*or absolute*/
         z-index:100000; /*a number that's more than the modal box*/
@@ -296,7 +296,7 @@
 
     // LUA
     button:nth-child(6)::before {
-        content: url('../../Assets/lua-logo.png');
+        content: url('../../Assets/images/lua-logo.png');
         display: inline-block;
         position: relative; /*or absolute*/
         z-index:100000; /*a number that's more than the modal box*/
@@ -307,7 +307,7 @@
 
     // CSS
     button:nth-child(7)::before {
-        content: url('../../Assets/css-logo.png');
+        content: url('../../Assets/images/css-logo.png');
         display: inline-block;
         position: relative; /*or absolute*/
         z-index:100000; /*a number that's more than the modal box*/

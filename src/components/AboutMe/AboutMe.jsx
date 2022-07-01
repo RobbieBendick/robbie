@@ -1,5 +1,5 @@
 import "./AboutMe.scss";
-import Dog from "../../Assets/dog.jpg";
+import Dog from "../../Assets/images/dog.jpg";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 
 

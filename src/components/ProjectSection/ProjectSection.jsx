@@ -3,10 +3,10 @@ import {React, useEffect, useState, useRef} from "react";
 import {motion} from "framer-motion";
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import $ from "jquery";
-import JS_pic from "../../Assets/JavaScript-logo.png";
-import PYTHON_pic from "../../Assets/python-logo.png";
-import NODE_pic from "../../Assets/node-logo.png"
-import LUA_pic from "../../Assets/lua-logo.png";
+import JS_pic from "../../Assets/images/JavaScript-logo.png";
+import PYTHON_pic from "../../Assets/images/python-logo.png";
+import NODE_pic from "../../Assets/images/node-logo.png"
+import LUA_pic from "../../Assets/images/lua-logo.png";
 
 
 
