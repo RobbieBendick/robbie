@@ -4,6 +4,7 @@ import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
 import Signature from "../../Assets/Signature";
+import { Link } from "@reach/router";
 
 let Nav = () => {    
     const isMobile = mobile();
@@ -72,7 +73,7 @@ let Nav = () => {
         // allow scrolling
         document.body.style.overflow = "inherit";
         // unblur everything
-        $("#root > *:not(aside)").css({"filter": "none"});
+        $("#root > * > *:not(aside)").css({"filter": "none"});
         $(".nav-btn").removeClass("changed");
         //re-enable all buttons
         $(disabledButtonSelector).removeAttr("disabled");
@@ -91,7 +92,7 @@ let Nav = () => {
             // prevent scrolling
             document.body.style.overflow = "hidden";
             // blur behind sidebar
-            $("#root > *:not(aside)").css({"filter": "blur(4px)"});
+            $("#root > * > *:not(aside)").css({"filter": "blur(4px)"});
             // disable all buttons
             $(disabledButtonSelector).attr("disabled", "disabled");
             // disable all links
@@ -128,17 +129,16 @@ let Nav = () => {
         });
     }
 
-    let home = window.location.hash === '';
+    let home = window.location.pathname === '/';
 
     let homeIconHandler = () => {
         if (home) window.scrollTo(0,0)
         else {
+            window.location.pathname = '/';
             closeSidebar();
-            window.location.hash = '';
             setSidebarIsOpen(false);
         } 
     }
-
 
     let hrefFinder = () => {
         let dev = process.env.NODE_ENV === 'development';
@@ -161,9 +161,7 @@ let Nav = () => {
             <div id="navbarNav">
                     {isMobile ?
                     <div style={{"display": "block"}}> 
-                        <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={() => {
-                            toggleSidebar();
-                        }}>
+                        <button className='nav-btn' aria-label="Menu" ref={menuToggleButtonRef} onClick={toggleSidebar}>
                             <div className="ham-box">
                                 <div className="ham-box-inner">
                                 </div>
@@ -174,10 +172,10 @@ let Nav = () => {
                                 <SidebarAnchorItem txt="About" href="#about"/>
                                 <SidebarAnchorItem txt="Projects" href="#projects"/>
                                 <SidebarAnchorItem txt="Contact" href="#contact"/>
-                            </ol> : <button onClick={homeIconHandler}><i class="fa-solid fa-arrow-left"></i>Go back home</button>}
+                            </ol> : <Link to="/"><i class="fa-solid fa-arrow-left"></i> Home</Link>}
 
-                            <motion.a href={`${hrefFinder()}/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={() => closeSidebar()} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
-                            <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={() => closeSidebar()} className="sidebar-blog-button">Blog</motion.a>
+                            <motion.a href={`${hrefFinder()}/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                            <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-blog-button">Blog</motion.a>
                         </aside>
                     </div>
                     :
