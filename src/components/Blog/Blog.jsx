@@ -2,8 +2,12 @@ import "./Blog.scss";
 import React from "react";
 import BlogPostList from "../../components/BlogPostList/BlogPostList";
 import Nav from "../Nav/Nav";
+import { useEffect } from "react";
 
 let Blog = () => {
+    useEffect(() => {
+        document.title = "Robbie's Blog"
+    }, []);
         return (
             <>
             <Nav />

@@ -134,9 +134,8 @@ let Nav = () => {
     let homeIconHandler = () => {
         if (home) window.scrollTo(0,0)
         else {
-            window.location.pathname = '/';
-            closeSidebar();
             setSidebarIsOpen(false);
+            window.location.pathname = '/';
         } 
     }
 
@@ -168,14 +167,18 @@ let Nav = () => {
                             </div>
                         </button>
                         <aside ref={menuRef} id="mySidenav" class="sidenav">
-                            {home ?                                 <ol>
+                            {home ? 
+                            <ol>
                                 <SidebarAnchorItem txt="About" href="#about"/>
                                 <SidebarAnchorItem txt="Projects" href="#projects"/>
                                 <SidebarAnchorItem txt="Contact" href="#contact"/>
-                            </ol> : <Link to="/"><i class="fa-solid fa-arrow-left"></i> Home</Link>}
+                            </ol> : <a className="home-sidebar-button" href="/"><i class="fa-solid fa-arrow-left"></i> Home</a>}
 
-                            <motion.a href={`${hrefFinder()}/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
-                            <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-blog-button">Blog</motion.a>
+                            <div className="button-container">
+                                <motion.a href={`${hrefFinder()}/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
+                                {home && <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button">Blog</motion.a>}
+                            </div>
+                            
                         </aside>
                     </div>
                     :

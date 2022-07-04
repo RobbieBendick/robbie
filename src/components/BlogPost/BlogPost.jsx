@@ -1,13 +1,15 @@
-import { useState } from 'react';
 import "./BlogPost.scss";
 import BlogPostList from "../BlogPostList/BlogPostList";
 import Nav from "../Nav/Nav"
+import { useEffect } from 'react';
 
 let BlogPost = ({id}) => {
 
     // find which post was clicked on
     let filtered = BlogPostList.filter(item => item.id == id);
-
+    useEffect(() => {
+        document.title = `${filtered[0].title} | Robbie`;
+    }, []);
     return (
         <>
         <Nav />
