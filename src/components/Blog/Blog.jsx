@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 let Blog = () => {
     useEffect(() => {
-        document.title = "Robbie's Blog"
+        document.title = "Robert's Blog"
     }, []);
         return (
             <>

@@ -4,13 +4,13 @@ let SettingUpMongoDB = () => {
         <div className="blog-post-list">
             <ol>
                 <li>
-                    Download the latest <b>MSI file</b> version of MongoDB from their official site <a href="https://www.mongodb.com/try/download/community">here</a>
+                    Download the latest <b>MSI file</b> version of MongoDB from their official site <a href="https://www.mongodb.com/try/download/community">here</a>.
                 </li>
                 <li>
-                    Open your terminal, change directory into your home folder <code>cd ~</code>
+                    Open your terminal, change directory into your home folder <code>cd ~</code>.
                 </li>
                 <li>
-                    Create a file named <b>.bash_profile</b> <code>touch .bash_profile</code>
+                    Create a file named <b>.bash_profile</b> <code>touch .bash_profile</code>.
                 </li>
                 <li>
                     You can confirm you've made this file: <code>ls -a</code> .bash_profile should be in that list.
@@ -19,10 +19,10 @@ let SettingUpMongoDB = () => {
                     Now that we've made our .bash_profile file, we're going to allow our terminal to easily communicate with MongoDB by editing this file, but first we need to know exactly what version we're working with.
                 </li>
                 <li>
-                    In your C: directory, there should be a <b>Program Files {'>'} MongoDB {'>'} Server {'>'} VersionNumber</b>. In my case It's 5.0, but double check to make sure.
+                    In your C: directory, there should be a <b>Program Files {'>'} MongoDB {'>'} Server {'>'} VersionNumber</b>. In my case it's 5.0, but double check on your end to make sure.
                 </li>
                 <li>
-                   Okay, now we're finally ready to edit this file. In my case I'll be using vim. While still in the home directory, type <code>vim .bash_profile</code>
+                   Okay, now we're finally ready to edit this file. In my case I'll be using vim. While still in the home directory, type <code>vim .bash_profile</code>.
                 </li>
                 <li>
                     When this file is open in vim, hit <code>i</code> for <i>insert mode</i> so we're able to type in our file then either type or copy paste these two lines: <br /><code>alias mongod='/c/Program\ Files/MongoDB/Server/5.0/bin/mongod.exe'</code><br /><code>alias  mongo='/c/Program\ Files/MongoDB/Server/5.0/bin/mongo.exe'</code>
