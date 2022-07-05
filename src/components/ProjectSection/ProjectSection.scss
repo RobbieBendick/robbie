@@ -303,17 +303,6 @@
         left: -62px;
         top: 28px;
     }
-    
-
-    // CSS
-    button:nth-child(7)::before {
-        content: url('../../Assets/images/css-logo.png');
-        display: inline-block;
-        position: relative; /*or absolute*/
-        z-index:100000; /*a number that's more than the modal box*/
-        left: -62px;
-        top: 25px;
-    }
   }
 
 //  1084px and down

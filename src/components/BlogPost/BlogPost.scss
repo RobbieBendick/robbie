@@ -28,3 +28,60 @@ li a::after {
 li a:hover::before {
     transform: scaleX(1);
 }
+
+a::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 2px;
+    bottom: -10px;
+    left: 0;
+    background-color: var(--light-green);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+    margin: 10px 0;
+}
+
+
+.back-button {
+    cursor: pointer;
+    position: relative;
+    bottom: 2em;
+    font-size: larger;
+    font-family: mono;
+    color: var(--light-green);
+    &:hover, &:active, &:focus {
+        color: var(--light-green);
+    }
+    &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 2px;
+        bottom: -10px;
+        left: 0;
+        background-color: var(--light-green);
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+        margin: 10px 0;
+    }
+    &:hover::before, &:active::before, &:focus::before {
+        transform: scaleX(1);
+    }
+}
+
+
+
+@media only screen and (max-width: 1280px) {
+    .back-button {
+        bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .back-button {
+        bottom: 0;
+    }
+}
