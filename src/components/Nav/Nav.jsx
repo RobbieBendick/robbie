@@ -4,7 +4,6 @@ import $ from "jquery";
 import {motion} from "framer-motion";
 import mobile from "../../hooks/useCheckMobileScreen";
 import Signature from "../../Assets/Signature";
-import { Link } from "@reach/router";
 
 let Nav = () => {    
     const isMobile = mobile();
@@ -172,9 +171,11 @@ let Nav = () => {
                                 <SidebarAnchorItem txt="About" href="#about"/>
                                 <SidebarAnchorItem txt="Projects" href="#projects"/>
                                 <SidebarAnchorItem txt="Contact" href="#contact"/>
-                            </ol> : <a className="home-sidebar-button" href="/"><i class="fa-solid fa-arrow-left"></i> Home</a>}
+                            </ol> :
+                             <a className="home-sidebar-button" href="/"><i class="fa-solid fa-arrow-left"></i> Home</a>}
 
                             <div className="button-container">
+                                {window.location.pathname !== "/blog" && !home && <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button">Blog</motion.a>}
                                 <motion.a href={`${hrefFinder()}/resume`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                                 {home && <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button">Blog</motion.a>}
                             </div>
@@ -198,9 +199,9 @@ let Nav = () => {
                             
                             
                             <motion.a href="/" initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
-                        transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Home</motion.a>}
+                        transition={{ delay: 0.4, duration: 0.4 }} className="resume-button">Home</motion.a>}
                         
-                        {window.location.pathname !== '/blog' && <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                        {(window.location.pathname !== '/blog' && !home) && <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
                         transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>}
 
                         <motion.a href={`${hrefFinder()}/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}

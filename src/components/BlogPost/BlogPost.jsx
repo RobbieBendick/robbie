@@ -2,7 +2,6 @@ import "./BlogPost.scss";
 import BlogPostList from "../BlogPostList/BlogPostList";
 import Nav from "../Nav/Nav"
 import { useEffect } from 'react';
-import {Link} from '@reach/router';
 
 let BlogPost = ({id}) => {
 
@@ -15,7 +14,7 @@ let BlogPost = ({id}) => {
         <>
         <Nav />
         <div className='blog-post-container'>
-            <Link className="back-button" to="/blog"><i class="fa-solid fa-arrow-left"></i> Back</Link>
+            <a className="back-button" href="/blog"><i class="fa-solid fa-arrow-left"></i> Back</a>
             <h1 className='blog-post-title'>{filtered[0].title}</h1>
 
             {/* JSX element */}

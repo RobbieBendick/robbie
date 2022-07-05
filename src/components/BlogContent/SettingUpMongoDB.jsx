@@ -1,6 +1,8 @@
 import React from "react";
+import Footer from "../Footer/Footer"
 let SettingUpMongoDB = () => {
     return (
+        <>
         <div className="blog-post-list">
             <ol>
                 <li>
@@ -31,11 +33,13 @@ let SettingUpMongoDB = () => {
                     </ul>
                 </li>
                 <li>
-                    Now we are done editing the file! To save and exit the file in vim, you have to hit <b>Esc</b> to exit <b>Insert</b> mode and type: <code>:wq!</code>.
+                    Now we are done editing the file! To save and exit the file in vim, you have to hit <b>Esc</b> to exit <b>Insert</b> mode and type <code>:wq!</code>.
                 </li>
                 <li>We are done! Load a new terminal up and type <code>mongo --version</code> to check if it's working properly. If you see a version number, congrats! You're now able to work with MongoDB through the terminal. If not, try to retrace your steps and reread this post. </li>
             </ol>
         </div>
+        <Footer />
+        </>
     )
 }
 
