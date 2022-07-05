@@ -52,7 +52,7 @@
           margin: 10px 0;
         }
     }
-    a:hover::before {
+    a:hover::before, a:active::before, a:focus::before {
       transform: scaleX(1);
     }
 }

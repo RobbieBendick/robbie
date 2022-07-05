@@ -194,8 +194,14 @@ let Nav = () => {
                             <motion.li initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{delay: 0.3, duration: 0.4}}  className="nav-item">
                                 <button class="nav-link" onClick={() => smoothScroll("#contact")}>Contact</button>
                             </motion.li>
-                            </> : <motion.a onClick={homeIconHandler} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                            </> :
+                            
+                            
+                            <motion.a href="/" initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
                         transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Home</motion.a>}
+                        
+                        {window.location.pathname !== '/blog' && <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                        transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>}
 
                         <motion.a href={`${hrefFinder()}/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
                         transition={{ delay: 0.4, duration: 0.4 }} className="resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
