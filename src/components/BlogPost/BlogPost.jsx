@@ -6,10 +6,12 @@ import { useEffect } from 'react';
 let BlogPost = ({id}) => {
 
     // find which post was clicked on
-    let filtered = BlogPostList.filter(item => item.id == id);
+    let filtered = BlogPostList.filter(e => e.id == id);
+
     useEffect(() => {
         document.title = `${filtered[0].title} | Robert`;
-    }, []);
+    }, [filtered]);
+
     return (
         <>
         <Nav />
@@ -22,8 +24,6 @@ let BlogPost = ({id}) => {
         </div>
         </>
     )
-
-
 }
 
 export default BlogPost

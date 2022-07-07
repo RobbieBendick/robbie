@@ -13,15 +13,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(  
   <Router>
     <Home path='/'/>
-    <Blog path='/blog'/>
     <Resume path='/resume'/>
-    <BlogPost path='post/:id'/>
-
-    {/* <Route path='/' exact element={<Home />}/>
-    <Route path='/resume' element={<Resume />} />
-    <Route path='/leetcode' element={<LeetCode />} />
-    <Route path='/blog' element={<Blog />} />
-    <Route path='post/:id' element={<BlogPost />} /> */}
+    <Blog path='/blog'/>
+    <BlogPost path='/post/:id'/>
   </Router>
 );
 

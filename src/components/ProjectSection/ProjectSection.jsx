@@ -10,7 +10,7 @@ import LUA_pic from "../../Assets/images/lua-logo.png";
 
 
 
-function ProjectCard({title, description, techList, githubSrc, externalSrc, techTag}) {
+let ProjectCard = ({title, description, techList, githubSrc, externalSrc, techTag}) => {
     return (
             <a className={`${techTag} project-card`} href={externalSrc || githubSrc} target="_blank" rel="noopener noreferrer">
                 <motion.div whileHover={{y: "-5px" }} className="project-inner">
