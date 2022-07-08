@@ -38,7 +38,6 @@ let SettingUpMongoDB = () => {
                 <li>We are done! Load a new terminal up and type <code>mongo --version</code> to check if it's working properly. If you see a version number, congrats! You're now able to work with MongoDB through the terminal. If not, try to retrace your steps and reread this post. </li>
             </ol>
         </div>
-        <Footer />
         </>
     )
 }

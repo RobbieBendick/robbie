@@ -1,5 +1,6 @@
 import "./BlogPost.scss";
 import BlogPostList from "../BlogPostList/BlogPostList";
+import Footer from "../Footer/Footer";
 import Nav from "../Nav/Nav"
 import { useEffect } from 'react';
 
@@ -22,6 +23,7 @@ let BlogPost = ({id}) => {
             {/* JSX element */}
             {filtered[0].body}
         </div>
+        <Footer />
         </>
     )
 }
