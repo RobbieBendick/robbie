@@ -130,12 +130,10 @@ body {
 
 ::-webkit-scrollbar-track {
   background: var(--navy);
-  border-radius: 100vw;
 }
 
 ::-webkit-scrollbar-thumb {
   background: hsla(225, 20%, 61%, 0.5);
-  border-radius: 100vw;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: hsla(225, 20%, 61%, 0.8);

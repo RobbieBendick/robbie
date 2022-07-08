@@ -119,6 +119,7 @@ let LeetCode = () => {
             right = mid - 1;
         }
     }
+    return temp;
 };`}
             </SyntaxHighlighter>,
             "timeComplexity": "O(log n)",
@@ -133,7 +134,7 @@ let LeetCode = () => {
         for(j=0;j<nums.length;j++) {
             if (Math.abs(nums[i] - nums[j]) <= t &&
             Math.abs(i - j) <= k && i !== j)
-            return true
+            return true;
         } 
     }
     return false
