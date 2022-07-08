@@ -1,23 +1,13 @@
 import "./BlogPostList.scss";
-import SettingUpMongoDB from "../BlogContent/SettingUpMongoDB"
+import SettingUpMongoDB from "../BlogContent/SettingUpMongoDB";
+import ImplementingJWT from "../BlogContent/ImplementingJWT";
 
 let dev = process.env.NODE_ENV === 'development';
 
-let body2 = () => {
-    return (
-        <div>
-            this is the secnond body in a func
-        </div>
-    )
-}
-
 let hrefFinder = () => {
     let ans;
-    if (dev) {
-        ans = "";
-    } else {
-        ans = process.env.PUBLIC_URL;
-    }
+    if (dev) ans = "";
+    else ans = process.env.PUBLIC_URL;
     return ans;
 }
 
@@ -40,15 +30,15 @@ let BlogPostList = [
     },
     {
         id: 2,
-        title: "title2",
-        titleDescription: truncate("afhaefhhhhhhhhhhhhhhhasdadsasdafhafgaef", `${hrefFinder()}/post/2`),
-        body: body2(),
+        title: "Implementing Bcrypt & JWT in Node.js",
+        titleDescription: truncate("Today we'll be using Node.js, along the Express.js framework to implement bcrypt and JWT", `${hrefFinder()}/post/2`),
+        body: <ImplementingJWT />,
         href: `${hrefFinder()}/post/2`
     },
     {
         id: 3,
         title: `title3`,
-        titleDescription: truncate("afhaefhhhhhhhhhhhhhhhasdadsasdafhafgaef", `${hrefFinder()}  /post/3`),
+        titleDescription: truncate("afhaefhhhhhhhhhhhhhhhasdadsasdafhafgaef", `${hrefFinder()}/post/3`),
         body: `body3`,
         href: `${hrefFinder()}/post/3`
     },

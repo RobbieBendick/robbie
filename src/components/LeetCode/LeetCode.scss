@@ -77,7 +77,11 @@ table {
     
     .modal-title {
         color: var(--lightest-slate);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        text-decoration-thickness: 1px;
     }
+
     // medium/easy buttons on modal
     .modal-header .modal-title:last-of-type:not(.modal-title:first-of-type) {
         margin-left: 1.5rem;

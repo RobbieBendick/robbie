@@ -39,12 +39,12 @@ let LeetCode = () => {
                 <Modal show={show} onHide={handleClose} style={{width: "100%",backgroundColor: 'hsl(216, 65%, 11%)',  border: 'none', boxShadow: `0 10px 30px -15px ${navyShadow}`}}>
                 <Modal.Header  closeButton style={{ backgroundColor: lightestNavy, border: 'none'}}>
                     <Modal.Title style={{ backgroundColor: lightestNavy, border: 'none', color: lightestSlate, display: 'flex'}}><motion.a whileHover={{color: 'hsl(166, 100%, 70%)'}} href={problemHref}>{title}</motion.a></Modal.Title>
-                    <Modal.Title className={difficulty.toLowerCase()}>{difficulty}</Modal.Title>
+                    <Modal.Title className={difficulty.toLowerCase()} style={{textDecoration: 'none'}}>{difficulty}</Modal.Title>
                   </Modal.Header>
                 <Modal.Body style={{ backgroundColor: lightestNavy, border: 'none', color: slate}}>{problemDescription}</Modal.Body>
                 <Modal.Body style={{ backgroundColor: lightestNavy, border: 'none', color: slate}}>{problem}</Modal.Body>
                 <Modal.Header  style={{ backgroundColor: lightestNavy, border: 'none'}}>
-                    <Modal.Title style={{ backgroundColor: lightestNavy, border: 'none', color: lightestSlate}}>{"Solution"}</Modal.Title>
+                    <Modal.Title className="modal-title" style={{ backgroundColor: lightestNavy, border: 'none', color: lightestSlate}}>{"Solution"}</Modal.Title>
                 </Modal.Header>
                   <Modal.Body style={{ backgroundColor: lightestNavy, border: 'none', color: slate}}>{solution}</Modal.Body>
                   <Modal.Footer style={{ backgroundColor: lightestNavy, border: 'none', color: slate }}>
@@ -84,16 +84,44 @@ let LeetCode = () => {
             "solutionDescription": "Solution Description",
             "solution": <SyntaxHighlighter language="javascript">{
 `let searchRange = (nums, target) => {
-    let first = -1;
-    let last = -1;
-    for(i=0;i<nums.length;i++){
-        if(nums[i] === target && first === -1) first = i;
-        if(nums[i] === target && first !== -1 && nums[i+1] !== target) last = i;
+    let left = 0;
+    let right = nums.length - 1;
+    let mid = 0;
+    
+    // If target is not found in the array, return [-1, -1].
+    let temp = [-1, -1];
+    
+    while(left <= right){
+        mid = Math.floor((left + right) / 2);
+        
+        if(nums[mid] === target){
+            temp[0] = mid;
+            right = mid - 1;
+        } else if (nums[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
     }
-    return [first, last];
+    // reset left and right
+    left = 0;
+    right = nums.length - 1;
+    
+    while(left <= right){
+        mid = Math.floor((left + right) / 2);
+        
+        if(nums[mid] === target){
+            temp[1] = mid;
+            left = mid + 1;
+        } else if (nums[mid] < target){
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
 };`}
             </SyntaxHighlighter>,
-            "timeComplexity": "O(n)",
+            "timeComplexity": "O(log n)",
         },
         {
             "title": "Contains Duplicate III", 
@@ -186,9 +214,9 @@ Example 3 Input: nums = [], target = 0;\n
                             {tableRows.map(v => tableBodyRow(v.title, v.difficulty, v.language, v.problemHref, v.problemDescription, v.problem, v.solution, v.solutionDescription, v.timeComplexity))}
                         </tbody>
                     </table>
-            <MyModal />
-            </body>
-        </html>
+                    <MyModal />
+                </body>
+            </html>
         </>
         )
     }

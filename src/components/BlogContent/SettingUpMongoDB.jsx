@@ -6,7 +6,7 @@ let SettingUpMongoDB = () => {
         <div className="blog-post-list">
             <ol>
                 <li>
-                    Download the latest <b>MSI file</b> version of MongoDB from their official site <a href="https://www.mongodb.com/try/download/community">here</a>.
+                    Download the latest <b>MSI file</b> version of MongoDB from their official site <a href="https://www.mongodb.com/try/download/community" target="_blank" rel="noopener noreferrer">here</a>.
                 </li>
                 <li>
                     Open your terminal, change directory into your home folder <code>cd ~</code>.

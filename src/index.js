@@ -16,6 +16,7 @@ root.render(
     <Resume path='/resume'/>
     <Blog path='/blog'/>
     <BlogPost path='/post/:id'/>
+    <LeetCode path='/leetcode'/>
   </Router>
 );
 
