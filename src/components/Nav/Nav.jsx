@@ -105,16 +105,9 @@ let Nav = () => {
     let showNav = () => $("#navbar").removeClass("is-hidden").addClass("is-visible sticky");
    
     let SidebarAnchorItem = ({txt, href}) => {
-        let smoothScroll = () => {
-            document.querySelector(href).scrollIntoView({
-                behavior: "smooth",
-            });
-        }
         return (
             <li>
-                <a href={href} onClick={() => {
-                    closeSidebar();
-                }}>
+                <a href={href} onClick={closeSidebar}>
                     {txt}
                 </a>
             </li>
@@ -175,7 +168,7 @@ let Nav = () => {
 
                             <div className="button-container">
                                 {window.location.pathname !== "/blog" && !home &&
-                                <motion.a href={`${hrefFinder()}/blog`} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button">Blog</motion.a>}
+                                <motion.a href={`${hrefFinder()}/blog`} whileFocus={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button">Blog</motion.a>}
                                 {home && <motion.a href={`${hrefFinder()}/blog`} whileFocus={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button">Blog</motion.a>}
                                 <motion.a href={`${hrefFinder()}/resume`} whileFocus={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} whileHover={{backgroundColor: "hsl(166, 100%, 70% / 0.1)"}} onClick={closeSidebar} className="sidebar-resume-button" target="_blank" rel="noopener noreferrer">Resume</motion.a>
                             </div>
@@ -202,10 +195,9 @@ let Nav = () => {
                             {(window.location.pathname !== '/blog' && !home) &&
                                 <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }} transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>
                             }
-
                             {home && 
-                            <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
-                            transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>
+                                <motion.a href={`${hrefFinder()}/blog`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
+                                transition={{ delay: 0.4, duration: 0.4 }} className="blog-button">Blog</motion.a>
                             }
 
                             <motion.a href={`${hrefFinder()}/resume`} initial={{ x: "10px", y:"-25px", opacity: 0 }} animate={{ y: 0, x: 0, opacity: 1, }}
