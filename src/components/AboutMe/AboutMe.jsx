@@ -11,7 +11,7 @@ function AboutMe() {
                 <div className="inner">
                     <div className="about-left">
                         <div>
-                            <p>Hello! My name is Robert. Back in 2015 I was a professional e-sports player, and ever since then I have fallen in love with learning. The mental side of being a professional player has provided me a unique perspective on the motivation and dedication to learn, and perfect my craft.</p>
+                            <p>Hello! My name is Robert. Back in 2014 I was a professional e-sports player, and ever since then I have fallen in love with learning. The mental side of being a professional player has provided me a unique perspective on the motivation and dedication to learn, and perfect my craft.</p>
                             <p>Fast-forwarding to today, my main focus and passion is building accessible, inclusive products and digital experiences. I’ve had the privilege of working amongst insightful and knowledgable colleagues that have allowed me to continually challenge the way I assess tasks when navigating complicated goals.</p>
                             <p>Here are a few technologies I’ve been working with recently:</p>
                         </div>

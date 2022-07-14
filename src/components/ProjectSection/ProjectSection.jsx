@@ -279,7 +279,7 @@ let ProjectSection = () => {
     }
 
     // sets amount of projects per language
-    if (projectAmount.JS === 0) {
+    if (projectAmount.JS === 0 && cardDetails.length > 0) {
         for (let i = 0; i < cardDetails.length; i++) {
             const card = cardDetails[i];
             // traverse through filter keys and increment each project with a its associated techTag 
