@@ -78,18 +78,18 @@ let ProjectSection = () => {
             "techTag": "Lua",
         },
         {
-            "title": "Dark Theme",
-            "description": "Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.",
-            "githubSrc": "https://github.com/RobbieBendick/DarkTheme",
-            "techList": ["Lua"],
-            "techTag": "Lua",
-        },
-        {
             "title": "A* Pathfinding Algorithm",
             "description": "Calculates and visualizes the fastest route from the starting location to the end location while maneuvering around barricades.",
             "githubSrc": "https://github.com/RobbieBendick/a-star-pathfinding",
             "techList": ["Python"],
             "techTag": "Python",
+        },
+        {
+            "title": "Dark Theme",
+            "description": "Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.",
+            "githubSrc": "https://github.com/RobbieBendick/DarkTheme",
+            "techList": ["Lua"],
+            "techTag": "Lua",
         },
         {
             "title": "Anon",
