@@ -318,8 +318,8 @@ let ProjectSection = () => {
                                 </motion.button>)}
                         </div>
                     </div>
-                    {/* checking to see if there's a valid filter applied and display the filter's name on the screen */}
-                    <p className="filtering light-slate-color">{atleastOneFilterIsActive() ? findFilteredLanguage() : ""}</p>
+                    {/* display filter name */}
+                    <p className="filtering light-slate-color">{findFilteredLanguage()}</p>
                 </div>
                 <ul className="projects-grid">
                     {cardDetails.map(v => (
