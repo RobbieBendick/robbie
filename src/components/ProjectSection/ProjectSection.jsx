@@ -286,11 +286,6 @@ let ProjectSection = () => {
             for (let key of filterKeys) if (card.techTag.split(" ").includes(key)) projectAmount[key]++;
         }
     }
-
-    let atleastOneFilterIsActive = () => {
-        for (let key of filterKeys) if (key !== "All") if (filter[key]) return true;
-        return false;
-    }
     
     let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic];
      return (
