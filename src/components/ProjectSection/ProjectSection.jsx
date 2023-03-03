@@ -85,6 +85,13 @@ let ProjectSection = () => {
             "techTag": "Python",
         },
         {
+            "title": "GladiatorGuru",
+            "description": "A full stack we app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.",
+            "externalSrc": "https://gladiatorguru.com/",
+            "techList": ["React", "JS", "Express", "Mongoose"],
+            "techTag": "JS Node",
+        },
+        {
             "title": "Dark Theme",
             "description": "Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.",
             "githubSrc": "https://github.com/RobbieBendick/DarkTheme",
