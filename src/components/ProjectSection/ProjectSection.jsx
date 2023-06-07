@@ -7,7 +7,7 @@ import JS_pic from '../../Assets/JavaScript-logo.png';
 import PYTHON_pic from '../../Assets/python-logo.png';
 import NODE_pic from '../../Assets/node-logo.png';
 import LUA_pic from '../../Assets/lua-logo.png';
-import cardDetails from './cardDetails';
+import cardDetails from '../../Assets/projects';
 
 function ProjectCard({
   title,

@@ -63,14 +63,7 @@ const cardDetails = [
     techList: ['JS', 'React', 'CSS'],
     techTag: 'JS React CSS',
   },
-  {
-    title: 'Simon Clone',
-    description: "Web clone of the game 'Simon'.",
-    githubSrc: 'https://github.com/RobbieBendick/memorizing-game',
-    externalSrc: 'https://robbiebendick.github.io/memorizing-game/',
-    techList: ['JS', 'JQuery', 'CSS', 'HTML'],
-    techTag: 'JS CSS',
-  },
+
   {
     title: 'PartyFrames',
     description:
