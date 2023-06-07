@@ -2,7 +2,7 @@ const cardDetails = [
   {
     title: 'ArenaMarker',
     description:
-      'Fully customizable addon that automates tedious UI tasks. 33k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
+      'Fully customizable addon that automates tedious UI tasks. 41k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
     githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
     techList: ['Lua'],
     techTag: 'Lua',
@@ -10,7 +10,7 @@ const cardDetails = [
   {
     title: 'CurbCompanion',
     description:
-      'Full stack web app that connects users with local food trucks/vendors. Menu, Schedule & Location features.',
+      'Full stack web app that connects users with local food trucks/vendors. Third-party API integration, menu, schedule, location, and "Go Live" features for vendors.',
     externalSrc: null,
     techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
     techTag: 'JS Node Flutter',
@@ -26,8 +26,8 @@ const cardDetails = [
   {
     title: 'GladiatorGuru',
     description:
-      'A full stack we app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.',
-    externalSrc: 'https://gladiatorguru.com/',
+      'A full stack web app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.',
+    githubSrc: 'https://github.com/brandongevat/gladiator-guru',
     techList: ['React', 'JS', 'Express', 'MongoDB'],
     techTag: 'JS Node',
   },
@@ -42,7 +42,7 @@ const cardDetails = [
   {
     title: 'Anon',
     description:
-      "Plugin/AddOn that color-coordinates unit nameplates, and disguises player and player companion's names.",
+      "Plugin/AddOn that color coordinates unit nameplates, and disguises player and player companion's names.",
     githubSrc: 'https://github.com/RobbieBendick/Anon',
     techList: ['Lua'],
     techTag: 'Lua',
@@ -63,7 +63,6 @@ const cardDetails = [
     techList: ['JS', 'React', 'CSS'],
     techTag: 'JS React CSS',
   },
-
   {
     title: 'PartyFrames',
     description:
@@ -73,5 +72,4 @@ const cardDetails = [
     techTag: 'Lua',
   },
 ];
-// all project cards
 export default cardDetails;

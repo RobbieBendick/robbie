@@ -1,367 +1,360 @@
-
 .project-section {
-    margin-top: 15rem;
+  margin-top: 15rem;
+  height: 100%;
+  min-height: 35rem !important;
+  .card-body {
+    border: none;
+    padding: 0;
+  }
+  .card-title {
+    color: var(--lightest-slate);
+    font-weight: 600;
+    font-family: Sans !important;
+  }
+  .numbered-heading-projects {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    justify-content: center;
+    color: var(--lightest-slate);
+    font-family: SansBold;
+    font-size: clamp(26px, 5vw, 30px);
+    &::before {
+      content: '02.';
+      height: 100%;
+      position: relative;
+      margin-right: 10px;
+      top: 13px;
+      color: var(--light-green);
+      font-size: clamp(7px, 3.2vw, 18px);
+      font-weight: 400;
+      font-family: 'mono';
+    }
+    &::after {
+      content: '';
+      display: block;
+      height: 1px;
+      width: 240px;
+      background: var(--slate);
+      margin: 1.5rem 0 0.8rem 1rem;
+      opacity: 0.3;
+    }
+  }
+
+  .project-container {
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    display: flex;
+    flex-direction: row;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
     height: 100%;
-    min-height: 35rem !important;
-    .card-body {
-        border: none;
-        padding: 0;
-    }
+    padding: 2rem 1.75rem;
+    margin-inline: auto;
+    gap: 20px;
+  }
+
+  .projects-grid {
+    list-style: none;
+    padding: 0px;
+    margin: 50px 0px 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 15px;
+    width: 80%;
+    margin-inline: auto;
+  }
+  .card {
+    background-color: var(--light-navy);
+    width: 20rem;
+    height: 16.5rem;
+    border: none;
+    justify-content: space-between;
+  }
+
+  .card-text {
+    font-size: 16px;
+  }
+
+  .project-inner {
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: flex-start;
+    position: relative;
+    width: 19rem;
+    height: 18rem;
+    padding: 0 1.75rem 2rem 1.75rem;
+    background-color: var(--light-navy);
+    cursor: pointer;
     .card-title {
-        color: var(--lightest-slate);
-        font-weight: 600;
-        font-family: Sans !important;
+      transition: all 200ms;
     }
-    .numbered-heading-projects {
-        display: flex;
-        flex-direction: row;
-        position: relative;
-        justify-content: center;
-        color: var(--lightest-slate);
-        font-family: SansBold;
-        font-size: clamp(26px, 5vw, 30px);
-        &::before {
-            content: '02.';
-            height: 100%;
-            position: relative;
-            margin-right: 10px;
-            top:13px;
-            color: var(--light-green);
-            font-size: clamp(7px, 3.2vw, 18px);
-            font-weight: 400;
-            font-family: 'mono';
-        }
-        &::after {
-            content: '';
-            display: block;
-            height: 1px;
-            width: 240px;
-            background: var(--slate);
-            margin: 1.5rem 0 0.8rem 1rem;
-            opacity: 0.3;
-        }
-    }
+  }
+  .project-tech-list {
+    display: flex;
+    align-items: flex-end;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    padding: 0px;
+    list-style: none;
+    flex-direction: row;
+    font-size: 13px;
+    gap: 1.3rem;
+  }
 
-    .project-container {
-        box-shadow: 0 10px 30px -15px var(--navy-shadow);
-        display: flex;
-        flex-direction: row;
-        -webkit-box-align: center;
-        align-items: center;
-        position: relative;
-        height: 100%;
-        padding: 2rem 1.75rem;
-        margin-inline: auto;
-        gap: 20px;
-    }
-
-    .projects-grid {
-        list-style: none;
-        padding: 0px;
-        margin: 50px 0px 0px;
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 15px;
-        width: 80%;
-        margin-inline: auto;
-    }
-    .card {
-        background-color: var(--light-navy);
-        width: 20rem;
-        height: 16.5rem;
+  .project-top {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-bottom: 21px;
+    padding-top: 15px;
+    .project-links {
+      display: flex;
+      flex-direction: row;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      padding: 5px 7px;
+      z-index: 35;
+      a {
+        background-color: transparent;
         border: none;
-        justify-content: space-between;
+        color: var(--slate);
+        padding: 0 5px;
+      }
     }
-
-    .card-text {
-        font-size: 16px;
-    }
-
-    .project-inner {
-        box-shadow: 0 10px 30px -15px var(--navy-shadow);
-        display: flex;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        -webkit-box-align: center;
-        align-items: flex-start;
-        position: relative;
-        width: 19rem;
-        height: 18rem;
-        padding: 0 1.75rem 2rem 1.75rem;
-        background-color: var(--light-navy);
-        cursor: pointer;
-        .card-title {
-            transition: all 200ms;
-        }
-    }
-    .project-tech-list {
-        display: flex;
-        align-items: flex-end;
-        -webkit-box-flex: 1;
-        flex-grow: 1;
-        padding: 0px;
-        list-style: none;
-        flex-direction: row;
-        font-size: 13px;
-        gap: 1.3rem;
-    }
-
-    .project-top {
-        display: flex;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        -webkit-box-align: center;
-        align-items: center;
-        margin-bottom: 21px;
-        padding-top: 15px;
-        .project-links {
-            display: flex;
-            flex-direction: row;
-            -webkit-box-pack: center;
-            justify-content: center;
-            -webkit-box-align: center;
-            align-items: center;
-            padding: 5px 7px;
-            z-index: 35;
-            a {
-                background-color: transparent;
-                border: none;
-                color: var(--slate);
-                padding: 0 5px;
-            }
-        }
-    }
-    .project-folder {
-        color: var(--light-green);
-    }
-    .filter-button {
-        left: 80.8%;
-        position: relative;
-    }
+  }
+  .project-folder {
+    color: var(--light-green);
+  }
+  .filter-button {
+    left: 80.8%;
+    position: relative;
+  }
 }
 
-.project-inner .card-title  { 
-    transition: color 150ms ease;
+.project-inner .card-title {
+  transition: color 150ms ease;
 }
 
 // card title on-hover
-.project-inner:hover .card-title  { 
-    color: var(--light-green); 
-    transition: color 150ms ease;
+.project-inner:hover .card-title {
+  color: var(--light-green);
+  transition: color 150ms ease;
 }
 
 .project-card {
-    display: inline-flex;
-    transition: transform 180ms ease;
+  display: inline-flex;
+  transition: transform 180ms ease;
 }
 // highlights title when something within project-card is focused
 .project-card:focus-within .card-title {
-    color: var(--light-green); 
-    transition: all 180ms ease;
+  color: var(--light-green);
+  transition: all 180ms ease;
 }
 
 .project-card:focus-within {
-    transition: transform 180ms ease;
-    transform: translateY(-5px);
+  transition: transform 180ms ease;
+  transform: translateY(-5px);
 }
 
 .filtering {
-    text-align: center;
-    font-size: medium;
-    position: relative;
-    font-family: mono;
-    transform: translate(-10px, 20px);
+  text-align: center;
+  font-size: medium;
+  position: relative;
+  font-family: mono;
+  transform: translate(-10px, 20px);
 }
-
 
 /* Dropdown Button */
 .dropbtn {
-    background-color: transparent;
-    color: var(--light-green);
-    padding: 16px;
-    font-size: 16px;
-    border: 1px solid var(--light-green);
-    cursor: pointer;
+  background-color: transparent;
+  color: var(--light-green);
+  padding: 16px;
+  font-size: 16px;
+  border: 1px solid var(--light-green);
+  cursor: pointer;
 }
-  
-  /* The container <div> - needed to position the dropdown content */
-  .dropdown {
-    position: relative;
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0%;
+  background-color: var(--light-navy);
+  min-width: 180px;
+  box-shadow: 0px 8px 16px 0px var(--navy-shadow);
+  z-index: 1;
+  border: 1px solid var(--navy-shadow);
+  .language-img-container {
     display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    left: 0%;
-    background-color: var(--light-navy);
-    min-width: 180px;
-    box-shadow: 0px 8px 16px 0px var(--navy-shadow);
-    z-index: 1;
-    border: 1px solid var(--navy-shadow);
-    .language-img-container {
-        display: inline-block;
+    position: relative;
+    left: 8px;
+    @for $i from 1 to 5 {
+      img:nth-child(#{$i}) {
         position: relative;
-        left: 8px;
-        @for $i from 1 to 5 {
-            img:nth-child(#{$i}) {
-                position: relative;
-                top:32px;
-                z-index: #{$i};
-            }
+        top: 32px;
+        z-index: #{$i};
+      }
     }
-        // js
-        img:nth-child(1) {
-            
-        }    
-
-        // python
-        img:nth-child(2) {
-            right:7px;
-        }
-        // node
-        img:nth-child(3) {
-            right:13px;
-        }
-        // lua
-        img:nth-child(4) {
-            right:20px;
-        }
+    // js
+    img:nth-child(1) {
     }
 
-    /* Links inside the dropdown */
-    button {
-        color: var(--lightest-slate);
-        padding: 12px 16px;
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        border: none;
-        background-color: var(--light-navy);
-        font-size: 15px;
-        &:not(button:last-of-type)::after {
-            content: "";
-            position: relative;
-            height: 1px;
-            width: 101px;
-            margin-inline: auto;
-            background-color: var(--slate);
-            margin-top: 0.8rem;
-            opacity: 0.3;
-            top: 12px;
-        }
-        &:not(button:first-of-type) {
-            padding-top: 0;
-        }
-        &:last-of-type {
-            padding: 1rem 0 1.8rem 0;
-        }
+    // python
+    img:nth-child(2) {
+      right: 7px;
     }
-    button:nth-child(1) {
-        margin-top: 0.7rem;
+    // node
+    img:nth-child(3) {
+      right: 13px;
     }
-    //  JS pic
-    button:nth-child(3)::before {
-        content: url('../../Assets/JavaScript-logo.png');
-        display: inline-block;
-        position:relative; /*or absolute*/
-        z-index:100000; /*a number that's more than the modal box*/
-        top: 27px;
-        left: -62px;
-    }
-
-        
-    // PYTHON
-    button:nth-child(4)::before {
-        content: url('../../Assets/python-logo.png');
-        display: inline-block;
-        position: relative; /*or absolute*/
-        z-index:100000; /*a number that's more than the modal box*/
-        left: -62px;
-        top: 29px;
-    }
-
-
-    // NODE
-    button:nth-child(5)::before {
-        content: url('../../Assets/node-logo.png');
-        display: inline-block;
-        position: relative; /*or absolute*/
-        z-index:100000; /*a number that's more than the modal box*/
-        left: -62px;
-        top: 25px;
-    }
-
-    // LUA
-    button:nth-child(6)::before {
-        content: url('../../Assets/lua-logo.png');
-        display: inline-block;
-        position: relative; /*or absolute*/
-        z-index:100000; /*a number that's more than the modal box*/
-        left: -62px;
-        top: 28px;
-    }
-    
-
-    // CSS
-    button:nth-child(7)::before {
-        content: url('../../Assets/css-logo.png');
-        display: inline-block;
-        position: relative; /*or absolute*/
-        z-index:100000; /*a number that's more than the modal box*/
-        left: -62px;
-        top: 25px;
+    // lua
+    img:nth-child(4) {
+      right: 20px;
     }
   }
+
+  /* Links inside the dropdown */
+  button {
+    color: var(--lightest-slate);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: none;
+    background-color: var(--light-navy);
+    font-size: 15px;
+    &:not(button:last-of-type)::after {
+      content: '';
+      position: relative;
+      height: 1px;
+      width: 101px;
+      margin-inline: auto;
+      background-color: var(--slate);
+      margin-top: 0.8rem;
+      opacity: 0.3;
+      top: 12px;
+    }
+    &:not(button:first-of-type) {
+      padding-top: 0;
+    }
+    &:last-of-type {
+      padding: 1rem 0 1.8rem 0;
+    }
+  }
+  button:nth-child(1) {
+    margin-top: 0.7rem;
+  }
+  //  JS pic
+  button:nth-child(3)::before {
+    content: url('../../Assets/JavaScript-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index: 100000; /*a number that's more than the modal box*/
+    top: 27px;
+    left: -62px;
+  }
+
+  // PYTHON
+  button:nth-child(4)::before {
+    content: url('../../Assets/python-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index: 100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 29px;
+  }
+
+  // NODE
+  button:nth-child(5)::before {
+    content: url('../../Assets/node-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index: 100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 25px;
+  }
+
+  // LUA
+  button:nth-child(6)::before {
+    content: url('../../Assets/lua-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index: 100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 28px;
+  }
+
+  // CSS
+  button:nth-child(7)::before {
+    content: url('../../Assets/flutter-logo.png');
+    display: inline-block;
+    position: relative; /*or absolute*/
+    z-index: 100000; /*a number that's more than the modal box*/
+    left: -62px;
+    top: 25px;
+  }
+}
 
 //  1084px and down
 @media only screen and (max-width: 1084px) {
-    .project-inner {
-        margin-inline: auto;
-    }
-    .projects p{
-        text-align: left;
-    }
+  .project-inner {
+    margin-inline: auto;
+  }
+  .projects p {
+    text-align: left;
+  }
 
-    .projects-grid {
-        justify-content: center;
+  .projects-grid {
+    justify-content: center;
+  }
+
+  ul.projects-grid {
+    a {
+      width: fill-available;
+      width: -webkit-fill-available;
+      width: -moz-available;
+      margin-inline: auto;
     }
-    
-    ul.projects-grid {
-        a {
-            width: fill-available;
-            width: -webkit-fill-available;
-            width: -moz-available;
-            margin-inline: auto;
-        }
-    }
+  }
 }
 
 @media only screen and (max-width: 950px) {
-    .numbered-heading-projects {
-        width: 100% !important;
-        &::after {
-            width: 100% !important;
-        }
+  .numbered-heading-projects {
+    width: 100% !important;
+    &::after {
+      width: 100% !important;
     }
-    .filter-button {
-        position: relative;
-        left: 71.2% !important;
-    }
-    .dropdown-content {
-        left: -50%;
-    }
+  }
+  .filter-button {
+    position: relative;
+    left: 71.2% !important;
+  }
+  .dropdown-content {
+    left: -50%;
+  }
 }
 
 @media only screen and (max-width: 350px) {
-    .dropdown-content {
-        left: -65%;
-    }
+  .dropdown-content {
+    left: -65%;
+  }
 }
 
 //   800px and up
 @media only screen and (min-width: 800px) {
 }
-
