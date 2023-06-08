@@ -199,31 +199,20 @@
   z-index: 1;
   border: 1px solid var(--navy-shadow);
   .language-img-container {
+    $offset: 5px;
+    $accumulated-offset: 0px;
     display: inline-block;
     position: relative;
-    left: 8px;
-    @for $i from 1 to 5 {
+    left: 15px;
+    cursor: pointer;
+    @for $i from 1 to 6 {
+      $accumulated-offset: $accumulated-offset + $offset;
       img:nth-child(#{$i}) {
         position: relative;
         top: 32px;
         z-index: #{$i};
+        right: $accumulated-offset;
       }
-    }
-    // js
-    img:nth-child(1) {
-    }
-
-    // python
-    img:nth-child(2) {
-      right: 7px;
-    }
-    // node
-    img:nth-child(3) {
-      right: 13px;
-    }
-    // lua
-    img:nth-child(4) {
-      right: 20px;
     }
   }
 

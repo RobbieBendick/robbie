@@ -7,6 +7,7 @@ import JS_pic from '../../Assets/JavaScript-logo.png';
 import PYTHON_pic from '../../Assets/python-logo.png';
 import NODE_pic from '../../Assets/node-logo.png';
 import LUA_pic from '../../Assets/lua-logo.png';
+import FLUTTER_pic from '../../Assets/flutter-logo.png';
 import cardDetails from '../../Assets/projects';
 
 function ProjectCard({
@@ -214,7 +215,7 @@ let ProjectSection = () => {
     }
   }
 
-  let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic];
+  let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic, FLUTTER_pic];
   return (
     <section id='projects' className='project-section'>
       <FadeInDiv fadeInClass={2}>
@@ -241,12 +242,13 @@ let ProjectSection = () => {
             className='dropdown-content'
           >
             <div className='language-img-container'>
-              {languageImages.map(v => (
+              {languageImages.map(image => (
                 <img
-                  width='15'
-                  height='15'
-                  src={v}
+                  width='12'
+                  height='12'
+                  src={image}
                   alt='Programming Language Icon'
+                  onClick={() => filterLinkOnClickHandler('All')}
                 />
               ))}
             </div>
