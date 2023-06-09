@@ -4,6 +4,7 @@ const cardDetails = [
     description:
       'Fully customizable addon that automates tedious UI tasks. 41k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
     githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
+    externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
     techList: ['Lua'],
     techTag: 'Lua',
   },
@@ -51,7 +52,8 @@ const cardDetails = [
     title: 'TotemPredictor',
     description:
       'Plugin/AddOn that predicts the best totem to use in a given situation.',
-    githubSrc: 'https://github.com/RobbieBendick/TotemPredictor',
+    githubSrc: 'https://github.com/RobbieBendick/totempredictor',
+    externalSrc: 'https://www.curseforge.com/wow/addons/totempredictor',
     techList: ['Lua'],
     techTag: 'Lua',
   },
