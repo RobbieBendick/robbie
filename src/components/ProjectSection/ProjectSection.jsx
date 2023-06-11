@@ -265,7 +265,7 @@ let ProjectSection = () => {
             ))}
           </div>
         </div>
-        {/* display filter name */}
+        {/* display current active filter */}
         <p className='filtering light-slate-color'>{findFilteredLanguage()}</p>
       </div>
       <ul className='projects-grid'>

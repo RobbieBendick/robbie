@@ -9,10 +9,11 @@ const cardDetails = [
     techTag: 'Lua',
   },
   {
-    title: 'CurbCompanion',
+    title: 'RoamingVendors',
     description:
-      'Full stack web app that connects users with local food trucks/vendors. Third-party API integration, menu, schedule, location, and "Go Live" features for vendors.',
-    externalSrc: null,
+      'Full stack web app that connects users with local food trucks. Third-party API integration, menu, schedule, location, reviews and Go Live features for vendors who are always on the move.',
+    externalSrc:
+      'https://www.youtube.com/watch?v=leLkLG9Fetc&ab_channel=RoamingVendors',
     techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
     techTag: 'JS Node Flutter',
   },
@@ -29,7 +30,7 @@ const cardDetails = [
     description:
       'A full stack web app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.',
     githubSrc: 'https://github.com/brandongevat/gladiator-guru',
-    techList: ['React', 'JS', 'Express', 'MongoDB'],
+    techList: ['TS', 'React', 'Express', 'MongoDB'],
     techTag: 'JS Node',
   },
   {
@@ -51,7 +52,7 @@ const cardDetails = [
   {
     title: 'TotemPredictor',
     description:
-      'Plugin/AddOn that predicts the best totem to use in a given situation.',
+      'Plugin/Addon for an online game that predicts the best ability to use in each given situation.',
     githubSrc: 'https://github.com/RobbieBendick/totempredictor',
     externalSrc: 'https://www.curseforge.com/wow/addons/totempredictor',
     techList: ['Lua'],
