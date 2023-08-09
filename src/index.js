@@ -4,7 +4,6 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.scss';
 import Home from './components/Home/Home';
 import Resume from './components/Resume/Resume';
-//
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Router>
