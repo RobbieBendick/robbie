@@ -171,7 +171,7 @@ let Nav = () => {
                   <SidebarAnchorItem txt='Contact' href='#contact' />
                 </ol>
                 <motion.a
-                  href={`${process.env.PUBLIC_URL}/resume`}
+                  href={`${process.env.PUBLIC_URL}/#/resume`}
                   whileHover={{ backgroundColor: 'hsl(166, 100%, 70% / 0.1)' }}
                   onClick={() => closeSidebar()}
                   className='sidebar-resume-button'
@@ -221,7 +221,7 @@ let Nav = () => {
                 </button>
               </motion.li>
               <motion.a
-                href={`${process.env.PUBLIC_URL}/resume`}
+                href={`${process.env.PUBLIC_URL}/#/resume`}
                 initial={{ x: '10px', y: '-25px', opacity: 0 }}
                 animate={{ y: 0, x: 0, opacity: 1 }}
                 transition={{ delay: 0.4, duration: 0.4 }}
