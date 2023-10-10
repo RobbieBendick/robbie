@@ -2,7 +2,7 @@ const cardDetails = [
   {
     title: 'Ray Tracing',
     description:
-      'A ray tracer built in Rust that employs advanced rendering techniques which includes realistic sphere rendering with dynamic shadows, intricate reflections, and detailed refractions.',
+      'A ray tracer built in Rust that employs advanced rendering techniques which includes realistic sphere rendering with dynamic shadows, reflections, and refractions.',
     githubSrc: 'https://github.com/RobbieBendick/raytracing',
     techList: ['Rust'],
     techTag: 'Rust',
