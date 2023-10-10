@@ -1,5 +1,13 @@
 const cardDetails = [
   {
+    title: 'Ray Tracing',
+    description:
+      'A ray tracer built in Rust that employs advanced rendering techniques which includes realistic sphere rendering with dynamic shadows, intricate reflections, and detailed refractions.',
+    githubSrc: 'https://github.com/RobbieBendick/raytracing',
+    techList: ['Rust'],
+    techTag: 'Rust',
+  },
+  {
     title: 'ArenaMarker',
     description:
       'Fully customizable addon that automates tedious UI tasks. 41k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
