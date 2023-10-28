@@ -34,7 +34,7 @@ function AboutMe() {
               <li>TypeScript</li>
               <li>Express</li>
               <li>React</li>
-              <li>MongoDB</li>
+              <li>Rust</li>
             </ul>
           </div>
           <div className='about-right'>

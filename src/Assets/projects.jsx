@@ -1,4 +1,4 @@
-const cardDetails = [
+export const nonFeaturedProjectDetails = [
   {
     title: 'Ray Tracing',
     description:
@@ -82,4 +82,14 @@ const cardDetails = [
     techTag: 'Lua',
   },
 ];
-export default cardDetails;
+
+export const featuredProjectDetails = [
+  {
+    title: '',
+    description: '',
+    githubSrc: '',
+    externalSrc: '',
+    techList: [],
+    techTag: '',
+  },
+];

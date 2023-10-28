@@ -8,7 +8,11 @@ import PYTHON_pic from '../../Assets/python-logo.png';
 import NODE_pic from '../../Assets/node-logo.png';
 import LUA_pic from '../../Assets/lua-logo.png';
 import FLUTTER_pic from '../../Assets/flutter-logo.png';
-import cardDetails from '../../Assets/projects';
+import Dog from '../../Assets/dog.jpg';
+import {
+  featuredProjectDetails,
+  nonFeaturedProjectDetails,
+} from '../../Assets/projects';
 
 function ProjectCard({
   title,
@@ -78,6 +82,42 @@ function ProjectCard({
   );
 }
 
+let FeaturedProjectCard = () => {
+  // create the whole card
+  return (
+    <li className='featured-project-card'>
+      <div className='featured-project-content'>
+        <div>
+          <p className='featured-project'>Featured Project</p>
+          <h3 className='featured-project-title'>Project Title</h3>
+          <div className='featured-project-description'>
+            <p>Project Description</p>
+          </div>
+          <ul className='featured-project-tech-list'></ul>
+          <div className='featured-project-links'></div>
+        </div>
+      </div>
+      <div className='featured-project-image'>
+        <img src={Dog}></img>
+      </div>
+    </li>
+  );
+};
+
+let FeaturedProjectSection = () => {
+  return (
+    <section id='featured-projects'>
+      <h2 className='numbered-heading'></h2>
+
+      <ul>
+        {featuredProjectDetails.map(project => (
+          <FeaturedProjectCard />
+        ))}
+      </ul>
+    </section>
+  );
+};
+
 let ProjectSection = () => {
   // all filters
   const [filter, setFilter] = useState({
@@ -111,7 +151,7 @@ let ProjectSection = () => {
 
   // stores the project amount per language
   const [projectAmount, setProjectAmount] = useState({
-    All: cardDetails.length,
+    All: nonFeaturedProjectDetails.length,
     JS: 0,
     Python: 0,
     Node: 0,
@@ -206,9 +246,9 @@ let ProjectSection = () => {
   };
 
   // sets amount of projects per language
-  if (projectAmount.JS === 0 && cardDetails.length > 0) {
-    for (let i = 0; i < cardDetails.length; i++) {
-      const card = cardDetails[i];
+  if (projectAmount.JS === 0 && nonFeaturedProjectDetails.length > 0) {
+    for (let i = 0; i < nonFeaturedProjectDetails.length; i++) {
+      const card = nonFeaturedProjectDetails[i];
       // traverse through filter keys and increment each project with a its associated techTag
       for (let key of filterKeys)
         if (card.techTag.split(' ').includes(key)) projectAmount[key]++;
@@ -217,73 +257,78 @@ let ProjectSection = () => {
 
   let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic, FLUTTER_pic];
   return (
-    <section id='projects' className='project-section'>
-      <FadeInDiv fadeInClass={2}>
-        <div className='projects'>
-          <p className='numbered-heading-projects'>Projects</p>
-        </div>
-      </FadeInDiv>
-      <div className='container'>
-        <div className='dropdown filter-button'>
-          <FadeInDiv fadeInClass={2}>
-            <motion.button
-              whileFocus={{ backgroundColor: 'hsl(166, 100%, 70% / 0.1)' }}
-              whileHover={{ backgroundColor: 'hsl(166, 100%, 70% / 0.1)' }}
-              onClick={() => showFilterDropdown()}
-              ref={filterButtonRef}
-              className='dropbtn'
+    <>
+      <FeaturedProjectCard />
+      <section id='projects' className='project-section'>
+        <FadeInDiv fadeInClass={2}>
+          <div className='projects'>
+            <p className='numbered-heading-projects'>Projects</p>
+          </div>
+        </FadeInDiv>
+        <div className='container'>
+          <div className='dropdown filter-button'>
+            <FadeInDiv fadeInClass={2}>
+              <motion.button
+                whileFocus={{ backgroundColor: 'hsl(166, 100%, 70% / 0.1)' }}
+                whileHover={{ backgroundColor: 'hsl(166, 100%, 70% / 0.1)' }}
+                onClick={() => showFilterDropdown()}
+                ref={filterButtonRef}
+                className='dropbtn'
+              >
+                Filter <i class='fa-solid fa-arrow-down-short-wide'></i>
+              </motion.button>
+            </FadeInDiv>
+            <div
+              id='filterDropdown'
+              ref={filterDropdownRef}
+              className='dropdown-content'
             >
-              Filter <i class='fa-solid fa-arrow-down-short-wide'></i>
-            </motion.button>
-          </FadeInDiv>
-          <div
-            id='filterDropdown'
-            ref={filterDropdownRef}
-            className='dropdown-content'
-          >
-            <div className='language-img-container'>
-              {languageImages.map(image => (
-                <img
-                  width='12'
-                  height='12'
-                  src={image}
-                  alt='Programming Language Icon'
-                  onClick={() => filterLinkOnClickHandler('All')}
-                />
+              <div className='language-img-container'>
+                {languageImages.map(image => (
+                  <img
+                    width='12'
+                    height='12'
+                    src={image}
+                    alt='Programming Language Icon'
+                    onClick={() => filterLinkOnClickHandler('All')}
+                  />
+                ))}
+              </div>
+              {filterKeys.map(language => (
+                <motion.button
+                  whileFocus={{ color: 'hsl(166, 100%, 70%)' }}
+                  whileHover={{ color: 'hsl(166, 100%, 70%)' }}
+                  name={language}
+                  onClick={() => filterLinkOnClickHandler(language)}
+                >
+                  {language} {projectsPerLanguage(language)}{' '}
+                  {checkHandler(language)}
+                </motion.button>
               ))}
             </div>
-            {filterKeys.map(language => (
-              <motion.button
-                whileFocus={{ color: 'hsl(166, 100%, 70%)' }}
-                whileHover={{ color: 'hsl(166, 100%, 70%)' }}
-                name={language}
-                onClick={() => filterLinkOnClickHandler(language)}
-              >
-                {language} {projectsPerLanguage(language)}{' '}
-                {checkHandler(language)}
-              </motion.button>
-            ))}
           </div>
+          {/* display filter name */}
+          <p className='filtering light-slate-color'>
+            {findFilteredLanguage()}
+          </p>
         </div>
-        {/* display filter name */}
-        <p className='filtering light-slate-color'>{findFilteredLanguage()}</p>
-      </div>
-      <ul className='projects-grid'>
-        {cardDetails.map(v => (
-          <FadeInDiv fadeInClass={2}>
-            <ProjectCard
-              key={v.title}
-              title={v.title}
-              description={v.description}
-              githubSrc={v.githubSrc}
-              externalSrc={v.externalSrc}
-              techList={v.techList}
-              techTag={v.techTag}
-            />
-          </FadeInDiv>
-        ))}
-      </ul>
-    </section>
+        <ul className='projects-grid'>
+          {nonFeaturedProjectDetails.map(v => (
+            <FadeInDiv fadeInClass={2}>
+              <ProjectCard
+                key={v.title}
+                title={v.title}
+                description={v.description}
+                githubSrc={v.githubSrc}
+                externalSrc={v.externalSrc}
+                techList={v.techList}
+                techTag={v.techTag}
+              />
+            </FadeInDiv>
+          ))}
+        </ul>
+      </section>
+    </>
   );
 };
 
