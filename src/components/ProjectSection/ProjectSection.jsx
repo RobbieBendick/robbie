@@ -343,7 +343,9 @@ let ProjectSection = () => {
       <FeaturedProjectSection />
       <section id='projects' className='project-section'>
         <FadeInDiv fadeInClass={2}>
-          <h3 className='other-noteworthy'>Other Noteworthy Projects</h3>
+          <h3 style={{ marginBottom: '17px' }} className='other-noteworthy'>
+            Other Noteworthy Projects
+          </h3>
         </FadeInDiv>
         <div className='container'>
           <div className='dropdown filter-button'>

@@ -22,7 +22,7 @@ export const nonFeaturedProjectDetails = [
   {
     title: 'TotemPredictor',
     description:
-      'Plugin/AddOn that determines the best ability to use in a given scenario.',
+      'Plugin/AddOn for an online game that determines the best ability to use in a given scenario.',
     githubSrc: 'https://github.com/RobbieBendick/totempredictor',
     externalSrc: 'https://www.curseforge.com/wow/addons/totempredictor',
     techList: ['Lua'],
