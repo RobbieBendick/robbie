@@ -7,7 +7,6 @@ import JS_pic from '../../Assets/JavaScript-logo.png';
 import PYTHON_pic from '../../Assets/python-logo.png';
 import NODE_pic from '../../Assets/node-logo.png';
 import LUA_pic from '../../Assets/lua-logo.png';
-import FLUTTER_pic from '../../Assets/flutter-logo.png';
 import Dog from '../../Assets/dog.jpg';
 import {
   featuredProjectDetails,
@@ -82,23 +81,102 @@ function ProjectCard({
   );
 }
 
-let FeaturedProjectCard = () => {
-  // create the whole card
+let FeaturedProjectCard = ({ project }) => {
+  const [isVisible, setVisible] = useState(false);
+  const domRef = useRef();
+
+  const options = {
+    root: null,
+    threshold: 0.35,
+  };
+  useEffect(() => {
+    const observer = new IntersectionObserver(entries => {
+      // In this case there's only one element to observe:
+      if (entries[0].isIntersecting) {
+        // Not possible to set it back to false like this:
+        setVisible(true);
+
+        // No need to keep observing:
+        observer.unobserve(domRef.current);
+      }
+    }, options);
+
+    observer.observe(domRef.current);
+
+    return () => observer.unobserve(domRef.current);
+  }, []);
   return (
-    <li className='featured-project-card'>
+    <li
+      className={`featured-project-card ${isVisible ? 'fade-in-2' : 'hide'}`}
+      ref={domRef}
+    >
       <div className='featured-project-content'>
         <div>
-          <p className='featured-project'>Featured Project</p>
-          <h3 className='featured-project-title'>Project Title</h3>
+          <p className='featured-project-text'>Featured Project</p>
+          <a
+            target='_blank'
+            rel='noreferrer'
+            href={project.externalSrc || project.githubSrc}
+          >
+            <h3 className='featured-project-title'>{project.title}</h3>
+          </a>
           <div className='featured-project-description'>
-            <p>Project Description</p>
+            <p>{project.description}</p>
           </div>
-          <ul className='featured-project-tech-list'></ul>
-          <div className='featured-project-links'></div>
+          <ul className='featured-project-tech-list'>
+            {project.techList.length > 0 &&
+              project.techList.map(techName => {
+                return <li>{techName}</li>;
+              })}
+          </ul>
+          <div className='featured-project-links'>
+            {project.githubSrc && (
+              <motion.a
+                href={project.githubSrc}
+                whileFocus={{ y: '-2px', color: '#64ffda' }}
+                whileHover={{ y: '-2px', color: '#64ffda' }}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <i class='fa-brands fa-github fa-md'></i>
+              </motion.a>
+            )}
+            {project.externalSrc && (
+              <motion.a
+                href={project.externalSrc}
+                whileFocus={{ y: '-2px', color: '#64ffda' }}
+                whileHover={{ y: '-2px', color: '#64ffda' }}
+                target='_blank'
+                rel='noopener noreferrer'
+              >
+                <i class='fa-solid fa-arrow-up-right-from-square fa-md'></i>
+              </motion.a>
+            )}
+          </div>
         </div>
       </div>
       <div className='featured-project-image'>
-        <img src={Dog}></img>
+        <div className='featured-project-image-wrapper'>
+          <a
+            href={project.externalSrc || project.githubSrc}
+            rel='noreferrer'
+            target='_blank'
+            style={{
+              backgroundColor: 'hsl(166, 100%, 70%)',
+              width: '100%',
+              height: '100%',
+              display: 'block',
+              position: 'relative',
+            }}
+          >
+            <img
+              width={'100%'}
+              height={400}
+              src={project.image || Dog}
+              alt='Featured Project'
+            />
+          </a>
+        </div>
       </div>
     </li>
   );
@@ -107,12 +185,19 @@ let FeaturedProjectCard = () => {
 let FeaturedProjectSection = () => {
   return (
     <section id='featured-projects'>
-      <h2 className='numbered-heading'></h2>
-
+      <FadeInDiv>
+        <h3
+          style={{ marginBottom: '50px' }}
+          className='numbered-heading-projects'
+        >
+          Some Things I’ve Built
+        </h3>
+      </FadeInDiv>
       <ul>
-        {featuredProjectDetails.map(project => (
-          <FeaturedProjectCard />
-        ))}
+        {featuredProjectDetails.length > 0 &&
+          featuredProjectDetails.map(project => (
+            <FeaturedProjectCard project={project} />
+          ))}
       </ul>
     </section>
   );
@@ -126,7 +211,6 @@ let ProjectSection = () => {
     Python: false,
     Node: false,
     Lua: false,
-    Flutter: false,
   });
 
   // filter button reference
@@ -156,7 +240,6 @@ let ProjectSection = () => {
     Python: 0,
     Node: 0,
     Lua: 0,
-    Flutter: 0,
   });
 
   // shows and hides cards based on filter
@@ -201,7 +284,6 @@ let ProjectSection = () => {
       Python: false,
       Node: false,
       Lua: false,
-      Flutter: false,
     };
 
     // set the clicked filter to true
@@ -255,15 +337,13 @@ let ProjectSection = () => {
     }
   }
 
-  let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic, FLUTTER_pic];
+  let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic];
   return (
     <>
-      <FeaturedProjectCard />
+      <FeaturedProjectSection />
       <section id='projects' className='project-section'>
         <FadeInDiv fadeInClass={2}>
-          <div className='projects'>
-            <p className='numbered-heading-projects'>Projects</p>
-          </div>
+          <h3 className='other-noteworthy'>Other Noteworthy Projects</h3>
         </FadeInDiv>
         <div className='container'>
           <div className='dropdown filter-button'>

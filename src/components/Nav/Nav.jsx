@@ -167,7 +167,7 @@ let Nav = () => {
               <aside ref={menuRef} id='mySidenav' class='sidenav'>
                 <ol>
                   <SidebarAnchorItem txt='About' href='#about' />
-                  <SidebarAnchorItem txt='Projects' href='#projects' />
+                  <SidebarAnchorItem txt='Projects' href='#featured-projects' />
                   <SidebarAnchorItem txt='Contact' href='#contact' />
                 </ol>
                 <motion.a
@@ -202,7 +202,7 @@ let Nav = () => {
               >
                 <button
                   class='nav-link'
-                  onClick={() => smoothScroll('#projects')}
+                  onClick={() => smoothScroll('#featured-projects')}
                 >
                   Projects
                 </button>

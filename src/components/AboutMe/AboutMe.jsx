@@ -29,12 +29,12 @@ function AboutMe() {
               </p>
             </div>
             <ul className='skills-list'>
-              <li>JavaScript (ES6+)</li>
-              <li>Flutter</li>
               <li>TypeScript</li>
+              <li>Flutter</li>
+              <li>Rust</li>
               <li>Express</li>
               <li>React</li>
-              <li>Rust</li>
+              <li>Lua</li>
             </ul>
           </div>
           <div className='about-right'>

@@ -1,29 +1,8 @@
+import raytracingImage from '../Assets/raytracing.png';
+import arenaMarkerImage from '../Assets/arenamarker.png';
+import curbCompanionImage from '../Assets/curb-companion.png';
+
 export const nonFeaturedProjectDetails = [
-  {
-    title: 'Ray Tracing',
-    description:
-      'A ray tracer built in Rust that employs advanced rendering techniques which includes realistic sphere rendering with dynamic shadows, reflections, and refractions.',
-    githubSrc: 'https://github.com/RobbieBendick/raytracing',
-    techList: ['Rust'],
-    techTag: 'Rust',
-  },
-  {
-    title: 'ArenaMarker',
-    description:
-      'Fully customizable addon that automates tedious UI tasks. 43k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
-    githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
-    externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
-    techList: ['Lua'],
-    techTag: 'Lua',
-  },
-  {
-    title: 'CurbCompanion',
-    description:
-      'Full stack web app that connects users with local food trucks/vendors. Third-party API integration, menu, schedule, location, and "Go Live" features for vendors.',
-    externalSrc: null,
-    techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
-    techTag: 'JS Node Flutter',
-  },
   {
     title: 'A* Pathfinding Algorithm',
     description:
@@ -37,8 +16,17 @@ export const nonFeaturedProjectDetails = [
     description:
       'A full stack web app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.',
     githubSrc: 'https://github.com/brandongevat/gladiator-guru',
-    techList: ['React', 'JS', 'Express', 'MongoDB'],
+    techList: ['React', 'TS', 'Express', 'MongoDB'],
     techTag: 'JS Node',
+  },
+  {
+    title: 'TotemPredictor',
+    description:
+      'Plugin/AddOn that determines the best ability to use in a given scenario.',
+    githubSrc: 'https://github.com/RobbieBendick/totempredictor',
+    externalSrc: 'https://www.curseforge.com/wow/addons/totempredictor',
+    techList: ['Lua'],
+    techTag: 'Lua',
   },
   {
     title: 'Dark Theme',
@@ -53,15 +41,6 @@ export const nonFeaturedProjectDetails = [
     description:
       "Plugin/AddOn that color coordinates unit nameplates, and disguises player and player companion's names.",
     githubSrc: 'https://github.com/RobbieBendick/Anon',
-    techList: ['Lua'],
-    techTag: 'Lua',
-  },
-  {
-    title: 'TotemPredictor',
-    description:
-      'Plugin/AddOn that predicts the best totem to use in a given situation.',
-    githubSrc: 'https://github.com/RobbieBendick/totempredictor',
-    externalSrc: 'https://www.curseforge.com/wow/addons/totempredictor',
     techList: ['Lua'],
     techTag: 'Lua',
   },
@@ -85,11 +64,28 @@ export const nonFeaturedProjectDetails = [
 
 export const featuredProjectDetails = [
   {
-    title: '',
-    description: '',
-    githubSrc: '',
-    externalSrc: '',
-    techList: [],
-    techTag: '',
+    title: 'Ray Tracing',
+    description:
+      'A ray tracer built in Rust that employs advanced rendering techniques which includes realistic sphere rendering with dynamic shadows, reflections, and refractions.',
+    githubSrc: 'https://github.com/RobbieBendick/raytracing',
+    techList: ['Rust'],
+    image: raytracingImage,
+  },
+  {
+    title: 'ArenaMarker',
+    description:
+      'Fully customizable addon that automates tedious UI tasks. 44k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
+    githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
+    externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
+    techList: ['Lua'],
+    image: arenaMarkerImage,
+  },
+  {
+    title: 'CurbCompanion',
+    description:
+      'Full stack app that links users with nearby food trucks and vendors. The app incorporates various features such as Google Maps integration and other third-party APIs, providing users with access to menus, schedules, and real-time locations of local food trucks and vendors.',
+    externalSrc: null,
+    techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
+    image: curbCompanionImage,
   },
 ];
