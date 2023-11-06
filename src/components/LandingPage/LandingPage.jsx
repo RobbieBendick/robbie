@@ -76,7 +76,7 @@ function LandingPage() {
           <p className='about-me-header fade-in-9'>
             I am a software engineer specialized in building and designing
             exceptional digital experiences. I am currently focused on building
-            accessible products in order to solve real-world problems.
+            accessible products in order to solve real world problems.
           </p>
         </div>
         <div>
