@@ -20,6 +20,7 @@ function ProjectCard({
   githubSrc,
   externalSrc,
   techTag,
+  id,
 }) {
   return (
     <a
@@ -106,8 +107,9 @@ let FeaturedProjectCard = ({ project }) => {
     return () => observer.unobserve(domRef.current);
   }, []);
   return (
-    <li
+    <motion.li
       className={`featured-project-card ${isVisible ? 'fade-in-2' : 'hide'}`}
+      id={project.id && project.id}
       ref={domRef}
     >
       <div className='featured-project-content'>
@@ -178,7 +180,7 @@ let FeaturedProjectCard = ({ project }) => {
           </a>
         </div>
       </div>
-    </li>
+    </motion.li>
   );
 };
 
@@ -204,7 +206,6 @@ let FeaturedProjectSection = () => {
 };
 
 let ProjectSection = () => {
-  // all filters
   const [filter, setFilter] = useState({
     All: true,
     JS: false,
@@ -213,13 +214,9 @@ let ProjectSection = () => {
     Lua: false,
   });
 
-  // filter button reference
   let filterButtonRef = useRef();
-
-  // filter dropdown reference
   let filterDropdownRef = useRef();
 
-  // list of filter keys
   let filterKeys = Object.keys(filter);
 
   // close the filter-dropdown menu if the user clicks outside of it
@@ -270,14 +267,14 @@ let ProjectSection = () => {
   let showFilterDropdown = () =>
     document.getElementById('filterDropdown').classList.toggle('show-instant');
 
-  // closes filter-dropdown
+  // closes filter dropdown
   let closeDropdown = () =>
     $('.dropdown-content').hasClass('show-instant') &&
     $('.dropdown-content').removeClass('show-instant');
 
   // sets the state of the current filter
   let stateHandler = language => {
-    // set all filters to false
+    // reset all filters to false
     let filter = {
       All: false,
       JS: false,
@@ -286,13 +283,8 @@ let ProjectSection = () => {
       Lua: false,
     };
 
-    // set the clicked filter to true
     filter[language] = true;
-
-    // set the state
     setFilter(filter);
-
-    // close the dropdown
     closeDropdown();
   };
 
@@ -343,9 +335,7 @@ let ProjectSection = () => {
       <FeaturedProjectSection />
       <section id='projects' className='project-section'>
         <FadeInDiv fadeInClass={2}>
-          <h3 style={{ marginBottom: '17px' }} className='other-noteworthy'>
-            Other Noteworthy Projects
-          </h3>
+          <h3 className='other-noteworthy'>Other Noteworthy Projects</h3>
         </FadeInDiv>
         <div className='container'>
           <div className='dropdown filter-button'>

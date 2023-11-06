@@ -79,6 +79,7 @@ export const featuredProjectDetails = [
     externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
     techList: ['Lua'],
     image: arenaMarkerImage,
+    id: 'arenamarker',
   },
   {
     title: 'CurbCompanion',
@@ -87,5 +88,6 @@ export const featuredProjectDetails = [
     externalSrc: null,
     techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
     image: curbCompanionImage,
+    id: 'curb-companion',
   },
 ];

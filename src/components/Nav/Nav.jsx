@@ -156,9 +156,7 @@ let Nav = () => {
                 className='nav-btn'
                 aria-label='Menu'
                 ref={menuToggleButtonRef}
-                onClick={() => {
-                  toggleSidebar();
-                }}
+                onClick={toggleSidebar}
               >
                 <div className='ham-box'>
                   <div className='ham-box-inner'></div>
@@ -173,7 +171,7 @@ let Nav = () => {
                 <motion.a
                   href={`${process.env.PUBLIC_URL}/#/resume`}
                   whileHover={{ backgroundColor: 'hsl(166, 100%, 70% / 0.1)' }}
-                  onClick={() => closeSidebar()}
+                  onClick={closeSidebar}
                   className='sidebar-resume-button'
                   target='_blank'
                   rel='noopener noreferrer'

@@ -16,10 +16,39 @@
   }
   .hi {
     margin-left: 2px;
-    font-size: clamp(14px,5vw,16px);
+    font-size: clamp(14px, 5vw, 16px);
     color: var(--light-green);
     font-family: mono, sans-serif;
   }
+  .alternating {
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    color: var(--light-green);
+    transition: color 0.3s ease;
+
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      bottom: 12px;
+      left: 0;
+      background-color: var(--light-green); /* Set the underline color */
+      visibility: hidden;
+      transform: scaleX(0);
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      transition: text-decoration 250ms ease-in-out;
+      &::before {
+        visibility: visible;
+        transform: scaleX(1);
+      }
+    }
+  }
+
   .about-me-header {
     max-width: 540px;
     line-height: 1.3;
@@ -44,7 +73,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-    section:not(.home) > div:first-of-type {
-        align-self: flex-start;
-    }
+  section:not(.home) > div:first-of-type {
+    align-self: flex-start;
+  }
 }
