@@ -11,21 +11,23 @@ function AboutMe() {
           <div className='about-left'>
             <div>
               <p>
-                Hello! My name is Robert. Back in 2014 I was a professional
-                e-sports player, and ever since then I have fallen in love with
-                learning. The mental side of being a professional player has
-                provided me a unique perspective on the motivation and
-                dedication to learn, and perfect my craft.
+                Hello! I am Robert, and in 2014, I pursued a career as a
+                professional e-sports player, an endeavor that ignited an
+                enduring passion for the skillful pursuit of knowledge. My time
+                as a professional player has endowed me with a distinctive
+                outlook on the required motivation and unwavering commitment it
+                takes to hone one's skills.
               </p>
               <p>
-                Fast-forwarding to today, my main focus and passion is building
-                accessible, inclusive products and digital experiences. I’ve had
-                the privilege of working amongst insightful and knowledgable
-                colleagues that have allowed me to continually challenge the way
-                I assess tasks when navigating complicated goals.
+                In the present day, my central pursuit lies in the development
+                of accessible and inclusive products, as well as the creation of
+                innovative digital experiences. I have been fortunate in my
+                efforts to have collaborated with adept and insightful
+                colleagues who have continually encouraged me to reassess my
+                approach when navigating intricate goals.
               </p>
               <p>
-                Here are a few technologies I’ve been working with recently:
+                Here are a few technologies I have been working with recently:
               </p>
             </div>
             <ul className='skills-list'>

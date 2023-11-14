@@ -1,13 +1,8 @@
 import './LandingPage.scss';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import $ from 'jquery';
 
 function LandingPage() {
-  useEffect(() => {
-    document.title = 'Robert Bendick';
-  }, []);
-
   const [intervalDelay, setIntervalDuration] = useState(5);
   const initialDeveloperType = { text: 'the web', id: 'curb-companion' };
   const [developerType, setDeveloperType] = useState(initialDeveloperType);
