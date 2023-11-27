@@ -84,7 +84,7 @@ export const featuredProjectDetails = [
   {
     title: 'CurbCompanion',
     description:
-      'Full stack app that links users with nearby food trucks and vendors. The app incorporates various features such as Google Maps integration and other third-party APIs, providing users with access to menus, schedules, and real-time locations of local food trucks and vendors.',
+      'Full stack app developed in Flutter for compatibility with both Android and iOS that links users with nearby food trucks and vendors. The app incorporates various features such as Google Maps integration, providing users with access to menus, schedules, and locations of local food trucks and vendors.',
     externalSrc: null,
     techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
     image: curbCompanionImage,
