@@ -12,6 +12,14 @@ export const nonFeaturedProjectDetails = [
     techTag: 'Python',
   },
   {
+    title: 'GroupBuilder',
+    description:
+      'Comprehensive Plugin/AddOn designed to streamline the group building process, featuring an intuitive GUI control panel for effortless player management, updates, and removals.',
+    githubSrc: 'https://github.com/RobbieBendick/GroupBuilder',
+    techList: ['Lua'],
+    techTag: 'Lua',
+  },
+  {
     title: 'GladiatorGuru',
     description:
       'A full stack web app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.',
@@ -44,22 +52,6 @@ export const nonFeaturedProjectDetails = [
     techList: ['Lua'],
     techTag: 'Lua',
   },
-  {
-    title: 'Google Keep Clone',
-    description: 'A simple Google Keep clone built with React.',
-    githubSrc: 'https://github.com/RobbieBendick/note-keeper',
-    externalSrc: 'https://robbiebendick.github.io/note-keeper/',
-    techList: ['JS', 'React', 'CSS'],
-    techTag: 'JS React CSS',
-  },
-  {
-    title: 'PartyFrames',
-    description:
-      'Plugin/AddOn to change sizes and colors of default game party frames.',
-    githubSrc: 'https://github.com/RobbieBendick/PartyFrames',
-    techList: ['Lua'],
-    techTag: 'Lua',
-  },
 ];
 
 export const featuredProjectDetails = [
@@ -72,22 +64,22 @@ export const featuredProjectDetails = [
     image: raytracingImage,
   },
   {
+    title: 'CurbCompanion',
+    description:
+      'Full stack app developed in Flutter for compatibility with both Android and iOS that links users with nearby food trucks and vendors. The app incorporates various features such as Google Maps integration, providing users with access to menus, schedules, and locations of local food trucks and vendors.',
+    externalSrc: 'https://curbcompanion.com/',
+    techList: ['TS', 'Flutter', 'Express', 'MongoDB'],
+    image: curbCompanionImage,
+    id: 'curb-companion',
+  },
+  {
     title: 'ArenaMarker',
     description:
-      'Fully customizable addon that automates tedious UI tasks. 44k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
+      'Fully customizable addon that automates tedious UI tasks. 52k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
     githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
     externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
     techList: ['Lua'],
     image: arenaMarkerImage,
     id: 'arenamarker',
-  },
-  {
-    title: 'CurbCompanion',
-    description:
-      'Full stack app developed in Flutter for compatibility with both Android and iOS that links users with nearby food trucks and vendors. The app incorporates various features such as Google Maps integration, providing users with access to menus, schedules, and locations of local food trucks and vendors.',
-    externalSrc: null,
-    techList: ['TS', 'Express', 'MongoDB', 'Flutter'],
-    image: curbCompanionImage,
-    id: 'curb-companion',
   },
 ];
