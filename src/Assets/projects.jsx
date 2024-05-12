@@ -75,7 +75,7 @@ export const featuredProjectDetails = [
   {
     title: 'ArenaMarker',
     description:
-      'Fully customizable addon that automates tedious UI tasks. 52k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
+      'Fully customizable addon that automates tedious UI tasks. 57k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
     githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
     externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
     techList: ['Lua'],
