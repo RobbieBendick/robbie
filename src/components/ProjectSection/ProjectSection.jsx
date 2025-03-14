@@ -5,7 +5,7 @@ import FadeInDiv from '../FadeInDiv/FadeInDiv';
 import $ from 'jquery';
 import JS_pic from '../../Assets/JavaScript-logo.png';
 import PYTHON_pic from '../../Assets/python-logo.png';
-import NODE_pic from '../../Assets/node-logo.png';
+import FLUTTER_pic from '../../Assets/flutter-logo.png';
 import LUA_pic from '../../Assets/lua-logo.png';
 import Dog from '../../Assets/dog.jpg';
 import {
@@ -20,7 +20,6 @@ function ProjectCard({
   githubSrc,
   externalSrc,
   techTag,
-  id,
 }) {
   return (
     <a
@@ -210,7 +209,7 @@ let ProjectSection = () => {
     All: true,
     JS: false,
     Python: false,
-    Node: false,
+    Flutter: false,
     Lua: false,
   });
 
@@ -235,30 +234,30 @@ let ProjectSection = () => {
     All: nonFeaturedProjectDetails.length,
     JS: 0,
     Python: 0,
-    Node: 0,
+    Flutter: 0,
     Lua: 0,
   });
 
   // shows and hides cards based on filter
   let filterHandler = language => {
-    let anchors = $('.project-card');
+    let cards = $('.project-card');
     // adding invis to all cards to allow them to appear at the same time
-    for (let i = 0; i < anchors.length; i++) {
-      let anchor = anchors[i];
-      if (!anchor.parentElement.classList.contains('invis'))
-        anchor.parentElement.classList.add('invis');
+    for (let i = 0; i < cards.length; i++) {
+      let card = cards[i];
+      if (!card.parentElement.classList.contains('invis'))
+        card.parentElement.classList.add('invis');
     }
 
     // timeout allows all cards to appear at the same time
     setTimeout(() => {
-      for (let i = 0; i < anchors.length; i++) {
-        let anchor = anchors[i];
+      for (let i = 0; i < cards.length; i++) {
+        let card = cards[i];
 
-        if (anchor.classList.contains(language))
-          anchor.parentElement.classList.remove('invis');
-        else anchor.parentElement.classList.add('invis');
+        if (card.classList.contains(language))
+          card.parentElement.classList.remove('invis');
+        else card.parentElement.classList.add('invis');
 
-        if (language === 'All') anchor.parentElement.classList.remove('invis');
+        if (language === 'All') card.parentElement.classList.remove('invis');
       }
     }, 20);
   };
@@ -279,7 +278,7 @@ let ProjectSection = () => {
       All: false,
       JS: false,
       Python: false,
-      Node: false,
+      Flutter: false,
       Lua: false,
     };
 
@@ -329,7 +328,7 @@ let ProjectSection = () => {
     }
   }
 
-  let languageImages = [JS_pic, PYTHON_pic, NODE_pic, LUA_pic];
+  let languageImages = [JS_pic, PYTHON_pic, FLUTTER_pic, LUA_pic];
   return (
     <>
       <FeaturedProjectSection />

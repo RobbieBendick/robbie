@@ -12,45 +12,45 @@ export const nonFeaturedProjectDetails = [
     techTag: 'Python',
   },
   {
-    title: 'GroupBuilder',
+    title: 'Levenshtein Algorithm',
     description:
-      'Comprehensive Plugin/AddOn designed to streamline the group building process, featuring an intuitive GUI control panel for effortless player management, updates, and removals.',
+      'Plugin/AddOn that streamlines group building with an intuitive GUI. Uses the Levenshtein distance algorithm to analyze messages for player roles and other necessary information.',
     githubSrc: 'https://github.com/RobbieBendick/GroupBuilder',
     techList: ['Lua'],
     techTag: 'Lua',
   },
   {
-    title: 'GladiatorGuru',
+    title: 'CurbCompanion Mobile',
     description:
-      'A full stack web app that provides World of Warcraft players with a platform to connect with professional players for coaching or gaming.',
-    githubSrc: 'https://github.com/brandongevat/gladiator-guru',
-    techList: ['React', 'TS', 'Express', 'MongoDB'],
+      'Cross-platform mobile app designed to help users find local food trucks and explore their menus effortlessly.',
+    githubSrc: 'https://github.com/RobbieBendick/curb_companion_mobile',
+    techList: ['Flutter', 'Dart'],
+    techTag: 'Flutter',
+  },
+  {
+    title: 'CurbCompanion Backend',
+    description:
+      'Robust backend service supporting the CurbCompanion mobile app, enabling real-time food truck discovery and menu browsing.',
+    githubSrc: 'https://github.com/RobbieBendick/curb_companion_backend',
+    techList: ['TS', 'Express', 'MongoDB', 'JWT'],
     techTag: 'JS Node',
   },
   {
-    title: 'TotemPredictor',
+    title: 'CurbCompanion Landing',
     description:
-      'Plugin/AddOn for an online game that determines the best ability to use in a given scenario.',
-    githubSrc: 'https://github.com/RobbieBendick/totempredictor',
-    externalSrc: 'https://www.curseforge.com/wow/addons/totempredictor',
-    techList: ['Lua'],
-    techTag: 'Lua',
+      'Landing page for CurbCompanion, providing information and access to the mobile app for food truck enthusiasts.',
+    githubSrc: 'https://github.com/RobbieBendick/curb_companion_landing',
+    externalSrc: 'https://curbcompanion.com/',
+    techList: ['TS', 'React', 'Vite'],
+    techTag: 'JS',
   },
   {
-    title: 'Dark Theme',
+    title: 'CurbCompanion Admin Panel',
     description:
-      'Provides a Dark Theme as part of a customizable UI Addon/Plugin written in Lua.',
-    githubSrc: 'https://github.com/RobbieBendick/DarkTheme',
-    techList: ['Lua'],
-    techTag: 'Lua',
-  },
-  {
-    title: 'Anon',
-    description:
-      "Plugin/AddOn that color coordinates unit nameplates, and disguises player and player companion's names.",
-    githubSrc: 'https://github.com/RobbieBendick/Anon',
-    techList: ['Lua'],
-    techTag: 'Lua',
+      'User-friendly admin dashboard for efficiently managing food truck data and user accounts within the CurbCompanion app.',
+    githubSrc: 'https://github.com/RobbieBendick/curb_companion_admin',
+    techList: ['TS', 'React', 'Vite'],
+    techTag: 'JS',
   },
 ];
 
@@ -67,6 +67,7 @@ export const featuredProjectDetails = [
     title: 'CurbCompanion',
     description:
       'Full stack app developed in Flutter for compatibility with both Android and iOS that links users with nearby food trucks and vendors. The app incorporates various features such as Google Maps integration, providing users with access to menus, schedules, and locations of local food trucks and vendors.',
+    githubSrc: 'https://github.com/RobbieBendick/curb_companion_mobile',
     externalSrc: 'https://curbcompanion.com/',
     techList: ['TS', 'Flutter', 'Express', 'MongoDB'],
     image: curbCompanionImage,
@@ -75,7 +76,7 @@ export const featuredProjectDetails = [
   {
     title: 'ArenaMarker',
     description:
-      'Fully customizable addon that automates tedious UI tasks. 57k+ downloads and currently rank 14 in popularity, among other addons in its respective category.',
+      'Fully customizable addon that automates tedious UI tasks. ~100k downloads and rank 14 in popularity, among other addons in its respective category.',
     githubSrc: 'https://github.com/RobbieBendick/ArenaMarker',
     externalSrc: 'https://www.curseforge.com/wow/addons/arenamarker',
     techList: ['Lua'],
