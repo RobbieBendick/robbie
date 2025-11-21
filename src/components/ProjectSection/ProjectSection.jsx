@@ -70,8 +70,8 @@ function ProjectCard({
           </header>
           <footer>
             <ul className='project-tech-list'>
-              {techList.map(tech => (
-                <li>{tech}</li>
+              {techList.map((tech, index) => (
+                <li key={index}>{tech}</li>
               ))}
             </ul>
           </footer>
@@ -97,13 +97,21 @@ let FeaturedProjectCard = ({ project }) => {
         setVisible(true);
 
         // No need to keep observing:
-        observer.unobserve(domRef.current);
+        if (domRef.current) {
+          observer.unobserve(domRef.current);
+        }
       }
     }, options);
 
-    observer.observe(domRef.current);
+    if (domRef.current) {
+      observer.observe(domRef.current);
+    }
 
-    return () => observer.unobserve(domRef.current);
+    return () => {
+      if (domRef.current) {
+        observer.unobserve(domRef.current);
+      }
+    };
   }, []);
   return (
     <motion.li
@@ -126,8 +134,8 @@ let FeaturedProjectCard = ({ project }) => {
           </div>
           <ul className='featured-project-tech-list'>
             {project.techList.length > 0 &&
-              project.techList.map(techName => {
-                return <li>{techName}</li>;
+              project.techList.map((techName, index) => {
+                return <li key={index}>{techName}</li>;
               })}
           </ul>
           <div className='featured-project-links'>
@@ -196,8 +204,8 @@ let FeaturedProjectSection = () => {
       </FadeInDiv>
       <ul>
         {featuredProjectDetails.length > 0 &&
-          featuredProjectDetails.map(project => (
-            <FeaturedProjectCard project={project} />
+          featuredProjectDetails.map((project, index) => (
+            <FeaturedProjectCard key={project.id || index} project={project} />
           ))}
       </ul>
     </section>
@@ -220,13 +228,16 @@ let ProjectSection = () => {
 
   // close the filter-dropdown menu if the user clicks outside of it
   useEffect(() => {
-    document.addEventListener(
-      'mousedown',
-      event =>
+    document.addEventListener('mousedown', event => {
+      if (
+        filterButtonRef.current &&
+        filterDropdownRef.current &&
         !filterButtonRef.current.contains(event.target) &&
-        !filterDropdownRef.current.contains(event.target) &&
-        closeDropdown()
-    );
+        !filterDropdownRef.current.contains(event.target)
+      ) {
+        closeDropdown();
+      }
+    });
   });
 
   // stores the project amount per language
@@ -355,8 +366,9 @@ let ProjectSection = () => {
               className='dropdown-content'
             >
               <div className='language-img-container'>
-                {languageImages.map(image => (
+                {languageImages.map((image, index) => (
                   <img
+                    key={index}
                     width='12'
                     height='12'
                     src={image}
@@ -365,8 +377,9 @@ let ProjectSection = () => {
                   />
                 ))}
               </div>
-              {filterKeys.map(language => (
+              {filterKeys.map((language, index) => (
                 <motion.button
+                  key={index}
                   whileFocus={{ color: 'hsl(166, 100%, 70%)' }}
                   whileHover={{ color: 'hsl(166, 100%, 70%)' }}
                   name={language}
@@ -384,10 +397,9 @@ let ProjectSection = () => {
           </p>
         </div>
         <ul className='projects-grid'>
-          {nonFeaturedProjectDetails.map(v => (
-            <FadeInDiv fadeInClass={2}>
+          {nonFeaturedProjectDetails.map((v, index) => (
+            <FadeInDiv key={v.title || index} fadeInClass={2}>
               <ProjectCard
-                key={v.title}
                 title={v.title}
                 description={v.description}
                 githubSrc={v.githubSrc}

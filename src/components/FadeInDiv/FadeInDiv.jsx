@@ -18,13 +18,21 @@ const FadeInDiv = ({ children, fadeInClass }) => {
         setVisible(true);
 
         // No need to keep observing:
-        observer.unobserve(domRef.current);
+        if (domRef.current) {
+          observer.unobserve(domRef.current);
+        }
       }
     }, options);
 
-    observer.observe(domRef.current);
+    if (domRef.current) {
+      observer.observe(domRef.current);
+    }
 
-    return () => observer.unobserve(domRef.current);
+    return () => {
+      if (domRef.current) {
+        observer.unobserve(domRef.current);
+      }
+    };
   }, []);
 
   return (
