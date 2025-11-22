@@ -4,7 +4,13 @@ import './LoadingBar.scss';
 
 function LoadingBar() {
   const [progress, setProgress] = useState(0);
-  const [daysRemaining, setDaysRemaining] = useState(0);
+  const [countdown, setCountdown] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  });
+  const [isComplete, setIsComplete] = useState(false);
 
   useEffect(() => {
     const calculateProgress = () => {
@@ -13,8 +19,9 @@ function LoadingBar() {
       // Start date: November 12, 2025
       const startDate = new Date(2025, 10, 12); // Month is 0-indexed (10 = November)
 
-      // Target date: January 9th, 2026
-      const targetDate = new Date(2026, 0, 9); // Month is 0-indexed (0 = January)
+      // Target date: January 9th, 2026 at 7 AM PST
+      // PST is UTC-8, so 7 AM PST = 3 PM UTC (15:00 UTC)
+      const targetDate = new Date('2026-01-09T15:00:00Z'); // 7 AM PST in UTC
 
       // Calculate total days between start and target
       const totalDays = (targetDate - startDate) / (1000 * 60 * 60 * 24);
@@ -29,14 +36,29 @@ function LoadingBar() {
       );
       setProgress(calculatedProgress);
 
-      // Calculate days remaining
-      const remaining = (targetDate - now) / (1000 * 60 * 60 * 24);
-      setDaysRemaining(Math.max(0, Math.ceil(remaining)));
+      // Calculate countdown
+      const timeRemaining = targetDate - now;
+
+      if (timeRemaining <= 0) {
+        setIsComplete(true);
+        setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+      } else {
+        setIsComplete(false);
+        const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+        setCountdown({ days, hours, minutes, seconds });
+      }
     };
 
     calculateProgress();
-    // Update every hour
-    const interval = setInterval(calculateProgress, 60 * 60 * 1000);
+    // Update every second for countdown
+    const interval = setInterval(calculateProgress, 1000);
 
     return () => clearInterval(interval);
   }, []);
@@ -49,19 +71,53 @@ function LoadingBar() {
       </div>
 
       <div className='progress-card'>
+        {!isComplete ? (
+          <div className='countdown-display'>
+            <div className='countdown-item'>
+              <span className='countdown-value'>{countdown.days}</span>
+              <span className='countdown-label'>
+                {countdown.days === 1 ? 'Day' : 'Days'}
+              </span>
+            </div>
+            <div className='countdown-separator'>:</div>
+            <div className='countdown-item'>
+              <span className='countdown-value'>
+                {String(countdown.hours).padStart(2, '0')}
+              </span>
+              <span className='countdown-label'>
+                {countdown.hours === 1 ? 'Hour' : 'Hours'}
+              </span>
+            </div>
+            <div className='countdown-separator'>:</div>
+            <div className='countdown-item'>
+              <span className='countdown-value'>
+                {String(countdown.minutes).padStart(2, '0')}
+              </span>
+              <span className='countdown-label'>
+                {countdown.minutes === 1 ? 'Minute' : 'Minutes'}
+              </span>
+            </div>
+            <div className='countdown-separator'>:</div>
+            <div className='countdown-item'>
+              <span className='countdown-value'>
+                {String(countdown.seconds).padStart(2, '0')}
+              </span>
+              <span className='countdown-label'>
+                {countdown.seconds === 1 ? 'Second' : 'Seconds'}
+              </span>
+            </div>
+          </div>
+        ) : (
+          <div className='countdown-complete'>
+            <p className='completed-message'>Target reached! 🎉</p>
+          </div>
+        )}
+
         <div className='progress-info'>
           <div className='progress-label'>
             <span>Progress</span>
             <span className='progress-percentage'>{progress.toFixed(2)}%</span>
           </div>
-          {daysRemaining > 0 && (
-            <p className='days-remaining'>
-              {daysRemaining} {daysRemaining === 1 ? 'day' : 'days'} remaining
-            </p>
-          )}
-          {daysRemaining === 0 && progress >= 100 && (
-            <p className='days-remaining completed'>Target reached! 🎉</p>
-          )}
         </div>
 
         <div className='progress-bar-wrapper'>
@@ -82,7 +138,7 @@ function LoadingBar() {
           </div>
           <div className='detail-item'>
             <span className='detail-label'>Target Date</span>
-            <span className='detail-value'>January 9, 2026</span>
+            <span className='detail-value'>January 9, 2026 at 7:00 AM PST</span>
           </div>
           <div className='detail-item'>
             <span className='detail-label'>Current Progress</span>
