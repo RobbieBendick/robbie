@@ -73,25 +73,31 @@ function LandingPage() {
         <div>
           <h3 style={{ display: 'inline' }} className='fade-in-8 big-heading'>
             I build things for{' '}
-            <motion.a
-              onClick={() => {
-                animateToId(currentDeveloperType.id);
-              }}
-              style={{ display: 'inline', color: 'hsl(166, 100%, 70%)' }}
-              className='big-heading alternating'
-            >
-              {` ${displayedText}`}
-              <motion.span
-                animate={{ opacity: [1, 0] }}
-                transition={{
-                  duration: 0.8,
-                  repeat: Infinity,
-                  repeatType: 'reverse',
+            <span className='typewriter-container'>
+              <motion.a
+                onClick={() => {
+                  animateToId(currentDeveloperType.id);
                 }}
+                style={{
+                  display: 'inline-block',
+                  color: 'hsl(166, 100%, 70%)',
+                  minWidth: '120px',
+                }}
+                className='big-heading alternating'
               >
-                |
-              </motion.span>
-            </motion.a>
+                {` ${displayedText}`}
+                <motion.span
+                  animate={{ opacity: [1, 0] }}
+                  transition={{
+                    duration: 0.8,
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                  }}
+                >
+                  |
+                </motion.span>
+              </motion.a>
+            </span>
           </h3>
         </div>
         <div>

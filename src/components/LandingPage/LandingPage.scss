@@ -20,19 +20,25 @@
     color: var(--light-green);
     font-family: mono, sans-serif;
   }
+  .typewriter-container {
+    display: inline-block;
+    vertical-align: bottom;
+  }
+
   .alternating {
     cursor: pointer;
     text-decoration: none;
     position: relative;
     color: var(--light-green);
     transition: color 0.3s ease;
+    text-align: left;
 
     &::before {
       content: '';
       position: absolute;
       width: 100%;
       height: 5px;
-      bottom: 12px;
+      bottom: 0px;
       left: 0;
       background-color: var(--light-green); /* Set the underline color */
       visibility: hidden;
