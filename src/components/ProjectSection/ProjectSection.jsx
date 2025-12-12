@@ -2,7 +2,6 @@ import './ProjectSection.scss';
 import { React, useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import FadeInDiv from '../FadeInDiv/FadeInDiv';
-import $ from 'jquery';
 import JS_pic from '../../Assets/JavaScript-logo.png';
 import PYTHON_pic from '../../Assets/python-logo.png';
 import FLUTTER_pic from '../../Assets/flutter-logo.png';
@@ -13,6 +12,42 @@ import {
   nonFeaturedProjectDetails,
 } from '../../Assets/projects';
 
+// Custom useInView hook for older framer-motion versions
+const useInView = (ref, options = {}) => {
+  const [isInView, setIsInView] = useState(false);
+  const { once = false, margin = '0px' } = options;
+
+  useEffect(() => {
+    const element = ref.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          if (once) {
+            observer.unobserve(element);
+          }
+        } else if (!once) {
+          setIsInView(false);
+        }
+      },
+      {
+        rootMargin: margin,
+        threshold: 0.1,
+      }
+    );
+
+    observer.observe(element);
+
+    return () => {
+      observer.unobserve(element);
+    };
+  }, [ref, once, margin]);
+
+  return isInView;
+};
+
 function ProjectCard({
   title,
   description,
@@ -20,13 +55,45 @@ function ProjectCard({
   githubSrc,
   externalSrc,
   techTag,
+  isVisible,
+  cascadeIndex,
+  hasAnimated,
 }) {
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        delay: cascadeIndex * 0.1,
+        ease: [0.645, 0.045, 0.355, 1],
+      },
+    },
+    hiddenFiltered: {
+      opacity: 0,
+      y: 20,
+      transition: {
+        duration: 0.3,
+        ease: [0.645, 0.045, 0.355, 1],
+      },
+    },
+  };
+
   return (
-    <a
+    <motion.a
       className={`${techTag} project-card`}
       href={externalSrc || githubSrc}
       target='_blank'
       rel='noopener noreferrer'
+      variants={cardVariants}
+      initial='hidden'
+      animate={hasAnimated && isVisible ? 'visible' : 'hidden'}
+      whileHover={isVisible && hasAnimated ? { y: '-5px' } : {}}
+      style={{
+        display: isVisible ? 'inline-flex' : 'none',
+        pointerEvents: isVisible ? 'auto' : 'none',
+      }}
     >
       <motion.div whileHover={{ y: '-5px' }} className='project-inner'>
         <div className='card'>
@@ -77,47 +144,40 @@ function ProjectCard({
           </footer>
         </div>
       </motion.div>
-    </a>
+    </motion.a>
   );
 }
 
-let FeaturedProjectCard = ({ project }) => {
-  const [isVisible, setVisible] = useState(false);
-  const domRef = useRef();
+let FeaturedProjectCard = ({ project, index }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const options = {
-    root: null,
-    threshold: 0.35,
+  const slideVariants = {
+    hidden: {
+      opacity: 0,
+      x: index % 2 === 0 ? -50 : 50,
+      y: 20,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.2,
+        ease: [0.645, 0.045, 0.355, 1],
+      },
+    },
   };
-  useEffect(() => {
-    const observer = new IntersectionObserver(entries => {
-      // In this case there's only one element to observe:
-      if (entries[0].isIntersecting) {
-        // Not possible to set it back to false like this:
-        setVisible(true);
 
-        // No need to keep observing:
-        if (domRef.current) {
-          observer.unobserve(domRef.current);
-        }
-      }
-    }, options);
-
-    if (domRef.current) {
-      observer.observe(domRef.current);
-    }
-
-    return () => {
-      if (domRef.current) {
-        observer.unobserve(domRef.current);
-      }
-    };
-  }, []);
   return (
     <motion.li
-      className={`featured-project-card ${isVisible ? 'fade-in-2' : 'hide'}`}
+      className='featured-project-card'
       id={project.id && project.id}
-      ref={domRef}
+      ref={ref}
+      variants={slideVariants}
+      initial='hidden'
+      animate={isInView ? 'visible' : 'hidden'}
     >
       <div className='featured-project-content'>
         <div>
@@ -199,16 +259,76 @@ let FeaturedProjectSection = () => {
           style={{ marginBottom: '50px' }}
           className='numbered-heading-projects'
         >
-          Some Things I’ve Built
+          Some Things I've Built
         </h3>
       </FadeInDiv>
       <ul>
         {featuredProjectDetails.length > 0 &&
           featuredProjectDetails.map((project, index) => (
-            <FeaturedProjectCard key={project.id || index} project={project} />
+            <FeaturedProjectCard
+              key={project.id || index}
+              project={project}
+              index={index}
+            />
           ))}
       </ul>
     </section>
+  );
+};
+
+let ProjectCardGrid = ({ projects, visibleCards }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: '-50px' });
+  const [hasAnimated, setHasAnimated] = useState(false);
+  const [filterKey, setFilterKey] = useState(0);
+
+  useEffect(() => {
+    if (isInView && !hasAnimated) {
+      setHasAnimated(true);
+    }
+  }, [isInView, hasAnimated]);
+
+  // Trigger re-animation when filter changes
+  useEffect(() => {
+    if (hasAnimated) {
+      setFilterKey(prev => prev + 1);
+    }
+  }, [visibleCards, hasAnimated]);
+
+  // Calculate cascade index for visible cards only
+  const getCascadeIndex = index => {
+    let cascadeIndex = 0;
+    for (let i = 0; i < index; i++) {
+      if (visibleCards[i]) {
+        cascadeIndex++;
+      }
+    }
+    return visibleCards[index] ? cascadeIndex : 0;
+  };
+
+  return (
+    <motion.ul
+      className='projects-grid'
+      ref={ref}
+      initial='hidden'
+      animate={hasAnimated ? 'visible' : 'hidden'}
+      key={filterKey}
+    >
+      {projects.map((v, index) => (
+        <ProjectCard
+          key={v.title || index}
+          title={v.title}
+          description={v.description}
+          githubSrc={v.githubSrc}
+          externalSrc={v.externalSrc}
+          techList={v.techList}
+          techTag={v.techTag}
+          isVisible={visibleCards[index]}
+          cascadeIndex={hasAnimated ? getCascadeIndex(index) : 0}
+          hasAnimated={hasAnimated}
+        />
+      ))}
+    </motion.ul>
   );
 };
 
@@ -241,36 +361,41 @@ let ProjectSection = () => {
   });
 
   // stores the project amount per language
-  const [projectAmount, setProjectAmount] = useState({
-    All: nonFeaturedProjectDetails.length,
-    JS: 0,
-    Python: 0,
-    Flutter: 0,
-    Lua: 0,
+  const [projectAmount] = useState(() => {
+    const amounts = {
+      All: nonFeaturedProjectDetails.length,
+      JS: 0,
+      Python: 0,
+      Flutter: 0,
+      Lua: 0,
+    };
+
+    if (nonFeaturedProjectDetails.length > 0) {
+      for (let i = 0; i < nonFeaturedProjectDetails.length; i++) {
+        const card = nonFeaturedProjectDetails[i];
+        for (let key of filterKeys) {
+          if (key !== 'All' && card.techTag.split(' ').includes(key)) {
+            amounts[key]++;
+          }
+        }
+      }
+    }
+
+    return amounts;
   });
+
+  // tracks which cards should be visible based on filter
+  const [visibleCards, setVisibleCards] = useState(
+    nonFeaturedProjectDetails.map(() => true)
+  );
 
   // shows and hides cards based on filter
   let filterHandler = language => {
-    let cards = $('.project-card');
-    // adding invis to all cards to allow them to appear at the same time
-    for (let i = 0; i < cards.length; i++) {
-      let card = cards[i];
-      if (!card.parentElement.classList.contains('invis'))
-        card.parentElement.classList.add('invis');
-    }
-
-    // timeout allows all cards to appear at the same time
-    setTimeout(() => {
-      for (let i = 0; i < cards.length; i++) {
-        let card = cards[i];
-
-        if (card.classList.contains(language))
-          card.parentElement.classList.remove('invis');
-        else card.parentElement.classList.add('invis');
-
-        if (language === 'All') card.parentElement.classList.remove('invis');
-      }
-    }, 20);
+    const newVisibleCards = nonFeaturedProjectDetails.map(project => {
+      if (language === 'All') return true;
+      return project.techTag.split(' ').includes(language);
+    });
+    setVisibleCards(newVisibleCards);
   };
 
   // toggles filter dropdown
@@ -278,9 +403,12 @@ let ProjectSection = () => {
     document.getElementById('filterDropdown').classList.toggle('show-instant');
 
   // closes filter dropdown
-  let closeDropdown = () =>
-    $('.dropdown-content').hasClass('show-instant') &&
-    $('.dropdown-content').removeClass('show-instant');
+  let closeDropdown = () => {
+    const dropdown = document.querySelector('.dropdown-content');
+    if (dropdown && dropdown.classList.contains('show-instant')) {
+      dropdown.classList.remove('show-instant');
+    }
+  };
 
   // sets the state of the current filter
   let stateHandler = language => {
@@ -328,16 +456,6 @@ let ProjectSection = () => {
     filterHandler(language);
     stateHandler(language);
   };
-
-  // sets amount of projects per language
-  if (projectAmount.JS === 0 && nonFeaturedProjectDetails.length > 0) {
-    for (let i = 0; i < nonFeaturedProjectDetails.length; i++) {
-      const card = nonFeaturedProjectDetails[i];
-      // traverse through filter keys and increment each project with a its associated techTag
-      for (let key of filterKeys)
-        if (card.techTag.split(' ').includes(key)) projectAmount[key]++;
-    }
-  }
 
   let languageImages = [JS_pic, PYTHON_pic, FLUTTER_pic, LUA_pic];
   return (
@@ -396,20 +514,10 @@ let ProjectSection = () => {
             {findFilteredLanguage()}
           </p>
         </div>
-        <ul className='projects-grid'>
-          {nonFeaturedProjectDetails.map((v, index) => (
-            <FadeInDiv key={v.title || index} fadeInClass={2}>
-              <ProjectCard
-                title={v.title}
-                description={v.description}
-                githubSrc={v.githubSrc}
-                externalSrc={v.externalSrc}
-                techList={v.techList}
-                techTag={v.techTag}
-              />
-            </FadeInDiv>
-          ))}
-        </ul>
+        <ProjectCardGrid
+          projects={nonFeaturedProjectDetails}
+          visibleCards={visibleCards}
+        />
       </section>
     </>
   );

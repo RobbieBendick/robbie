@@ -1,29 +1,53 @@
 import './LandingPage.scss';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
+const alternateDeveloperTypes = [
+  { text: 'the web', id: 'curb-companion' },
+  { text: 'mobile', id: 'curb-companion' },
+  { text: 'games', id: 'arenamarker' },
+];
+
 function LandingPage() {
-  const [intervalDelay, setIntervalDuration] = useState(5);
-  const initialDeveloperType = { text: 'the web', id: 'curb-companion' };
-  const [developerType, setDeveloperType] = useState(initialDeveloperType);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [typingSpeed, setTypingSpeed] = useState(170);
 
-  // alternate landing page text
   useEffect(() => {
-    const alternateDeveloperTypes = [
-      { text: 'the web', id: 'curb-companion' },
-      { text: 'mobile', id: 'curb-companion' },
-      { text: 'games', id: 'arenamarker' },
-    ];
-    let currentIndex = 0;
-    const intervalId = setInterval(() => {
-      currentIndex = (currentIndex + 1) % alternateDeveloperTypes.length;
-      if (alternateDeveloperTypes[currentIndex])
-        setDeveloperType(alternateDeveloperTypes[currentIndex]);
-    }, intervalDelay * 1000);
+    const currentType = alternateDeveloperTypes[currentIndex];
+    const fullText = `${currentType.text}.`;
 
-    // clear the interval when the component is unmounted or the effect is cleaned up
-    return () => clearInterval(intervalId);
-  }, [intervalDelay]);
+    if (!isDeleting && displayedText === fullText) {
+      // Wait before starting to delete
+      const pauseTimeout = setTimeout(() => {
+        setIsDeleting(true);
+        setTypingSpeed(50); // Faster when deleting
+      }, 2000); // Show full word for 2 seconds
+
+      return () => clearTimeout(pauseTimeout);
+    }
+
+    if (isDeleting && displayedText === '') {
+      // Move to next word
+      setIsDeleting(false);
+      setCurrentIndex(prev => (prev + 1) % alternateDeveloperTypes.length);
+      setTypingSpeed(100); // Normal speed when typing
+      return;
+    }
+
+    const timeout = setTimeout(() => {
+      if (isDeleting) {
+        setDisplayedText(prev => prev.slice(0, -1));
+      } else {
+        setDisplayedText(fullText.slice(0, displayedText.length + 1));
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timeout);
+  }, [displayedText, isDeleting, currentIndex, typingSpeed]);
+
+  const currentDeveloperType = alternateDeveloperTypes[currentIndex];
 
   const animateToId = id => {
     if (!id) return;
@@ -49,22 +73,25 @@ function LandingPage() {
         <div>
           <h3 style={{ display: 'inline' }} className='fade-in-8 big-heading'>
             I build things for{' '}
-            <AnimatePresence exitBeforeEnter>
-              <motion.a
-                onClick={() => {
-                  animateToId(developerType.id);
+            <motion.a
+              onClick={() => {
+                animateToId(currentDeveloperType.id);
+              }}
+              style={{ display: 'inline', color: 'hsl(166, 100%, 70%)' }}
+              className='big-heading alternating'
+            >
+              {` ${displayedText}`}
+              <motion.span
+                animate={{ opacity: [1, 0] }}
+                transition={{
+                  duration: 0.8,
+                  repeat: Infinity,
+                  repeatType: 'reverse',
                 }}
-                key={developerType.text}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.75 }}
-                style={{ display: 'inline', color: 'hsl(166, 100%, 70%)' }}
-                className='big-heading alternating'
               >
-                {` ${developerType.text}.`}
-              </motion.a>
-            </AnimatePresence>
+                |
+              </motion.span>
+            </motion.a>
           </h3>
         </div>
         <div>

@@ -124,6 +124,7 @@ body {
   font-size: clamp(40px, 8vw, 70px);
   font-family: SansBold;
   font-weight: 900;
+  margin-block: 0;
 }
 
 ::-webkit-scrollbar {

@@ -1,7 +1,17 @@
 function Signature() {
-    return (
-        <svg xmlns="http://www.w3.org/2000/svg" width="1in" height="0.5in" viewBox="0 0 800 600">
-                                <path id="signature" fill="none" stroke="#64ffda" stroke-width="15" d="M 131.21,79.52
+  return (
+    <svg
+      xmlns='http://www.w3.org/2000/svg'
+      width='1in'
+      height='0.5in'
+      viewBox='0 0 800 600'
+    >
+      <path
+        id='signature'
+        fill='none'
+        stroke='#64ffda'
+        stroke-width='15'
+        d='M 131.21,79.52
            C 129.88,79.53 128.55,79.54 128.53,77.78
              128.52,76.03 128.51,74.27 128.50,72.51
              128.49,70.76 128.48,69.00 128.47,67.24
@@ -342,9 +352,10 @@ function Signature() {
              570.38,184.43 569.42,182.16 570.75,182.15
              570.75,182.15 570.74,180.39 570.74,180.39
              570.74,180.39 572.07,178.63 572.07,178.63
-             572.07,178.63 572.05,176.87 572.05,176.87" />
-             </svg>
-    )
+             572.07,178.63 572.05,176.87 572.05,176.87'
+      />
+    </svg>
+  );
 }
 
 export default Signature;

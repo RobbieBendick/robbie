@@ -14,10 +14,12 @@ function LoadingBar() {
 
   useEffect(() => {
     const calculateProgress = () => {
-      const now = new Date();
+      // Use UTC for all calculations to ensure consistency across timezones
+      const now = new Date(); // Current UTC time
 
-      // Start date: November 12, 2025
-      const startDate = new Date(2025, 10, 12); // Month is 0-indexed (10 = November)
+      // Start date: November 12, 2025 at 12:00 AM PST
+      // PST is UTC-8, so midnight PST = 8 AM UTC
+      const startDate = new Date('2025-11-12T08:00:00Z'); // Midnight PST in UTC
 
       // Target date: January 9th, 2026 at 7 AM PST
       // PST is UTC-8, so 7 AM PST = 3 PM UTC (15:00 UTC)
@@ -134,7 +136,9 @@ function LoadingBar() {
         <div className='progress-details'>
           <div className='detail-item'>
             <span className='detail-label'>Start Date</span>
-            <span className='detail-value'>November 12, 2025</span>
+            <span className='detail-value'>
+              November 12, 2025 at 12:00 AM PST
+            </span>
           </div>
           <div className='detail-item'>
             <span className='detail-label'>Target Date</span>
