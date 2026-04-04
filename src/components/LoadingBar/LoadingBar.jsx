@@ -17,13 +17,11 @@ function LoadingBar() {
       // Use UTC for all calculations to ensure consistency across timezones
       const now = new Date(); // Current UTC time
 
-      // Start date: November 12, 2025 at 12:00 AM PST
       // PST is UTC-8, so midnight PST = 8 AM UTC
-      const startDate = new Date('2025-11-12T08:00:00Z'); // Midnight PST in UTC
+      const startDate = new Date('2026-03-27T08:00:00Z');
 
-      // Target date: January 9th, 2026 at 7 AM PST
       // PST is UTC-8, so 7 AM PST = 3 PM UTC (15:00 UTC)
-      const targetDate = new Date('2026-01-09T15:00:00Z'); // 7 AM PST in UTC
+      const targetDate = new Date('2026-05-23T15:00:00Z'); // 7 AM PST in UTC
 
       // Calculate total days between start and target
       const totalDays = (targetDate - startDate) / (1000 * 60 * 60 * 24);
@@ -34,7 +32,7 @@ function LoadingBar() {
       // Calculate progress percentage
       const calculatedProgress = Math.min(
         100,
-        Math.max(0, (daysPassed / totalDays) * 100)
+        Math.max(0, (daysPassed / totalDays) * 100),
       );
       setProgress(calculatedProgress);
 
@@ -48,10 +46,10 @@ function LoadingBar() {
         setIsComplete(false);
         const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
-          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
         );
         const minutes = Math.floor(
-          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60)
+          (timeRemaining % (1000 * 60 * 60)) / (1000 * 60),
         );
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
         setCountdown({ days, hours, minutes, seconds });
