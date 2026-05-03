@@ -2,6 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './LoadingBar.scss';
 
+const PROGRESS_MILESTONES = [
+  { id: 'q1', pct: 25, label: '1/4' },
+  { id: 't1', pct: 100 / 3, label: '1/3' },
+  { id: 'h', pct: 50, label: '1/2' },
+  { id: 't2', pct: (200 / 3), label: '2/3' },
+  { id: 'q3', pct: 75, label: '3/4' },
+];
+
 function LoadingBar() {
   const [progress, setProgress] = useState(0);
   const [countdown, setCountdown] = useState({
@@ -14,29 +22,23 @@ function LoadingBar() {
 
   useEffect(() => {
     const calculateProgress = () => {
-      // Use UTC for all calculations to ensure consistency across timezones
-      const now = new Date(); // Current UTC time
+      const now = new Date();
 
-      // PST is UTC-8, so midnight PST = 8 AM UTC
-      const startDate = new Date('2026-03-27T08:00:00Z');
+      // Midnight March 27, 2026 in California (PDT → UTC-7)
+      const startDate = new Date('2026-03-27T07:00:00Z');
 
-      // PST is UTC-8, so 7 AM PST = 3 PM UTC (15:00 UTC)
-      const targetDate = new Date('2026-05-23T15:00:00Z'); // 7 AM PST in UTC
+      // May 23, 2026 at 7:00 AM California time (PDT → UTC-7)
+      const targetDate = new Date('2026-05-23T14:00:00Z');
 
-      // Calculate total days between start and target
       const totalDays = (targetDate - startDate) / (1000 * 60 * 60 * 24);
-
-      // Calculate days passed from start date
       const daysPassed = (now - startDate) / (1000 * 60 * 60 * 24);
 
-      // Calculate progress percentage
       const calculatedProgress = Math.min(
         100,
         Math.max(0, (daysPassed / totalDays) * 100),
       );
       setProgress(calculatedProgress);
 
-      // Calculate countdown
       const timeRemaining = targetDate - now;
 
       if (timeRemaining <= 0) {
@@ -44,6 +46,7 @@ function LoadingBar() {
         setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       } else {
         setIsComplete(false);
+
         const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
         const hours = Math.floor(
           (timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
@@ -52,12 +55,12 @@ function LoadingBar() {
           (timeRemaining % (1000 * 60 * 60)) / (1000 * 60),
         );
         const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
         setCountdown({ days, hours, minutes, seconds });
       }
     };
 
     calculateProgress();
-    // Update every second for countdown
     const interval = setInterval(calculateProgress, 1000);
 
     return () => clearInterval(interval);
@@ -121,26 +124,43 @@ function LoadingBar() {
         </div>
 
         <div className='progress-bar-wrapper'>
-          <div className='progress-bar-background'>
-            <motion.div
-              className='progress-bar-fill'
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
-              transition={{ duration: 1, ease: 'easeOut' }}
-            />
+          <div className='progress-bar-track'>
+            <div className='progress-bar-background'>
+              <motion.div
+                className='progress-bar-fill'
+                initial={{ width: 0 }}
+                animate={{ width: `${progress}%` }}
+                transition={{ duration: 1, ease: 'easeOut' }}
+              />
+            </div>
+            <div
+              className='progress-bar-milestones'
+              aria-hidden='true'
+            >
+              {PROGRESS_MILESTONES.map(({ id, pct, label }) => (
+                <div
+                  key={id}
+                  className={`milestone${progress >= pct ? ' milestone--reached' : ''}`}
+                  style={{ left: `${pct}%` }}
+                >
+                  <span className='milestone-tick' />
+                  <div className='milestone-label-wrap'>
+                    <span className='milestone-label'>{label}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className='progress-details'>
           <div className='detail-item'>
             <span className='detail-label'>Start Date</span>
-            <span className='detail-value'>
-              November 12, 2025 at 12:00 AM PST
-            </span>
+            <span className='detail-value'>March 27, 2026 at 12:00 AM PDT</span>
           </div>
           <div className='detail-item'>
             <span className='detail-label'>Target Date</span>
-            <span className='detail-value'>January 9, 2026 at 7:00 AM PST</span>
+            <span className='detail-value'>May 23, 2026 at 7:00 AM PDT</span>
           </div>
           <div className='detail-item'>
             <span className='detail-label'>Current Progress</span>
